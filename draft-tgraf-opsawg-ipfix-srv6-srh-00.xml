@@ -35,7 +35,7 @@
       </address>
     </author>
 
-    <date day="10" month="Januar" year="2022"/>
+    <date day="15" month="Januar" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX) code
@@ -80,10 +80,10 @@
           <t hangText="ipv6SRHSegment"><vspace blankLines="0"/> 128-bit IPv6
           address that represents an SRv6 segment.</t>
 
-          <t hangText="ipv6SRHSegmentList"><vspace blankLines="0"/> basicList
-          of zero or more 128-bit IPv6 addresses in the SRH that represents
-          the SRv6 segment list. The Segment List is encoded starting from the
-          last segment of the SR Policy.</t>
+          <t hangText="ipv6SRHSegmentList"><vspace blankLines="0"/> Ordered
+          basicList of zero or more 128-bit IPv6 addresses in the SRH that
+          represents the SRv6 segment list. The Segment List is encoded
+          starting from the last segment of the SR Policy.</t>
 
           <t hangText="ipv6SRHSegmentType"><vspace blankLines="0"/> Name of
           the routing protocol or PCEP extension from where last SRv6 segment
@@ -195,7 +195,7 @@
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
-      <t>I would like to thank.</t>
+      <t>TBD</t>
     </section>
   </middle>
 
@@ -299,7 +299,8 @@
    | ipv6SRHFlags  |        ipv6SRHTag = 123       | ipv6SRHSegment|
    | = 0           |                               | Type = TBD9   |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |      255      |        List Length = 53       |semantic=allof |
+   |      255      |        List Length = 53       |semantic=      |
+   |               |                               |ordered        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |     ipv6SRHSegment = TBD4     |        Field Length = 16      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -312,7 +313,8 @@
    | ipv6SRHFlags  |        ipv6SRHTag = 456       | ipv6SRHSegment|
    | = 0           |                               | Type = TBD9   |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |      255      |        List Length = 37       |semantic=allof |
+   |      255      |        List Length = 37       |semantic=      |
+   |               |                               |ordered        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |     ipv6SRHSegment = TBD4     |        Field Length = 16      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -323,7 +325,8 @@
    | ipv6SRHFlags  |        ipv6SRHTag = 789       | ipv6SRHSegment|
    | = 0           |                               | Type = TBD9   |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |      255      |        List Length = 21       |semantic=allof |
+   |      255      |        List Length = 21       |semantic=      |
+   |               |                               |ordered        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |     ipv6SRHSegment = TBD4     |        Field Length = 16      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
