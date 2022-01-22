@@ -82,11 +82,11 @@
           <t hangText="ipv6SRHSegmentList"><vspace blankLines="0"/> Ordered
           basicList of zero or more 128-bit IPv6 addresses in the SRH that
           represents the SRv6 segment list. The Segment List is encoded
-          starting from the active SID of the SR Policy.</t>
+          starting from the active segment of the SR Policy.</t>
 
           <t hangText="ipv6SRHSegmentType"><vspace blankLines="0"/> Name of
-          the routing protocol or PCEP extension from where the active SID has
-          been learned from.</t>
+          the routing protocol or PCEP extension from where the active SRv6
+          segment has been learned from.</t>
         </list></t>
     </section>
 
