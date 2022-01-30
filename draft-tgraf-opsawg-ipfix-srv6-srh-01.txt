@@ -261,8 +261,8 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information     January 2022
 
 6.  Acknowledgements
 
-   I would like to thank Pierre Francois and Yao Liu for their review
-   and valuable comments.
+   I would like to thank Pierre Francois, Yao Liu and Paolo Lucente for
+   their review and valuable comments.
 
 7.  References
 
