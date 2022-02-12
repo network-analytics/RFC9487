@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="info" docName="draft-tgraf-opsawg-ipfix-srv6-srh-00"
+<rfc category="info" docName="draft-tgraf-opsawg-ipfix-srv6-srh-01"
      ipr="trust200902">
   <front>
     <title
@@ -35,7 +35,7 @@
       </address>
     </author>
 
-    <date day="30" month="January" year="2022"/>
+    <date day="12" month="February" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX) code
@@ -59,7 +59,7 @@
       Communication Protocol (PCEP) Extension</xref> have been defined to
       propagate Segment Identifiers (SIDs) for the IPv6 data plane.</t>
 
-      <t>This document defines six new IPFIX Information Elements (IEs) and
+      <t>This document defines seven new IPFIX Information Elements (IEs) and
       two new subregistries within the "IPFIX Information Elements" registry
       <xref target="RFC7012"/> for the new SRH dimensions and routing protocol
       and PCEP extensions.</t>
@@ -83,6 +83,10 @@
           represents the SRv6 segment list. The Segment List is encoded
           starting from the active segment of the SR Policy.</t>
 
+          <t hangText="ipv6SRHSegmentsLeft"><vspace blankLines="0"/> 8-bit
+          unsigned integer defining the number of route segments remaining to
+          reach the end of the segment list.</t>
+
           <t hangText="ipv6SRHSection"><vspace blankLines="0"/> Exposes the
           SRH and its TLV's as defined in section 2 of <xref
           target="RFC8754"/> as series of n octets.</t>
@@ -94,8 +98,9 @@
     </section>
 
     <section anchor="Use-Cases" title="Use Cases">
-      <t>By using ipv6SRHSegmentList(TBD5), ipv6SRHSegment1Type(TBD6) and
-      forwardingStatus(89) it is possible to identify</t>
+      <t>By using ipv6SRHSegmentList(TBD4), ipv6SRHSegmentsLeft (TBD5),
+      ipv6SRHSegment1Type(TBD7) and forwardingStatus(89) it is possible to
+      identify</t>
 
       <t><list style="symbols">
           <t>how many packets are forwarded or dropped</t>
@@ -103,9 +108,11 @@
           <t>if dropped, for which reasons,</t>
 
           <t>identify the control plane protocol which defined the active
-          segment</t>
+          segment,</t>
 
-          <t>and the SRv6 segment list.</t>
+          <t>the SRv6 segment list and</t>
+
+          <t>how many SRv6 segments are left.</t>
         </list></t>
     </section>
 
@@ -119,26 +126,29 @@
       <t><figure>
           <artwork><![CDATA[
 
-+--------+-------------------+------------+-----------+-------------+
-| Element|       Name        |  Abstract  | Data Type |  Reference  |
-|   ID   |                   |  Data Type | Semantics |             |
-+--------+-------------------+------------+-------------------------+
-| TBD1   | ipv6SRHFlag       | unsigned8  | flags     | [RFC-to-be],|
-|        |                   |            |           | RFC8754     |
-+--------+-------------------+------------+-------------------------+
-| TBD2   | ipv6SRHTag        | unsigned16 | identifier| [RFC-to-be],|
-|        |                   |            |           | RFC8754     |
-+--------+-------------------+------------+-------------------------+
-| TBD3   | ipv6SRHSegment    | ipv6address| default   | [RFC-to-be],|
-|        |                   |            |           | RFC8754     |
-+--------+-------------------+------------+-------------------------+
-| TBD4   | ipv6SRHSegmentList| basiclist  | list      | [RFC-to-be],|
-|        |                   |            |           | RFC8754     |
-+--------+-------------------+------------+-------------------------+
-| TBD5   | ipv6SRHSection    | octetArray | default   | [RFC-to-be] |
-+--------+-------------------+------------+-------------------------+
-| TBD6   | ipv6SRHSegmentType| unsigned8  | identifier| [RFC-to-be] |
-+--------+-------------------+------------+-------------------------+
++-------+--------------------+------------+-----------+-------------+
+|Element|       Name         |  Abstract  | Data Type |  Reference  |
+|   ID  |                    |  Data Type | Semantics |             |
++-------+--------------------+------------+-------------------------+
+| TBD1  | ipv6SRHFlag        | unsigned8  | flags     | [RFC-to-be],|
+|       |                    |            |           | RFC8754     |
++-------+--------------------+------------+-------------------------+
+| TBD2  | ipv6SRHTag         | unsigned16 | identifier| [RFC-to-be],|
+|       |                    |            |           | RFC8754     |
++-------+--------------------+------------+-------------------------+
+| TBD3  | ipv6SRHSegment     | ipv6address| default   | [RFC-to-be],|
+|       |                    |            |           | RFC8754     |
++-------+--------------------+------------+-------------------------+
+| TBD4  | ipv6SRHSegmentList | basiclist  | list      | [RFC-to-be],|
+|       |                    |            |           | RFC8754     |
++-------+--------------------+------------+-------------------------+
+| TBD5  | ipv6SRHSegmentsLeft| unsigned8  | quantity  | [RFC-to-be],|
+|       |                    |            |           | RFC8754     |
++-------+--------------------+------------+-------------------------+
+| TBD6  | ipv6SRHSection     | octetArray | default   | [RFC-to-be] |
++-------+--------------------+------------+-------------------------+
+| TBD7  | ipv6SRHSegmentType | unsigned8  | identifier| [RFC-to-be] |
++-------+--------------------+------------+-------------------------+
 
   Table 1: Creates IEs in the "IPFIX Information Elements" registry
        ]]></artwork>
@@ -163,30 +173,30 @@
 +-------+--------------------+--------------------------------------+
 | Value |     Description    |              Reference               |
 +-------+--------------------+--------------------------------------+
-| TBD7  | Unknown            | [RFC-to-be]                          |
+| TBD8  | Unknown            | [RFC-to-be]                          |
 |       |                    |                                      |
 +-------+--------------------+--------------------------------------+
-| TBD8  | Path Computation   | [RFC-to-be],                         |
+| TBD9  | Path Computation   | [RFC-to-be],                         |
 |       | Element            | draft-ietf-pce-segment-routing-ipv6  |
 +-------+--------------------+--------------------------------------+
-| TBD9  | OSPFv3             | [RFC-to-be],                         |
+| TB10  | OSPFv3             | [RFC-to-be],                         |
 |       | Segment Routing    | draft-li-ospf-ospfv3-srv6-extensions |
 +-------+--------------------+--------------------------------------+
-| TBD10 | IS-IS              | [RFC-to-be]                          |
+| TBD11 | IS-IS              | [RFC-to-be]                          |
 |       | Segment Routing    | draft-ietf-lsr-isis-srv6-extensions  |
 +-------+--------------------+--------------------------------------+
-| TBD11 | BGP Segment        | [RFC-to-be],                         |
+| TBD12 | BGP Segment        | [RFC-to-be],                         |
 |       | Routing Prefix-SID | draft-ietf-bess-srv6-services        |
 +-------+--------------------+--------------------------------------+
 
-  Table 3: Creates "IPFIX IPv6 SRH Segment type (TBD6)" subregistry
+  Table 3: Creates "IPFIX IPv6 SRH Segment type (TBD7)" subregistry
        ]]></artwork>
         </figure></t>
 
       <t>Note to the RFC-Editor:</t>
 
       <t><list style="symbols">
-          <t>Please replace TBD1 - TBD11 with the values allocated by IANA</t>
+          <t>Please replace TBD1 - TBD12 with the values allocated by IANA</t>
 
           <t>Please replace the [RFC-to-be] with the RFC number assigned to
           this document</t>
@@ -303,7 +313,7 @@
    |         SET ID = 256          |           Length = 136        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    | ipv6SRHFlags  |        ipv6SRHTag = 123       | ipv6SRHSegment|
-   | = 0           |                               | Type = TBD10  |
+   | = 0           |                               | Type = TBD11  |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      255      |        List Length = 53       |semantic=      |
    |               |                               |ordered        |
@@ -317,7 +327,7 @@
    |             Segment List[2] = 2001:db8::3  (16 bytes)         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    | ipv6SRHFlags  |        ipv6SRHTag = 456       | ipv6SRHSegment|
-   | = 0           |                               | Type = TBD10  |
+   | = 0           |                               | Type = TBD11  |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      255      |        List Length = 37       |semantic=      |
    |               |                               |ordered        |
@@ -329,7 +339,7 @@
    |             Segment List[1] = 2001:db8::5  (16 bytes)         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    | ipv6SRHFlags  |        ipv6SRHTag = 789       | ipv6SRHSegment|
-   | = 0           |                               | Type = TBD10  |
+   | = 0           |                               | Type = TBD11  |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      255      |        List Length = 21       |semantic=      |
    |               |                               |ordered        |
