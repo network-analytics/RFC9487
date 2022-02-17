@@ -14,9 +14,10 @@ Expires: August 16, 2022
 
 Abstract
 
-   This document introduces new IP Flow Information Export (IPFIX) code
-   points to identify the SRv6 Segment Routing Header dimensions and
-   SRv6 Control Plane Protocol that traffic is being forwarded with.
+   This document introduces new IP Flow Information Export (IPFIX)
+   information elements to identify the SRv6 Segment Routing Header
+   dimensions and SRv6 Control Plane Protocol that traffic is being
+   forwarded with.
 
 Status of This Memo
 
@@ -52,10 +53,9 @@ Copyright Notice
 
 
 
-
 Graf                     Expires August 16, 2022                [Page 1]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
+Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
 Table of Contents
@@ -86,8 +86,8 @@ Table of Contents
 
    This document defines seven new IPFIX Information Elements (IEs) and
    two new subregistries within the "IPFIX Information Elements"
-   registry [RFC7012] for the new SRH dimensions and routing protocol
-   and PCEP extensions.
+   registry [RFC7012], respectively for the new SRH dimensions and
+   routing protocol and PCEP extensions.
 
 2.  IPFIX Information Elements
 
@@ -111,12 +111,12 @@ Table of Contents
 
 Graf                     Expires August 16, 2022                [Page 2]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
+Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
-      Ordered basicList of zero or more 128-bit IPv6 addresses in the
-      SRH that represents the SRv6 segment list.  The Segment List is
-      encoded starting from the active segment of the SR Policy.
+      Ordered basicList [RFC6313] of zero or more 128-bit IPv6 addresses
+      in the SRH that represents the SRv6 segment list.  The Segment
+      List is encoded starting from the active segment of the SR Policy.
 
    ipv6SRHSegmentsLeft
       8-bit unsigned integer defining the number of route segments
@@ -149,11 +149,11 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 4.  IANA Considerations
 
-   This document requests IANA to create new IEs and two new subregistry
-   called ""IPFIX IPv6 SRH Flags (TBD1)" and IPFIX IPv6 SRH Segment type
-   (TBD5)" under the "IPFIX Information Elements" registry [RFC7012]
-   available at [IANA-IPFIX] and assign the following code points.
-
+   This document requests IANA to create new IEs and two new
+   subregistries called ""IPFIX IPv6 SRH Flags (TBD1)" and IPFIX IPv6
+   SRH Segment type (TBD5)" under the "IPFIX Information Elements"
+   registry [RFC7012] available at [IANA-IPFIX] and assign the following
+   code initial points.
 
 
 
@@ -167,7 +167,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 Graf                     Expires August 16, 2022                [Page 3]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
+Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
    +-------+--------------------+------------+-----------+-------------+
@@ -223,7 +223,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 Graf                     Expires August 16, 2022                [Page 4]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
+Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
    +-------+--------------------+--------------------------------------+
@@ -279,7 +279,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 Graf                     Expires August 16, 2022                [Page 5]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
+Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
    [RFC7012]  Claise, B., Ed. and B. Trammell, Ed., "Information Model
@@ -292,7 +292,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
    [I-D.ietf-bess-srv6-services]
               Dawra, G., Filsfils, C., Talaulikar, K., Raszuk, R.,
               Decraene, B., Zhuang, S., and J. Rabadan, "SRv6 BGP based
-              Overlay Services", draft-ietf-bess-srv6-services-10 (work
+              Overlay Services", draft-ietf-bess-srv6-services-11 (work
               in progress), February 2022.
 
    [I-D.ietf-lsr-isis-srv6-extensions]
@@ -335,7 +335,7 @@ Appendix A.  IPFIX Encoding Example
 
 Graf                     Expires August 16, 2022                [Page 6]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
+Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
    +-----+------+-----+--------+---------------------------------------|
@@ -391,7 +391,7 @@ A.2.  Data Set
 
 Graf                     Expires August 16, 2022                [Page 7]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
+Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
        0                   1                   2                   3
@@ -447,7 +447,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 Graf                     Expires August 16, 2022                [Page 8]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
+Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
 Author's Address
