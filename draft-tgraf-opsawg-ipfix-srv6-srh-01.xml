@@ -14,7 +14,7 @@
      ipr="trust200902">
   <front>
     <title
-    abbrev="IPFIX Segment Routing IPv6 Information">Export&nbsp;of&nbsp;Segment&nbsp;Routing&nbsp;IPv6&nbsp;Information&nbsp;in
+    abbrev="Export of Segment Routing IPv6 Information in IP Flow Information Export (IPFIX)">Export&nbsp;of&nbsp;Segment&nbsp;Routing&nbsp;IPv6&nbsp;Information&nbsp;in
     IP&nbsp;Flow&nbsp;Information&nbsp;Export&nbsp;(IPFIX)</title>
 
     <author fullname="Thomas Graf" initials="T. " surname="Graf">
@@ -35,11 +35,11 @@
       </address>
     </author>
 
-    <date day="12" month="February" year="2022"/>
+    <date day="17" month="February" year="2022"/>
 
     <abstract>
-      <t>This document introduces new IP Flow Information Export (IPFIX) code
-      points to identify the SRv6 Segment Routing Header dimensions and SRv6
+      <t>This document introduces new IP Flow Information Export (IPFIX) information
+      elements to identify the SRv6 Segment Routing Header dimensions and SRv6
       Control Plane Protocol that traffic is being forwarded with.</t>
     </abstract>
   </front>
@@ -61,8 +61,8 @@
 
       <t>This document defines seven new IPFIX Information Elements (IEs) and
       two new subregistries within the "IPFIX Information Elements" registry
-      <xref target="RFC7012"/> for the new SRH dimensions and routing protocol
-      and PCEP extensions.</t>
+      <xref target="RFC7012"/>, respectively for the new SRH dimensions and 
+      routing protocol and PCEP extensions.</t>
     </section>
 
     <section anchor="IE" title="IPFIX Information Elements">
@@ -79,9 +79,10 @@
           address that represents an SRv6 segment.</t>
 
           <t hangText="ipv6SRHSegmentList"><vspace blankLines="0"/> Ordered
-          basicList of zero or more 128-bit IPv6 addresses in the SRH that
-          represents the SRv6 segment list. The Segment List is encoded
-          starting from the active segment of the SR Policy.</t>
+          basicList <xref target="RFC6313"/> of zero or more 128-bit IPv6 
+          addresses in the SRH that represents the SRv6 segment list. The 
+          Segment List is encoded starting from the active segment of the SR 
+          Policy.</t>
 
           <t hangText="ipv6SRHSegmentsLeft"><vspace blankLines="0"/> 8-bit
           unsigned integer defining the number of route segments remaining to
@@ -117,11 +118,11 @@
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
-      <t>This document requests IANA to create new IEs and two new subregistry
+      <t>This document requests IANA to create new IEs and two new subregistries
       called ""IPFIX IPv6 SRH Flags (TBD1)" and IPFIX IPv6 SRH Segment type
       (TBD5)" under the "IPFIX Information Elements" registry <xref
       target="RFC7012"/> available at <xref target="IANA-IPFIX"/> and assign
-      the following code points.</t>
+      the following code initial points.</t>
 
       <t><figure>
           <artwork><![CDATA[
