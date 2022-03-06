@@ -4,7 +4,7 @@
 
 Network Working Group                                            T. Graf
 Internet-Draft                                                  Swisscom
-Intended status: Informational                                 B. Claise
+Intended status: Standards Track                               B. Claise
 Expires: September 5, 2022                                        Huawei
                                                           March 04, 2022
 
@@ -114,12 +114,12 @@ Graf & Claise           Expires September 5, 2022               [Page 2]
 Internet-Draft   IPFIX Segment Routing IPv6 Information       March 2022
 
 
-   ipv6SRHSegmentList
+   ipv6SRHSegmentBasicList
       Ordered basicList [RFC6313] of zero or more 128-bit IPv6 addresses
       in the SRH that represents the SRv6 segment list.  The Segment
       List is encoded starting from the active segment of the SR Policy.
 
-   ipv6SRHSegmentListString
+   ipv6SRHSegmentListSection
       String of zero or more 128-bit IPv6 addresses in the SRH that
       represents the SRv6 segment list.  The Segment List is encoded
       starting from the active segment of the SR Policy and is devided
@@ -139,8 +139,8 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information       March 2022
 
 3.  Use Cases
 
-   By using ipv6SRHSegmentList(TBD4), ipv6SRHSegmentsLeft (TBD5),
-   ipv6SRHSegment1Type(TBD7) and forwardingStatus(89) it is possible to
+   By using ipv6SRHSegmentBasicList(TBD4), ipv6SRHSegmentsLeft (TBD6),
+   ipv6SRHSegmentType(TBD8) and forwardingStatus(89) it is possible to
    identify
 
    o  how many packets are forwarded or dropped
@@ -170,32 +170,32 @@ Graf & Claise           Expires September 5, 2022               [Page 3]
 Internet-Draft   IPFIX Segment Routing IPv6 Information       March 2022
 
 
-        +-------+--------------------------+
-        |Element|       Name               |
-        |   ID  |                          |
-        +-------+--------------------------+
-        | TBD1  | ipv6SRHFlags             |
-        |       |                          |
-        +-------+--------------------------+
-        | TBD2  | ipv6SRHTag               |
-        |       |                          |
-        +-------+--------------------------+
-        | TBD3  | ipv6SRHSegment           |
-        |       |                          |
-        +-------+--------------------------+
-        | TBD4  | ipv6SRHSegmentList       |
-        |       |                          |
-        +-------+--------------------------+
-        | TBD5  | ipv6SRHSegmentListString |
-        |       |                          |
-        +-------+--------------------------+
-        | TBD6  | ipv6SRHSegmentsLeft      |
-        |       |                          |
-        +-------+--------------------------+
-        | TBD7  | ipv6SRHSection           |
-        +-------+--------------------------+
-        | TBD8  | ipv6SRHSegmentType       |
-        +-------+--------------------------+
+        +-------+---------------------------+
+        |Element|        Name               |
+        |   ID  |                           |
+        +-------+---------------------------+
+        | TBD1  | ipv6SRHFlags              |
+        |       |                           |
+        +-------+---------------------------+
+        | TBD2  | ipv6SRHTag                |
+        |       |                           |
+        +-------+---------------------------+
+        | TBD3  | ipv6SRHSegment            |
+        |       |                           |
+        +-------+---------------------------+
+        | TBD4  | ipv6SRHSegmentBasicList   |
+        |       |                           |
+        +-------+---------------------------+
+        | TBD5  | ipv6SRHSegmentListSection |
+        |       |                           |
+        +-------+---------------------------+
+        | TBD6  | ipv6SRHSegmentsLeft       |
+        |       |                           |
+        +-------+---------------------------+
+        | TBD7  | ipv6SRHSection            |
+        +-------+---------------------------+
+        | TBD8  | ipv6SRHSegmentType        |
+        +-------+---------------------------+
 
      Table 1: Creates IEs in the "IPFIX Information Elements" registry
 
@@ -259,9 +259,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information       March 2022
    Data Type Semantics: default
    Reference: [RFC-to-be], RFC8754
 
-4.4.  ipv6SRHSegmentList
+4.4.  ipv6SRHSegmentBasicList
 
-   Name: ipv6SRHSegmentList
+   Name: ipv6SRHSegmentBasicList
    ElementID: TBD4
    Description: This Information Element identifies the Ordered
    basicList [RFC6313] of zero or more 128-bit IPv6 addresses in the SRH
@@ -282,22 +282,22 @@ Graf & Claise           Expires September 5, 2022               [Page 5]
 Internet-Draft   IPFIX Segment Routing IPv6 Information       March 2022
 
 
-4.5.  ipv6SRHSegmentListString
+4.5.  ipv6SRHSegmentListSection
 
-   Name: ipv6SRHSegmentListString
+   Name: ipv6SRHSegmentListSection
    ElementID: TBD5
    Description: This Information Element identifies the string of zero
    or more 128-bit IPv6 addresses in the SRH that represents the SRv6
    segment list.  The Segment List is encoded starting from the active
    segment of the SR Policy devided by a semicolon.
-   Abstract Data Type: string
+   Abstract Data Type: octetArray
    Data Type Semantics: default
    Reference: [RFC-to-be], RFC8754
 
 4.6.  ipv6SRHSegmentsLeft
 
    Name: ipv6SRHSegmentsLeft
-   ElementID: TBD5
+   ElementID: TBD6
    Description: This Information Element identifies the 8-bit unsigned
    integer defining the number of route segments remaining to reach the
    end of the segment list.
@@ -308,7 +308,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information       March 2022
 4.7.  ipv6SRHSection
 
    Name: ipv6SRHSection
-   ElementID: TBD6
+   ElementID: TBD7
    Description: This Information Element exposes the SRH and its TLV's
    as defined in s ection 2 of [RFC8754] as series of n octets.
    Abstract Data Type: octetArray
@@ -318,7 +318,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information       March 2022
 4.8.  ipv6SRHSegmentType
 
    Name: ipv6SRHSegmentType
-   ElementID: TBD7
+   ElementID: TBD8
    Description: This Information Element identifies the name of the
    routing protocol or PCEP extension from where the active SRv6 segment
    has been learned from.  Values for this Information Element are
@@ -404,8 +404,8 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information       March 2022
    [I-D.ietf-bess-srv6-services]
               Dawra, G., Filsfils, C., Talaulikar, K., Raszuk, R.,
               Decraene, B., Zhuang, S., and J. Rabadan, "SRv6 BGP based
-              Overlay Services", draft-ietf-bess-srv6-services-11 (work
-              in progress), February 2022.
+              Overlay Services", draft-ietf-bess-srv6-services-12 (work
+              in progress), March 2022.
 
    [I-D.ietf-lsr-isis-srv6-extensions]
               Psenak, P., Filsfils, C., Bashandy, A., Decraene, B., and
@@ -481,14 +481,14 @@ A.1.  Template Record
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |0|    ipv6SRHSegment = TBD3    |      Field Length = 16        |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |0|  ipv6SRHSegmentList = TBD4  |      Field Length = 0xFFFF    |
+      |0|ipv6SRHSegmentBasicList= TBD4|      Field Length = 0xFFFF    |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
                   Table 4: Template Record Encoding Format
 
 
    In this example, the Template ID is 256, which will be used in the
-   Data Record.  The field length for ipv6SRHSegmentList is 0xFFFF,
+   Data Record.  The field length for ipv6SRHSegmentBasicList is 0xFFFF,
    which means the length of this IE is variable, and the actual length
    of this IE is indicated by the List Length field in the basicList
    format as per [RFC6313].
