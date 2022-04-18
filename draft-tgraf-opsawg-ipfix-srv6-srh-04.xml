@@ -43,7 +43,7 @@
       </address>
     </author>
 
-    <date day="09" month="April" year="2022"/>
+    <date day="18" month="April" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -77,43 +77,43 @@
     <section anchor="IE" title="IPFIX Information Elements">
       <t>This section defines and describes the new IPFIX IEs.<list
           style="hanging">
-          <t hangText="IPv6SRHFlags"><vspace blankLines="0"/> 8-bit flags
+          <t hangText="srhFlagsIPv6"><vspace blankLines="0"/> 8-bit flags
           defined in the SRH.</t>
 
-          <t hangText="IPv6SRHTag"><vspace blankLines="0"/> 16-bit tag field
+          <t hangText="srhTagIPv6"><vspace blankLines="0"/> 16-bit tag field
           defined in the SRH that marks a packet as part of a class or group
           of packets sharing the same set of properties.</t>
 
-          <t hangText="IPv6SRHSegment"><vspace blankLines="0"/> 128-bit IPv6
-          address that represents an SRv6 segment.</t>
+          <t hangText="srhTopSegmentIPv6"><vspace blankLines="0"/> 128-bit
+          IPv6 address that represents an SRv6 segment.</t>
 
-          <t hangText="IPv6SRHSegmentBasicList"><vspace blankLines="0"/>
+          <t hangText="srhSegmentIPv6BasicList"><vspace blankLines="0"/>
           Ordered basicList <xref target="RFC6313"/> of zero or more 128-bit
           IPv6 addresses in the SRH that represents the SRv6 segment list. The
           Segment List is encoded starting from the active segment of the SR
           Policy.</t>
 
-          <t hangText="IPv6SRHSegmentListSection"><vspace blankLines="0"/>
+          <t hangText="srhSegmentIPv6ListSection"><vspace blankLines="0"/>
           Exposes the SRH Segment List as defined in section 2 of <xref
           target="RFC8754"/> as series of n octets.</t>
 
-          <t hangText="IPv6SRHSegmentsLeft"><vspace blankLines="0"/> 8-bit
+          <t hangText="srhSegmentIPv6sLeft"><vspace blankLines="0"/> 8-bit
           unsigned integer defining the number of route segments remaining to
           reach the end of the segment list.</t>
 
-          <t hangText="IPv6SRHSection"><vspace blankLines="0"/> Exposes the
+          <t hangText="srhSectionIPv6"><vspace blankLines="0"/> Exposes the
           SRH and its TLV's as defined in section 2 of <xref
           target="RFC8754"/> as series of n octets.</t>
 
-          <t hangText="IPv6SRHSegmentType"><vspace blankLines="0"/> Name of
+          <t hangText="srhTopSegmentIPv6Type"><vspace blankLines="0"/> Name of
           the routing protocol or PCEP extension from where the active SRv6
           segment has been learned from.</t>
         </list></t>
     </section>
 
     <section anchor="Use-Cases" title="Use Cases">
-      <t>By using IPv6SRHSegmentBasicList(TBD4), IPv6SRHSegmentsLeft (TBD6),
-      IPv6SRHSegmentType(TBD8) and forwardingStatus(89) it is possible to
+      <t>By using srhSegmentIPv6BasicList(TBD4), srhSegmentIPv6sLeft (TBD6),
+      srhTopSegmentIPv6Type(TBD8) and forwardingStatus(89) it is possible to
       identify</t>
 
       <t><list style="symbols">
@@ -144,27 +144,27 @@
      |Element|        Name               |
      |   ID  |                           |
      +-------+---------------------------+
-     | TBD1  | IPv6SRHFlags              |
+     | TBD1  | srhFlagsIPv6              |
      |       |                           |
      +-------+---------------------------+
-     | TBD2  | IPv6SRHTag                |
+     | TBD2  | srhTagIPv6                |
      |       |                           |
      +-------+---------------------------+
-     | TBD3  | IPv6SRHSegment            |
+     | TBD3  | srhTopSegmentIPv6         |
      |       |                           |
      +-------+---------------------------+
-     | TBD4  | IPv6SRHSegmentBasicList   |
+     | TBD4  | srhSegmentIPv6BasicList   |
      |       |                           |
      +-------+---------------------------+
-     | TBD5  | IPv6SRHSegmentListSection |
+     | TBD5  | srhSegmentIPv6ListSection |
      |       |                           |
      +-------+---------------------------+
-     | TBD6  | IPv6SRHSegmentsLeft       |
+     | TBD6  | srhSegmentIPv6sLeft       |
      |       |                           |
      +-------+---------------------------+
-     | TBD7  | IPv6SRHSection            |
+     | TBD7  | srhSectionIPv6            |
      +-------+---------------------------+
-     | TBD8  | IPv6SRHSegmentType        |
+     | TBD8  | srhTopSegmentIPv6Type     |
      +-------+---------------------------+
 
   Table 1: Creates IEs in the "IPFIX Information Elements" registry
@@ -180,8 +180,8 @@
           this document</t>
         </list></t>
 
-      <section anchor="IANAIPv6SRHFlags" title="IPv6SRHFlags">
-        <t>Name: IPv6SRHFlags <vspace blankLines="0"/> ElementID: TBD1 <vspace
+      <section anchor="IANAsrhFlagsIPv6" title="srhFlagsIPv6">
+        <t>Name: srhFlagsIPv6 <vspace blankLines="0"/> ElementID: TBD1 <vspace
         blankLines="0"/> Description: This Information Element identifies the
         8-bit flags defined in the SRH. Values for this Information Element
         are listed in the "IPFIX IPv6 SRH Flags" registry, see [IANA-IPFIX].
@@ -206,8 +206,8 @@
         blankLines="0"/> Reference: [RFC-to-be], RFC8754</t>
       </section>
 
-      <section anchor="IANAIPv6SRHTag" title="IPv6SRHTag">
-        <t>Name: IPv6SRHTag <vspace blankLines="0"/> ElementID: TBD2 <vspace
+      <section anchor="IANAsrhTagIPv6" title="srhTagIPv6">
+        <t>Name: srhTagIPv6 <vspace blankLines="0"/> ElementID: TBD2 <vspace
         blankLines="0"/> Description: This Information Element identifies the
         16-bit tag field defined in the SRH that marks a packet as part of a
         class or group of packets sharing the same set of properties. <vspace
@@ -216,8 +216,8 @@
         blankLines="0"/> Reference: [RFC-to-be], RFC8754</t>
       </section>
 
-      <section anchor="IANAIPv6SRHSegment" title="IPv6SRHSegment">
-        <t>Name: IPv6SRHSegment <vspace blankLines="0"/> ElementID: TBD3
+      <section anchor="IANAsrhTopSegmentIPv6" title="srhTopSegmentIPv6">
+        <t>Name: srhTopSegmentIPv6 <vspace blankLines="0"/> ElementID: TBD3
         <vspace blankLines="0"/> Description: This Information Element
         identifies the 128-bit IPv6 address that represents an SRv6 segment.
         <vspace blankLines="0"/> Abstract Data Type: ipv6address <vspace
@@ -225,9 +225,9 @@
         Reference: [RFC-to-be], RFC8754</t>
       </section>
 
-      <section anchor="IANAIPv6SRHSegmentBasicList"
-               title="IPv6SRHSegmentBasicList">
-        <t>Name: IPv6SRHSegmentBasicList <vspace blankLines="0"/> ElementID:
+      <section anchor="IANAsrhSegmentIPv6BasicList"
+               title="srhSegmentIPv6BasicList">
+        <t>Name: srhSegmentIPv6BasicList <vspace blankLines="0"/> ElementID:
         TBD4 <vspace blankLines="0"/> Description: This Information Element
         identifies the Ordered basicList [RFC6313] of zero or more 128-bit
         IPv6 addresses in the SRH that represents the SRv6 segment list. The
@@ -237,9 +237,9 @@
         Reference: [RFC-to-be], RFC8754</t>
       </section>
 
-      <section anchor="IANAIPv6SRHSegmentListSection"
-               title="IPv6SRHSegmentListSection">
-        <t>Name: IPv6SRHSegmentListSection <vspace blankLines="0"/> ElementID:
+      <section anchor="IANAsrhSegmentIPv6ListSection"
+               title="srhSegmentIPv6ListSection">
+        <t>Name: srhSegmentIPv6ListSection <vspace blankLines="0"/> ElementID:
         TBD5 <vspace blankLines="0"/> Description: Exposes the SRH Segment
         List as defined in section 2 of <xref target="RFC8754"/> as series of
         n octets. <vspace blankLines="0"/> Abstract Data Type: octetArray
@@ -247,8 +247,8 @@
         blankLines="0"/> Reference: [RFC-to-be], RFC8754</t>
       </section>
 
-      <section anchor="IANAIPv6SRHSegmentsLeft" title="IPv6SRHSegmentsLeft">
-        <t>Name: IPv6SRHSegmentsLeft <vspace blankLines="0"/> ElementID: TBD6
+      <section anchor="IANAsrhSegmentIPv6sLeft" title="srhSegmentIPv6sLeft">
+        <t>Name: srhSegmentIPv6sLeft <vspace blankLines="0"/> ElementID: TBD6
         <vspace blankLines="0"/> Description: This Information Element
         identifies the 8-bit unsigned integer defining the number of route
         segments remaining to reach the end of the segment list. <vspace
@@ -257,8 +257,8 @@
         blankLines="0"/> Reference: [RFC-to-be], RFC8754</t>
       </section>
 
-      <section anchor="IANAIPv6SRHSection" title="IPv6SRHSection">
-        <t>Name: IPv6SRHSection <vspace blankLines="0"/> ElementID: TBD7
+      <section anchor="IANAsrhSectionIPv6" title="srhSectionIPv6">
+        <t>Name: srhSectionIPv6 <vspace blankLines="0"/> ElementID: TBD7
         <vspace blankLines="0"/> Description: This Information Element exposes
         the SRH and its TLV's as defined in s ection 2 of <xref
         target="RFC8754"/> as series of n octets. <vspace blankLines="0"/>
@@ -267,9 +267,9 @@
         RFC8754</t>
       </section>
 
-      <section anchor="IPv6SRHSegmentType" title="IPv6SRHSegmentType">
-        <t>Name: IPv6SRHSegmentType <vspace blankLines="0"/> ElementID: TBD8
-        <vspace blankLines="0"/> Description: This Information Element
+      <section anchor="srhTopSegmentIPv6Type" title="srhTopSegmentIPv6Type">
+        <t>Name: srhTopSegmentIPv6Type <vspace blankLines="0"/> ElementID:
+        TBD8 <vspace blankLines="0"/> Description: This Information Element
         identifies the name of the routing protocol or PCEP extension from
         where the active SRv6 segment has been learned from. Values for this
         Information Element are listed in the "IPFIX IPv6 SRH Segment type"
@@ -313,12 +313,12 @@
       exported in two different ways, with two different IPFIX IEs:</t>
 
       <t><list style="symbols">
-          <t>IPv6SRHSegmentBasicList</t>
+          <t>srhSegmentIPv6BasicList</t>
 
-          <t>IPv6SRHSegmentListSection</t>
+          <t>srhSegmentIPv6ListSection</t>
         </list></t>
 
-      <t>The IPv6SRHSegmentBasicList encodes the SID list of IPv6 addresses
+      <t>The srhSegmentIPv6BasicList encodes the SID list of IPv6 addresses
       with a basicList, specified in the IPFIX Structured Data <xref
       target="RFC6313"/>. This encoding offers the advantage to the data
       collection that the different IPv6 addresses are already structured as a
@@ -326,14 +326,14 @@
       some extra processing on the exporter, to realize the BasicList data
       mapping.</t>
 
-      <t>The IPv6SRHSegmentListSection, on the other hand, encodes the list of
+      <t>The srhSegmentIPv6ListSection, on the other hand, encodes the list of
       IPv6 addresses as an octetArray. This doesn't impose any data flow
       manipulation on the exporter, facilitating the immediate export.
       However, the data collection must be able to decode the IPv6 addresses
       according the SR specifications.</t>
 
       <t>It is not expected that an exporter would support both
-      IPv6SRHSegmentBasicList and IPv6SRHSegmentListSection at the same
+      srhSegmentIPv6BasicList and srhSegmentIPv6ListSection at the same
       time.</t>
     </section>
 
@@ -414,15 +414,15 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      Template ID = 256        |      Field Count = 4          |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |0|     IPv6SRHFlags = TBD1     |      Field Length = 1         |
+   |0|     srhFlagsIPv6 = TBD1     |      Field Length = 1         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |0|      IPv6SRHTag = TBD2      |      Field Length = 2         |
+   |0|      srhTagIPv6 = TBD2      |      Field Length = 2         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |0|  IPv6SRHSegmentType = TBD8  |      Field Length = 1         |
+   |0| srhTopSegmentIPv6Type = TBD8|      Field Length = 1         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |0|    IPv6SRHSegment = TBD3    |      Field Length = 16        |
+   |0|  srhTopSegmentIPv6 = TBD3   |      Field Length = 16        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |0|IPv6SRHSegmentBasicList= TBD4|      Field Length = 0xFFFF    |
+   |0|srhSegmentIPv6BasicList= TBD4|      Field Length = 0xFFFF    |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
                Table 4: Template Record Encoding Format
@@ -431,7 +431,7 @@
           </figure></t>
 
         <t>In this example, the Template ID is 256, which will be used in the
-        Data Record. The field length for IPv6SRHSegmentBasicList is 0xFFFF,
+        Data Record. The field length for srhSegmentIPv6BasicList is 0xFFFF,
         which means the length of this IE is variable, and the actual length
         of this IE is indicated by the List Length field in the basicList
         format as per <xref target="RFC6313"/>.</t>
@@ -448,13 +448,13 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |         SET ID = 256          |           Length = 136        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | IPv6SRHFlags  |        IPv6SRHTag = 123       | IPv6SRHSegment|
-   | = 0           |                               | Type = TBD12  |
+   | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhTopSegment |
+   | = 0           |                               | IPv6Type=TBD12|
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      255      |        List Length = 53       |semantic=      |
    |               |                               |ordered        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |     IPv6SRHSegment = TBD4     |        Field Length = 16      |
+   |   srhTopSegmentIPv6 = TBD4    |        Field Length = 16      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |             Segment List[0] = 2001:db8::1  (16 bytes)         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -462,25 +462,25 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |             Segment List[2] = 2001:db8::3  (16 bytes)         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | IPv6SRHFlags  |        IPv6SRHTag = 456       | IPv6SRHSegment|
-   | = 0           |                               | Type = TBD12  |
+   | srhFlagsIPv6  |        srhTagIPv6 = 456       | srhTopSegment |
+   | = 0           |                               | IPv6Type=TBD12|
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      255      |        List Length = 37       |semantic=      |
    |               |                               |ordered        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |     IPv6SRHSegment = TBD4     |        Field Length = 16      |
+   |   srhTopSegmentIPv6 = TBD4    |        Field Length = 16      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |             Segment List[0] = 2001:db8::4  (16 bytes)         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |             Segment List[1] = 2001:db8::5  (16 bytes)         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | IPv6SRHFlags  |        IPv6SRHTag = 789       | IPv6SRHSegment|
-   | = 0           |                               | Type = TBD12  |
+   | srhFlagsIPv6  |        srhTagIPv6 = 789       | srhTopSegment |
+   | = 0           |                               | IPv6Type=TBD12|
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      255      |        List Length = 21       |semantic=      |
    |               |                               |ordered        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |     IPv6SRHSegment = TBD4     |        Field Length = 16      |
+   |   srhTopSegmentIPv6 = TBD4    |        Field Length = 16      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |             Segment List[0] = 2001:db8::6  (16 bytes)         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
