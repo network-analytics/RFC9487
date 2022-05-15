@@ -43,7 +43,7 @@
       </address>
     </author>
 
-    <date day="18" month="April" year="2022"/>
+    <date day="15" month="May" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -184,18 +184,23 @@
         <t>Name: srhFlagsIPv6 <vspace blankLines="0"/> ElementID: TBD1 <vspace
         blankLines="0"/> Description: This Information Element identifies the
         8-bit flags defined in the SRH. Values for this Information Element
-        are listed in the "IPFIX IPv6 SRH Flags" registry, see [IANA-IPFIX].
-        Initial values in the registry are defined by the table below. New
-        assignments of values will be administered by IANA and are subject to
-        Expert Review <xref target="RFC8126"/>. Experts need to check
-        definitions of new values for completeness, accuracy, and redundancy.
-        <figure>
+        are listed in the "IPFIX IPv6 SRH Flags" registry, see <xref
+        target="IANA-IPFIX"/>. srhFlagsIPv6 values must not be directly added
+        to this "IPFIX IPv6 SRH Flags" registry. They must instead be added to
+        the "Segment Routing Header Flags" registry. Both the the "IPFIX IPv6
+        SRH Flags" and "Segment Routing Header Flags" registries must be kept
+        in synch. Initial values in the registry are defined by the table
+        below. <figure>
             <artwork><![CDATA[
 
 +--------+-------------------+--------------------------------------+
 | Value  |    Description    |              Reference               |
 +--------+-------------------+--------------------------------------+
-| 0-7    | Unassigned        |                                      |
+| 0-1    | Unassigned        |                                      |
++--------+-------------------+--------------------------------------+
+| 2      | O-flag            |  [RFC-ietf-6man-spring-srv6-oam-13]  |
++--------+-------------------+--------------------------------------+
+| 3-7    | Unassigned        |                                      |
 +--------+-------------------+--------------------------------------+
 
       Table 2: "IPFIX IPv6 SRH Flags" registry
@@ -267,17 +272,18 @@
         RFC8754</t>
       </section>
 
-      <section anchor="srhTopSegmentIPv6Type" title="srhTopSegmentIPv6Type">
+      <section anchor="IANAsrhTopSegmentIPv6Type"
+               title="srhTopSegmentIPv6Type">
         <t>Name: srhTopSegmentIPv6Type <vspace blankLines="0"/> ElementID:
         TBD8 <vspace blankLines="0"/> Description: This Information Element
         identifies the name of the routing protocol or PCEP extension from
         where the active SRv6 segment has been learned from. Values for this
         Information Element are listed in the "IPFIX IPv6 SRH Segment type"
-        registry, see [IANA-IPFIX]. Initial values in the registry are defined
-        by the table below. New assignments of values will be administered by
-        IANA and are subject to Expert Review <xref target="RFC8126"/>.
-        Experts need to check definitions of new values for completeness,
-        accuracy, and redundancy. <figure>
+        registry, see <xref target="IANA-IPFIX"/>. Initial values in the
+        registry are defined by the table below. New assignments of values
+        will be administered by IANA and are subject to Expert Review <xref
+        target="RFC8126"/>. Experts need to check definitions of new values
+        for completeness, accuracy, and redundancy. <figure>
             <artwork><![CDATA[
 
 +-------+--------------------+--------------------------------------+
@@ -309,32 +315,46 @@
     </section>
 
     <section anchor="Operational" title="Operational Considerations">
-      <t>The zero or more 128-bit IPv6 addresses in the SRH [RFC8754] can be
-      exported in two different ways, with two different IPFIX IEs:</t>
+      <section anchor="OpsSidList" title="SRv6 Segment List">
+        <t>The zero or more 128-bit IPv6 addresses in the SRH [RFC8754] can be
+        exported in two different ways, with two different IPFIX IEs:</t>
 
-      <t><list style="symbols">
-          <t>srhSegmentIPv6BasicList</t>
+        <t><list style="symbols">
+            <t>srhSegmentIPv6BasicList</t>
 
-          <t>srhSegmentIPv6ListSection</t>
-        </list></t>
+            <t>srhSegmentIPv6ListSection</t>
+          </list></t>
 
-      <t>The srhSegmentIPv6BasicList encodes the SID list of IPv6 addresses
-      with a basicList, specified in the IPFIX Structured Data <xref
-      target="RFC6313"/>. This encoding offers the advantage to the data
-      collection that the different IPv6 addresses are already structured as a
-      list, without the need of post processing. However, this method requires
-      some extra processing on the exporter, to realize the BasicList data
-      mapping.</t>
+        <t>The srhSegmentIPv6BasicList encodes the SID list of IPv6 addresses
+        with a basicList, specified in the IPFIX Structured Data <xref
+        target="RFC6313"/>. This encoding offers the advantage to the data
+        collection that the different IPv6 addresses are already structured as
+        a list, without the need of post processing. However, this method
+        requires some extra processing on the exporter, to realize the
+        BasicList data mapping.</t>
 
-      <t>The srhSegmentIPv6ListSection, on the other hand, encodes the list of
-      IPv6 addresses as an octetArray. This doesn't impose any data flow
-      manipulation on the exporter, facilitating the immediate export.
-      However, the data collection must be able to decode the IPv6 addresses
-      according the SR specifications.</t>
+        <t>The srhSegmentIPv6ListSection, on the other hand, encodes the list
+        of IPv6 addresses as an octetArray. This doesn't impose any data flow
+        manipulation on the exporter, facilitating the immediate export.
+        However, the data collection must be able to decode the IPv6 addresses
+        according the SR specifications.</t>
 
-      <t>It is not expected that an exporter would support both
-      srhSegmentIPv6BasicList and srhSegmentIPv6ListSection at the same
-      time.</t>
+        <t>It is not expected that an exporter would support both
+        srhSegmentIPv6BasicList and srhSegmentIPv6ListSection at the same
+        time.</t>
+      </section>
+
+      <section anchor="OpsSidListDecompose"
+               title="Compressed SRv6 Segment List Decomposition">
+        <t>The SRv6 segment list in the IPFIX IEs srhSegmentIPv6BasicList and
+        srhSegmentIPv6ListSection could contain compressed-SID containers as
+        described in <xref target="I-D.ietf-spring-srv6-srh-compression"/>.
+        The SID endpoint behaviors described in section 4 of <xref
+        target="I-D.ietf-spring-srv6-srh-compression"/> determine wherever the
+        segment list is compressed or not. The SID Locator as described in
+        section 3.1 <xref target="RFC8986"/>, determines the common most
+        significant bits.</t>
+      </section>
     </section>
 
     <section anchor="Security" title="Security Considerations">
@@ -361,6 +381,8 @@
     <references title="Informative References">
       <?rfc include='reference.RFC.8754'?>
 
+      <?rfc include='reference.RFC.8986'?>
+
       <?rfc include='reference.I-D.li-lsr-ospfv3-srv6-extensions'?>
 
       <?rfc include='reference.I-D.ietf-lsr-isis-srv6-extensions'?>
@@ -368,6 +390,8 @@
       <?rfc include='reference.I-D.ietf-bess-srv6-services'?>
 
       <?rfc include='reference.I-D.ietf-pce-segment-routing-ipv6'?>
+
+      <?rfc include='reference.I-D.ietf-spring-srv6-srh-compression'?>
 
       <reference anchor="IANA-IPFIX"
                  target="https://www.iana.org/assignments/ipfix/ipfix.xhtml">
