@@ -187,8 +187,8 @@
         are listed in the "IPFIX IPv6 SRH Flags" registry, see <xref
         target="IANA-IPFIX"/>. srhFlagsIPv6 values must not be directly added
         to this "IPFIX IPv6 SRH Flags" registry. They must instead be added to
-        the "Segment Routing Header Flags" registry. Both the the "IPFIX IPv6
-        SRH Flags" and "Segment Routing Header Flags" registries must be kept
+        the "Segment Routing Header Flags" registry. Both the "IPFIX IPv6 SRH
+        Flags" and the "Segment Routing Header Flags" registries must be kept
         in synch. Initial values in the registry are defined by the table
         below. <figure>
             <artwork><![CDATA[
