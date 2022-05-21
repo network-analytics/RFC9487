@@ -43,7 +43,7 @@
       </address>
     </author>
 
-    <date day="15" month="May" year="2022"/>
+    <date day="21" month="May" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -150,7 +150,7 @@
      | TBD2  | srhTagIPv6                |
      |       |                           |
      +-------+---------------------------+
-     | TBD3  | srhTopSegmentIPv6         |
+     | TBD3  | srhSegmentIPv6            |
      |       |                           |
      +-------+---------------------------+
      | TBD4  | srhSegmentIPv6BasicList   |
@@ -221,8 +221,8 @@
         blankLines="0"/> Reference: [RFC-to-be], RFC8754</t>
       </section>
 
-      <section anchor="IANAsrhTopSegmentIPv6" title="srhTopSegmentIPv6">
-        <t>Name: srhTopSegmentIPv6 <vspace blankLines="0"/> ElementID: TBD3
+      <section anchor="IANAsrhSegmentIPv6" title="srhegmentIPv6">
+        <t>Name: srhSegmentIPv6 <vspace blankLines="0"/> ElementID: TBD3
         <vspace blankLines="0"/> Description: This Information Element
         identifies the 128-bit IPv6 address that represents an SRv6 segment.
         <vspace blankLines="0"/> Abstract Data Type: ipv6address <vspace
@@ -405,29 +405,31 @@
       </reference>
     </references>
 
-    <section anchor="Encoding-Example" title="IPFIX Encoding Example">
+    <section anchor="Encoding-Example" title="IPFIX Encoding Examples">
       <t>In this section an example is provided to show the encoding format
       for the newly introduced IEs.</t>
 
       <t><figure>
           <artwork><![CDATA[
 
-+-----+------+-----+--------+---------------------------------------|
-| SRH | SRH  | SRH | Segment|             Segment List              |
-| Nr  | Flags| Tag | Type   |                                       |
-+-----+------+-----+--------+---------------------------------------+
-| 1   | 0    | 123 | IS-IS  | 2001:db8::1, 2001:db8::2, 2001:db8::3 |
-+-----+------+-----+--------+---------------------------------------+
-| 2   | 0    | 456 | IS-IS  | 2001:db8::4, 2001:db8::5              |
-+-----+------+-----+--------+---------------------------------------+
-| 3   | 0    | 789 | IS-IS  | 2001:db8::6                           |
-+-----+------+-----+--------+---------------------------------------+
+   +-----+------+-----+---------------+---------------------------|
+   | SRH | SRH  | SRH | Segment Type  |       Segment List        |
+   | Nr  | Flags| Tag |               |                           |
+   +-----+------+-----+---------------+---------------------------+
+   | 1   | 0    | 123 | IS-IS [TBD12] | 2001:db8::1, 2001:db8::2, |
+   |     |      |     |               | 2001:db8::3               |
+   +-----+------+-----+---------------+---------------------------+
+   | 2   | 0    | 456 | IS-IS [TBD12] | 2001:db8::4, 2001:db8::5  |
+   +-----+------+-----+---------------+---------------------------+
+   | 3   | 0    | 789 | IS-IS [TBD12] | 2001:db8::6               |
+   +-----+------+-----+---------------+---------------------------+
 
-     Table 4: 3 observed SRH headers and their routing protocol
+   Table 4: 3 observed SRH headers and their routing protocol
        ]]></artwork>
         </figure></t>
 
-      <section anchor="Template-Example" title="Template Record">
+      <section anchor="Template-Record-with-Basic-List"
+               title="Template Record with Basic List">
         <t><figure>
             <artwork><![CDATA[
 
@@ -444,12 +446,10 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |0| srhTopSegmentIPv6Type = TBD8|      Field Length = 1         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |0|  srhTopSegmentIPv6 = TBD3   |      Field Length = 16        |
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |0|srhSegmentIPv6BasicList= TBD4|      Field Length = 0xFFFF    |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-               Table 4: Template Record Encoding Format
+        Table 4: Template Record with Basic List Encoding Format
 
             ]]></artwork>
           </figure></t>
@@ -461,7 +461,67 @@
         format as per <xref target="RFC6313"/>.</t>
       </section>
 
-      <section anchor="Data-Set-Example" title="Data Set">
+      <section anchor="Template-Record-with-Segment-List-Section"
+               title="Template Record with Segment List Section">
+        <t><figure>
+            <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          SET ID = 2           |       Length = 41             |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      Template ID = 257        |      Field Count = 4          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|     srhFlagsIPv6 = TBD1     |      Field Length = 1         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|      srhTagIPv6 = TBD2      |      Field Length = 2         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0| srhTopSegmentIPv6Type = TBD8|      Field Length = 1         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|     srhSegmentIPv6List      |      Field Length = 0xFFFF    |
+   | |     Section=TBD5            |                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+   Table 4: Template Record with Segment List Section Encoding Format
+
+            ]]></artwork>
+          </figure></t>
+
+        <t>In this example, the Template ID is 257, which will be used in the
+        Data Record. The field length for srhSegmentIPv6ListSection is 0xFFFF,
+        which means the length of this IE is variable.</t>
+      </section>
+
+      <section anchor="Template-Record-with-SRH-Section"
+               title="Template Record with SRH Section">
+        <t><figure>
+            <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          SET ID = 2           |       Length = 38             |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      Template ID = 258        |      Field Count = 4          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0| srhTopSegmentIPv6Type = TBD8|      Field Length = 1         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|    srhSectionIPv6 = TBD7    |      Field Length = 0xFFFF    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+       Table 4: Template Record with SRH Section Encoding Format
+
+            ]]></artwork>
+          </figure></t>
+
+        <t>In this example, the Template ID is 258, which will be used in the
+        Data Record. The field length for srhSegmentIPv6ListSection is 0xFFFF,
+        which means the length of this IE is variable.</t>
+      </section>
+
+      <section anchor="Data-Set-for-Basic-List"
+               title="Data Set for Basic List">
         <t>The data set is represented as follows:</t>
 
         <figure>
@@ -478,7 +538,7 @@
    |      255      |        List Length = 53       |semantic=      |
    |               |                               |ordered        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |   srhTopSegmentIPv6 = TBD4    |        Field Length = 16      |
+   |     srhSegmentIPv6 = TBD3     |        Field Length = 16      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |             Segment List[0] = 2001:db8::1  (16 bytes)         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -492,7 +552,7 @@
    |      255      |        List Length = 37       |semantic=      |
    |               |                               |ordered        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |   srhTopSegmentIPv6 = TBD4    |        Field Length = 16      |
+   |     srhSegmentIPv6 = TBD3     |        Field Length = 16      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |             Segment List[0] = 2001:db8::4  (16 bytes)         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -504,12 +564,101 @@
    |      255      |        List Length = 21       |semantic=      |
    |               |                               |ordered        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |   srhTopSegmentIPv6 = TBD4    |        Field Length = 16      |
+   |     srhSegmentIPv6 = TBD3     |        Field Length = 16      |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |             Segment List[0] = 2001:db8::6  (16 bytes)         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-                  Table 5: Data Set Encoding Format
+           Table 5: Data Set Encoding Format for Basic List
+
+            ]]></artwork>
+        </figure>
+      </section>
+
+      <section anchor="Data-Set-for-Segment-ListSection"
+               title="Data Set for Segment List Section">
+        <t>The data set is represented as follows:</t>
+
+        <figure>
+          <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |         SET ID = 257          |           Length = 136        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhTopSegment |
+   | = 0           |                               | IPv6Type=TBD12|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |    0xFFFF     |   2001:db8::1 2001:db8::2 2001:db8::3         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | srhFlagsIPv6  |        srhTagIPv6 = 456       | srhTopSegment |
+   | = 0           |                               | IPv6Type=TBD12|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |    0xFFFF     |   2001:db8::4 2001:db8::5                     |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | srhFlagsIPv6  |        srhTagIPv6 = 789       | srhTopSegment |
+   | = 0           |                               | IPv6Type=TBD12|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |    0xFFFF     |   2001:db8::6                                 |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+       Table 5: Data Set Encoding Format for Segment List Section
+
+            ]]></artwork>
+        </figure>
+      </section>
+
+      <section anchor="Data-Set-for-SRH-Section"
+               title="Data Set for SRH Section">
+        <t>The data set is represented as follows:</t>
+
+        <figure>
+          <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |         SET ID = 258          |           Length = 136        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          srhTopSegmentIPv6Type = TBD12        |    0xFFFF     |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Last Entry   |     Flags     |              Tag              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[0] 2001:db8::1                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[1] 2001:db8::2                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[2] 2001:db8::3                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   ~          Optional Type Length Value objects (variable)        ~
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          srhTopSegmentIPv6Type = TBD12        |    0xFFFF     |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Last Entry   |     Flags     |              Tag              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[0] 2001:db8::4                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[1] 2001:db8::5                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   ~          Optional Type Length Value objects (variable)        ~
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          srhTopSegmentIPv6Type = TBD12        |    0xFFFF     |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Last Entry   |     Flags     |              Tag              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[0] 2001:db8::6                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   ~          Optional Type Length Value objects (variable)        ~
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+           Table 5: Data Set Encoding Format for SRH Section
 
             ]]></artwork>
         </figure>
