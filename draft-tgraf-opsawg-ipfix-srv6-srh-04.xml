@@ -43,7 +43,7 @@
       </address>
     </author>
 
-    <date day="29" month="May" year="2022"/>
+    <date day="30" month="May" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -69,9 +69,9 @@
       propagate Segment Identifiers (SIDs) for the IPv6 data plane.</t>
 
       <t>SRv6 segment endpoint behaviors have been defined in <xref
-      target="RFC8986"/> and decribe how packets should be processed.</t>
+      target="RFC8986"/> and describe how packets should be processed.</t>
 
-      <t>This document defines eight new IPFIX Information Elements (IEs) and
+      <t>This document defines eleven new IPFIX Information Elements (IEs) and
       three new subregistries within the "IPFIX Information Elements" registry
       <xref target="RFC7012"/>, respectively for the new SRH dimensions, SRv6
       endpoint behaviors and routing protocol and PCEP extensions.</t>
@@ -140,7 +140,7 @@
 
           <t>the SRv6 segment list,</t>
 
-          <t>the next SRv6 node,</t>
+          <t>the next SRv6 node and its type,</t>
 
           <t>and how many SRv6 segments are left.</t>
         </list></t>
