@@ -5,8 +5,8 @@
 Network Working Group                                            T. Graf
 Internet-Draft                                                  Swisscom
 Intended status: Standards Track                               B. Claise
-Expires: December 1, 2022                                         Huawei
-                                                            May 30, 2022
+Expires: December 6, 2022                                         Huawei
+                                                            June 4, 2022
 
 
              Export of Segment Routing IPv6 Information in
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 1, 2022.
+   This Internet-Draft will expire on December 6, 2022.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Graf & Claise           Expires December 1, 2022                [Page 1]
+Graf & Claise           Expires December 6, 2022                [Page 1]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
    the Trust Legal Provisions and are provided without warranty as
@@ -70,7 +70,7 @@ Table of Contents
    5.  Operational Considerations  . . . . . . . . . . . . . . . . .   9
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  10
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
    Appendix A.  IPFIX Encoding Examples  . . . . . . . . . . . . . .  12
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Graf & Claise           Expires December 1, 2022                [Page 2]
+Graf & Claise           Expires December 6, 2022                [Page 2]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
    srhSegmentIPv6
@@ -165,9 +165,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022                [Page 3]
+Graf & Claise           Expires December 6, 2022                [Page 3]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
    o  the next SRv6 node and its type,
@@ -221,9 +221,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022                [Page 4]
+Graf & Claise           Expires December 6, 2022                [Page 4]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
         +-------+----------------------------+
@@ -277,9 +277,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022                [Page 5]
+Graf & Claise           Expires December 6, 2022                [Page 5]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 4.1.  srhFlagsIPv6
@@ -333,9 +333,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022                [Page 6]
+Graf & Claise           Expires December 6, 2022                [Page 6]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
    Data Type Semantics: default
@@ -389,9 +389,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022                [Page 7]
+Graf & Claise           Expires December 6, 2022                [Page 7]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 4.8.  srhSectionIPv6
@@ -445,9 +445,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022                [Page 8]
+Graf & Claise           Expires December 6, 2022                [Page 8]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 4.10.  srhSegmentLocator
@@ -471,18 +471,17 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
    "IPFIX SRV6 Endpoint Behavior" registry.  They must instead be added
    to the "Segment Routing SRv6 Endpoint Behaviors" registry.  Both the
    "IPFIX SRV6 Endpoint Behavior" and the "Segment Routing SRv6 Endpoint
-   Behaviors" registries must be kept in synch.  Initial values in the
-   registry are defined by the table below.
+   Behaviors" registries must be kept in synch.
 
 
    +--------+-------+-------------------------------+------------------+
    | Value  | Hex   | Endpoint Behavior | Reference | Change Controller|
    +--------+-------+-------------------------------+------------------+
-   | 0      | 0x0000| Reserved          | [RFC8986] | IETF             |
+   |        |       |                   |           |                  |
    +--------+-------+-------------------------------+------------------+
-   | 1      | 0x0001| End               | [RFC8986] | IETF             |
+   |        |       |                   |           |                  |
    +--------+-------+-------------------------------+------------------+
-   | 2      | 0x0002| End with PSP      | [RFC8986] | IETF             |
+   |        |       |                   |           |                  |
    +--------+-------+-------------------------------+------------------+
 
          Table 4: "IPFIX SRV6 Endpoint Behavior" registry
@@ -498,15 +497,14 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
    The zero or more 128-bit IPv6 addresses in the SRH [RFC8754] can be
    exported in two different ways, with two different IPFIX IEs:
 
-
-
-
-Graf & Claise           Expires December 1, 2022                [Page 9]
-
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
-
-
    o  srhSegmentIPv6BasicList
+
+
+
+Graf & Claise           Expires December 6, 2022                [Page 9]
+
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
+
 
    o  srhSegmentIPv6ListSection
 
@@ -550,19 +548,19 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
    I would like to thank Pierre Francois, Yao Liu and Paolo Lucente for
    their review and valuable comments.
 
-
-
-
-
-
-
-
-Graf & Claise           Expires December 1, 2022               [Page 10]
-
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
-
-
 8.  References
+
+
+
+
+
+
+
+
+Graf & Claise           Expires December 6, 2022               [Page 10]
+
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
+
 
 8.1.  Normative References
 
@@ -613,9 +611,11 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022               [Page 11]
+
+
+Graf & Claise           Expires December 6, 2022               [Page 11]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
    [I-D.li-lsr-ospfv3-srv6-extensions]
@@ -669,9 +669,9 @@ A.1.  Template Record with Basic List
 
 
 
-Graf & Claise           Expires December 1, 2022               [Page 12]
+Graf & Claise           Expires December 6, 2022               [Page 12]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
        0                   1                   2                   3
@@ -725,9 +725,9 @@ A.2.  Data Set for Basic List
 
 
 
-Graf & Claise           Expires December 1, 2022               [Page 13]
+Graf & Claise           Expires December 6, 2022               [Page 13]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -781,9 +781,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022               [Page 14]
+Graf & Claise           Expires December 6, 2022               [Page 14]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -837,9 +837,9 @@ A.4.  Data Set for Segment List Section
 
 
 
-Graf & Claise           Expires December 1, 2022               [Page 15]
+Graf & Claise           Expires December 6, 2022               [Page 15]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -893,9 +893,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022               [Page 16]
+Graf & Claise           Expires December 6, 2022               [Page 16]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -949,9 +949,9 @@ A.6.  Data Set for SRH Section
 
 
 
-Graf & Claise           Expires December 1, 2022               [Page 17]
+Graf & Claise           Expires December 6, 2022               [Page 17]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
        0                   1                   2                   3
@@ -1005,9 +1005,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022               [Page 18]
+Graf & Claise           Expires December 6, 2022               [Page 18]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1061,9 +1061,9 @@ Authors' Addresses
 
 
 
-Graf & Claise           Expires December 1, 2022               [Page 19]
+Graf & Claise           Expires December 6, 2022               [Page 19]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
    Benoit Claise
@@ -1117,4 +1117,4 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022               [Page 20]
+Graf & Claise           Expires December 6, 2022               [Page 20]
