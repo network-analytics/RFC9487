@@ -487,8 +487,13 @@
     </references>
 
     <section anchor="Encoding-Example" title="IPFIX Encoding Examples">
-      <t>In this section an example is provided to show the encoding format
-      for the newly introduced IEs.</t>
+
+
+      <section anchor="Template-Record-and-Data-Set-with-Basic-List"
+               title="Template Record and Data Set with Basic List">
+
+        <t>This appendix represents three different encodings for
+        the newly introduced IEs, for the example values in the table 5.</t>
 
       <t><figure>
           <artwork><![CDATA[
@@ -505,12 +510,9 @@
    | 3   | 0    | 789 |   IS-IS [TBD15]  | 2001:db8::6              |
    +-----+------+-----+------------------+--------------------------+
 
-          Table 5: 3 observed SRH headers and their routing protocol
+          Table 5: three observed SRH headers and their routing protocol
        ]]></artwork>
         </figure></t>
-
-      <section anchor="Template-Record-with-Basic-List"
-               title="Template Record with Basic List">
         <t><figure>
             <artwork><![CDATA[
 
@@ -540,10 +542,7 @@
         which means the length of this IE is variable, and the actual length
         of this IE is indicated by the List Length field in the basicList
         format as per <xref target="RFC6313"/>.</t>
-      </section>
-
-      <section anchor="Data-Set-for-Basic-List"
-               title="Data Set for Basic List">
+    
         <t>The data set is represented as follows:</t>
 
         <figure>
@@ -631,10 +630,9 @@
 
             ]]></artwork>
         </figure>
-      </section>
 
-      <section anchor="Template-Record-with-Segment-List-Section"
-               title="Template Record with Segment List Section">
+      <section anchor="Template-Record-and-Data-Set-with-Segment-List-Section"
+               title="Template Record and Data Set with Segment List Section">
         <t><figure>
             <artwork><![CDATA[
 
@@ -663,10 +661,7 @@
         <t>In this example, the Template ID is 257, which will be used in the
         Data Record. The field length for srhSegmentIPv6ListSection is 0xFFFF,
         which means the length of this IE is variable.</t>
-      </section>
 
-      <section anchor="Data-Set-for-Segment-ListSection"
-               title="Data Set for Segment List Section">
         <t>The data set is represented as follows:</t>
 
         <figure>
@@ -745,8 +740,8 @@
         </figure>
       </section>
 
-      <section anchor="Template-Record-with-SRH-Section"
-               title="Template Record with SRH Section">
+      <section anchor="Template-Record-and-Data-Set-with-SRH-Section"
+               title="Template Record and Data Set with SRH Section">
         <t><figure>
             <artwork><![CDATA[
 
@@ -770,10 +765,7 @@
         <t>In this example, the Template ID is 258, which will be used in the
         Data Record. The field length for srhSegmentIPv6ListSection is 0xFFFF,
         which means the length of this IE is variable.</t>
-      </section>
 
-      <section anchor="Data-Set-for-SRH-Section"
-               title="Data Set for SRH Section">
         <t>The data set is represented as follows:</t>
 
         <figure>
@@ -865,6 +857,94 @@
         <t>(*) The Length must be calculated to include the optional Type
         Length Value objects.</t>
       </section>
+    </section>
+
+
+            <section anchor="Options-Template-Record-and-Data-Set-for-SRv6-Endpoint-Behavior"
+               title="Options Template Record and Data Set for SRv6 end point behavior Section">
+
+                <t>This appendix provides an SRv6 EndPoint Bevahior Options Template example, 
+                  for the values presented in Table 12. In the Options Template case, the 
+                  srhEndPointIPv6 Information Element is a Scope field </t>
+
+      <t><figure>
+          <artwork><![CDATA[
+
+      +---------+-------------+-------------------------+--------------+
+      | Entry   | SRH End     | SRH End                 | SRH Segment  |
+      | Nr      | Point IPv6  | Point Behavior          | Locator      |
+      +---------+-------------+-------------------------+--------------+
+      | 1       | 2001:db8::1 | End [1]                 | 2001:db8     |
+      +---------+-------------+-------------------------+--------------+
+      | 2       | 2001:db8::4 | End with NEXT-CSID [43] | 2001:db8     |
+      +---------+-------------+-------------------------+--------------+
+      | 3       | 2001:db8::6 | End.DX6 [16]            | 2001:db8     |
+      +---------+-------------+-------------------------+--------------+
+
+          Table 12: three observed SRv6 End Point Behaviors
+       ]]></artwork>
+        </figure></t>
+        <t><figure>
+            <artwork><![CDATA[
+      0                   1                   2                   3
+      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |         Set ID = 3            |          Length = 24          |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |       Template ID 259         |        Field Count = 3        |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |     Scope Field Count = 1     |0|  srhEndPointIPv6 = TB12     |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |   Scope 1 Field Length = 4    |0|srhSegmentEndpointBeh..=TBD11|
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |       Field Length = 2        |0|  srhSegmentLocator= TBD10   |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |       Field Length = 4        |           Padding             |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+       Table 13: Template Record with SRH Section Encoding Format
+
+            ]]></artwork>
+          </figure></t>
+
+        <t>In this example, the Template ID is 259, which will be used in the
+        Data Record.</t>
+
+        <t>The data set is represented as follows:</t>
+
+        <figure>
+          <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |         SET ID = 259          |           Length = 28         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                         2001:db8::1                           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |             End [1]           |            2001:db8           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                ...            |            2001:db8::4        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                ...            |    End with NEXT-CSID [43]    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                         2001:db8::6                           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |             End.DX6 [16]      |            2001:db8           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                ...            |            padding            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ 
+           Table 14: Data Set Encoding Format for SRH Section
+
+            ]]></artwork>
+        </figure>
+
+        <t>(*) The Length must be calculated to include the optional Type
+        Length Value objects.</t>
+      </section>
+
     </section>
   </back>
 </rfc>
