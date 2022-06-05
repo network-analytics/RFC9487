@@ -5,8 +5,10 @@
 Network Working Group                                            T. Graf
 Internet-Draft                                                  Swisscom
 Intended status: Standards Track                               B. Claise
-Expires: December 6, 2022                                         Huawei
-                                                            June 4, 2022
+Expires: December 7, 2022                                         Huawei
+                                                             P. Francois
+                                                               INSA-Lyon
+                                                            June 5, 2022
 
 
              Export of Segment Routing IPv6 Information in
@@ -35,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 6, 2022.
+   This Internet-Draft will expire on December 7, 2022.
 
 Copyright Notice
 
@@ -48,16 +50,15 @@ Copyright Notice
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
 
 
 
-
-Graf & Claise           Expires December 6, 2022                [Page 1]
+Graf, et al.            Expires December 7, 2022                [Page 1]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
+   include Simplified BSD License text as described in Section 4.e of
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
@@ -104,15 +105,17 @@ Table of Contents
       8-bit flags defined in the SRH.
 
    srhTagIPv6
-      16-bit tag field defined in the SRH that marks a packet as part of
-      a class or group of packets sharing the same set of properties.
 
 
 
-Graf & Claise           Expires December 6, 2022                [Page 2]
+
+Graf, et al.            Expires December 7, 2022                [Page 2]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
+
+      16-bit tag field defined in the SRH that marks a packet as part of
+      a class or group of packets sharing the same set of properties.
 
    srhSegmentIPv6
       128-bit IPv6 address that represents an SRv6 segment.
@@ -159,16 +162,17 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
    o  if dropped, for which reasons,
 
-   o  identify the active segment and its control plane protocol,
-
-   o  the SRv6 segment list,
 
 
 
-Graf & Claise           Expires December 6, 2022                [Page 3]
+Graf, et al.            Expires December 7, 2022                [Page 3]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
+
+   o  identify the active segment and its control plane protocol,
+
+   o  the SRv6 segment list,
 
    o  the next SRv6 node and its type,
 
@@ -217,11 +221,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-
-
-
-
-Graf & Claise           Expires December 6, 2022                [Page 4]
+Graf, et al.            Expires December 7, 2022                [Page 4]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -277,7 +277,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf & Claise           Expires December 6, 2022                [Page 5]
+Graf, et al.            Expires December 7, 2022                [Page 5]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -333,7 +333,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf & Claise           Expires December 6, 2022                [Page 6]
+Graf, et al.            Expires December 7, 2022                [Page 6]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -389,7 +389,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf & Claise           Expires December 6, 2022                [Page 7]
+Graf, et al.            Expires December 7, 2022                [Page 7]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -445,7 +445,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf & Claise           Expires December 6, 2022                [Page 8]
+Graf, et al.            Expires December 7, 2022                [Page 8]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -501,7 +501,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf & Claise           Expires December 6, 2022                [Page 9]
+Graf, et al.            Expires December 7, 2022                [Page 9]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -557,7 +557,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf & Claise           Expires December 6, 2022               [Page 10]
+Graf, et al.            Expires December 7, 2022               [Page 10]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -613,7 +613,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf & Claise           Expires December 6, 2022               [Page 11]
+Graf, et al.            Expires December 7, 2022               [Page 11]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -647,21 +647,19 @@ A.1.  Template Record and Data Set with Basic List
    introduced IEs, for the example values in the table 5.
 
 
-   +-----+------+-----+------------------+--------------------------|
-   | SRH | SRH  | SRH | Top Segment Type |       Segment List       |
-   | Nr  | Flags| Tag |                  |                          |
-   +-----+------+-----+------------------+--------------------------+
-   | 1   | 0    | 123 |   IS-IS [TBD15]  | 2001:db8::1, 2001:db8::2,|
-   |     |      |     |                  | 2001:db8::3              |
-   +-----+------+-----+------------------+--------------------------+
-   | 2   | 0    | 456 |   IS-IS [TBD15]  | 2001:db8::4, 2001:db8::5 |
-   +-----+------+-----+------------------+--------------------------+
-   | 3   | 0    | 789 |   IS-IS [TBD15]  | 2001:db8::6              |
-   +-----+------+-----+------------------+--------------------------+
+      +-----+------+-----+------------------+--------------------------|
+      | SRH | SRH  | SRH | Top Segment Type |       Segment List       |
+      | Nr  | Flags| Tag |                  |                          |
+      +-----+------+-----+------------------+--------------------------+
+      | 1   | 0    | 123 |   IS-IS [TBD15]  | 2001:db8::1, 2001:db8::2,|
+      |     |      |     |                  | 2001:db8::3              |
+      +-----+------+-----+------------------+--------------------------+
+      | 2   | 0    | 456 |   IS-IS [TBD15]  | 2001:db8::4, 2001:db8::5 |
+      +-----+------+-----+------------------+--------------------------+
+      | 3   | 0    | 789 |   IS-IS [TBD15]  | 2001:db8::6              |
+      +-----+------+-----+------------------+--------------------------+
 
-          Table 5: three observed SRH headers and their routing protocol
-
-
+        Table 5: three observed SRH headers and their routing protocol
 
 
 
@@ -669,7 +667,9 @@ A.1.  Template Record and Data Set with Basic List
 
 
 
-Graf & Claise           Expires December 6, 2022               [Page 12]
+
+
+Graf, et al.            Expires December 7, 2022               [Page 12]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -725,7 +725,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf & Claise           Expires December 6, 2022               [Page 13]
+Graf, et al.            Expires December 7, 2022               [Page 13]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -781,7 +781,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf & Claise           Expires December 6, 2022               [Page 14]
+Graf, et al.            Expires December 7, 2022               [Page 14]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -837,7 +837,7 @@ A.1.1.  Template Record and Data Set with Segment List Section
 
 
 
-Graf & Claise           Expires December 6, 2022               [Page 15]
+Graf, et al.            Expires December 7, 2022               [Page 15]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -893,7 +893,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf & Claise           Expires December 6, 2022               [Page 16]
+Graf, et al.            Expires December 7, 2022               [Page 16]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -949,7 +949,7 @@ A.1.2.  Template Record and Data Set with SRH Section
 
 
 
-Graf & Claise           Expires December 6, 2022               [Page 17]
+Graf, et al.            Expires December 7, 2022               [Page 17]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -1005,7 +1005,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf & Claise           Expires December 6, 2022               [Page 18]
+Graf, et al.            Expires December 7, 2022               [Page 18]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -1061,10 +1061,9 @@ A.2.  Options Template Record and Data Set for SRv6 end point behavior
 
 
 
-
-Graf & Claise           Expires December 1, 2022               [Page 19]
+Graf, et al.            Expires December 7, 2022               [Page 19]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
       +---------+-------------+-------------------------+--------------+
@@ -1078,26 +1077,26 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
       | 3       | 2001:db8::6 | End.DX6 [16]            | 2001:db8     |
       +---------+-------------+-------------------------+--------------+
 
-          Table 12: three observed SRv6 End Point Behaviors
+             Table 12: three observed SRv6 End Point Behaviors
 
-        0                   1                   2                   3
-        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       |         Set ID = 3            |          Length = 24          |
-       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       |       Template ID 259         |        Field Count = 3        |
-       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       |     Scope Field Count = 1     |0|  srhEndPointIPv6 = TB12     |
-       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       |   Scope 1 Field Length = 4    |0|srhSegmentEndpointBeh..=TBD11|
-       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       |       Field Length = 2        |0|  srhSegmentLocator= TBD10   |
-       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-       |       Field Length = 4        |           Padding             |
-       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+         0                   1                   2                   3
+         0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |         Set ID = 3            |          Length = 24          |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |       Template ID 259         |        Field Count = 3        |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |     Scope Field Count = 1     |0|  srhEndPointIPv6 = TB12     |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |   Scope 1 Field Length = 4    |0|srhSegmentEndpointBeh..=TBD11|
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |       Field Length = 2        |0|  srhSegmentLocator= TBD10   |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |       Field Length = 4        |           Padding             |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-         Table 13: Template Record with SRH Section Encoding Format
+          Table 13: Template Record with SRH Section Encoding Format
 
 
    In this example, the Template ID is 259, which will be used in the
@@ -1118,9 +1117,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
 
 
 
-Graf & Claise           Expires December 1, 2022               [Page 20]
+Graf, et al.            Expires December 7, 2022               [Page 20]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information         May 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
        0                   1                   2                   3
@@ -1174,4 +1173,60 @@ Authors' Addresses
 
 
 
-Graf & Claise           Expires December 6, 2022               [Page 20]
+Graf, et al.            Expires December 7, 2022               [Page 21]
+
+Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
+
+
+   Pierre Francois
+   INSA-Lyon
+   Lyon
+   France
+
+   Email: pierre.francois@insa-lyon.fr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Graf, et al.            Expires December 7, 2022               [Page 22]
