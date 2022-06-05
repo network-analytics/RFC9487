@@ -43,7 +43,7 @@
       </address>
     </author>
 
-    <date day="30" month="May" year="2022"/>
+    <date day="4" month="June" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -370,18 +370,17 @@
         "IPFIX SRV6 Endpoint Behavior" registry. They must instead be added to
         the "Segment Routing SRv6 Endpoint Behaviors" registry. Both the
         "IPFIX SRV6 Endpoint Behavior" and the "Segment Routing SRv6 Endpoint
-        Behaviors" registries must be kept in synch. Initial values in the
-        registry are defined by the table below. <figure>
+        Behaviors" registries must be kept in synch.<figure>
             <artwork><![CDATA[
 
 +--------+-------+-------------------------------+------------------+
 | Value  | Hex   | Endpoint Behavior | Reference | Change Controller|
 +--------+-------+-------------------------------+------------------+
-| 0      | 0x0000| Reserved          | [RFC8986] | IETF             |
+|        |       |                   |           |                  |
 +--------+-------+-------------------------------+------------------+
-| 1      | 0x0001| End               | [RFC8986] | IETF             |
+|        |       |                   |           |                  |
 +--------+-------+-------------------------------+------------------+
-| 2      | 0x0002| End with PSP      | [RFC8986] | IETF             |
+|        |       |                   |           |                  |
 +--------+-------+-------------------------------+------------------+
 
       Table 4: "IPFIX SRV6 Endpoint Behavior" registry
