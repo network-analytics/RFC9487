@@ -515,7 +515,9 @@
       <section anchor="Template-Record-and-Data-Set-with-Basic-List"
                title="Template Record and Data Set with Basic List">
         <t>This appendix represents three different encodings for the newly
-        introduced IEs, for the example values in the table 5.</t>
+           introduced IEs, for the example values in the table 5. The three
+          different encodings uses the following IEs, respectively: 
+          srhSegmentIPv6BasicList,  srhSegmentIPv6ListSection, and srhSectionIPv6.</t>
 
         <t><figure>
             <artwork><![CDATA[
@@ -535,6 +537,9 @@
      Table 5: three observed SRH headers and their routing protocol
        ]]></artwork>
           </figure></t>
+
+      <section anchor="Template-Record-and-Data-Set-with-BasicList"
+        title="Template Record and Data Set with Segment BasicList">
 
         <t><figure>
             <artwork><![CDATA[
@@ -560,16 +565,16 @@
             ]]></artwork>
           </figure></t>
 
-        <t>In this example, the Template ID is 256, which will be used in the
-        Data Record. The field length for srhSegmentIPv6BasicList is 0xFFFF,
-        which means the length of this IE is variable, and the actual length
-        of this IE is indicated by the List Length field in the basicList
-        format as per <xref target="RFC6313"/>.</t>
+          <t>In this example, the Template ID is 256, which will be used in the
+             Data Record. The field length for srhSegmentIPv6BasicList is 0xFFFF,
+             which means the length of this IE is variable, and the actual length
+             of this IE is indicated by the List Length field in the basicList
+             format as per <xref target="RFC6313"/>.</t>
 
         <t>The data set is represented as follows:</t>
 
-        <figure>
-          <artwork><![CDATA[
+          <figure>
+            <artwork><![CDATA[
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -652,7 +657,8 @@
            Table 7: Data Set Encoding Format for Basic List
 
             ]]></artwork>
-        </figure>
+          </figure>
+        </section>
 
         <section anchor="Template-Record-and-Data-Set-with-Segment-List-Section"
                  title="Template Record and Data Set with Segment List Section">
@@ -915,7 +921,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |       Template ID 259         |        Field Count = 3        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |     Scope Field Count = 1     |0|  srhEndPointIPv6 = TB12     |
+   |     Scope Field Count = 1     |0|   srhSegmentIPv6 = TBD3     |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |   Scope 1 Field Length = 4    |0|srhSegmentEndpointBeh..=TBD11|
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
