@@ -194,7 +194,7 @@
      |       |                            |
      +-------+----------------------------+
      | TBD3  | srhSegmentIPv6             |
-     |       |                           |
+     |       |                            |
      +-------+----------------------------+
      | TBD4  | srhTopSegmentIPv6          |
      |       |                            |
@@ -382,7 +382,7 @@
         identifies the IPv6 prefix that represents a SRv6 locator. <vspace
         blankLines="0"/> Abstract Data Type: ipv6address <vspace
         blankLines="0"/> Data Type Semantics: default <vspace blankLines="0"/>
-        Reference: [RFC-to-be], RFC8986</t>
+        Reference: [RFC-to-be], RFC8986 Section 3.1</t>
       </section>
 
       <section anchor="IANAsrhSegmentEndpointBehavior"
@@ -414,7 +414,7 @@
        ]]></artwork>
           </figure> <vspace blankLines="0"/> Abstract Data Type: unsigned16
         <vspace blankLines="0"/> Data Type Semantics: identifier <vspace
-        blankLines="0"/> Reference: [RFC-to-be], RFC8986</t>
+        blankLines="0"/> Reference: [RFC-to-be], RFC8986 Section 4</t>
       </section>
     </section>
 
@@ -470,8 +470,8 @@
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
-      <t>I would like to thank Pierre Francois, Yao Liu and Paolo Lucente for
-      their review and valuable comments.</t>
+      <t>The authors would like to thank Yao Liu, Paolo Lucente, Eduard
+      Vasilenko, and Alex Huang Feng for their review and valuable comments.</t>
     </section>
   </middle>
 
