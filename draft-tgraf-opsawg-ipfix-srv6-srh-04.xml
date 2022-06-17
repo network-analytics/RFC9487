@@ -114,7 +114,8 @@
           of packets sharing the same set of properties.</t>
 
           <t hangText="srhSegmentIPv6"><vspace blankLines="0"/> 128-bit IPv6
-          address that represents an SRv6 segment.</t>
+          address that represents an SRv6 segment (this is a generic field, 
+          used in the srhSegmentIPv6BasicList in this draft).</t>
 
           <t hangText="srhTopSegmentIPv6"><vspace blankLines="0"/> 128-bit
           IPv6 address that represents the top SRv6 segment.</t>
@@ -148,6 +149,11 @@
           16-bit unsigned integer that represents a SRv6 Endpoint
           behavior.</t>
         </list></t>
+
+        <t>Note that the srhSegmentIPv6, srhSegmentLocator, and 
+          srhSegmentEndpointBehavior IPFIW IEs are generic fields, 
+          to be used in the context of IPFIX Options Templates or 
+          IPFIX Structured Data <xref target="RFC6313"/>. </t>
     </section>
 
     <section anchor="Use-Cases" title="Use Cases">
