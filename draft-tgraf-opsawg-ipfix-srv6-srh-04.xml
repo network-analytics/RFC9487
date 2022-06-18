@@ -114,7 +114,8 @@
           of packets sharing the same set of properties.</t>
 
           <t hangText="srhSegmentIPv6"><vspace blankLines="0"/> 128-bit IPv6
-          address that represents an SRv6 segment.</t>
+          address that represents an SRv6 segment (this is a generic field, 
+          used in the srhSegmentIPv6BasicList in this draft).</t>
 
           <t hangText="srhTopSegmentIPv6"><vspace blankLines="0"/> 128-bit
           IPv6 address that represents the top SRv6 segment.</t>
@@ -148,6 +149,11 @@
           16-bit unsigned integer that represents a SRv6 Endpoint
           behavior.</t>
         </list></t>
+
+        <t>Note that the srhSegmentIPv6, srhSegmentLocator, and 
+          srhSegmentEndpointBehavior IPFIW IEs are generic fields, 
+          to be used in the context of IPFIX Options Templates or 
+          IPFIX Structured Data <xref target="RFC6313"/>. </t>
     </section>
 
     <section anchor="Use-Cases" title="Use Cases">
@@ -194,7 +200,7 @@
      |       |                            |
      +-------+----------------------------+
      | TBD3  | srhSegmentIPv6             |
-     |       |                           |
+     |       |                            |
      +-------+----------------------------+
      | TBD4  | srhTopSegmentIPv6          |
      |       |                            |
@@ -382,7 +388,7 @@
         identifies the IPv6 prefix that represents a SRv6 locator. <vspace
         blankLines="0"/> Abstract Data Type: ipv6address <vspace
         blankLines="0"/> Data Type Semantics: default <vspace blankLines="0"/>
-        Reference: [RFC-to-be], RFC8986</t>
+        Reference: [RFC-to-be], RFC8986 Section 3.1</t>
       </section>
 
       <section anchor="IANAsrhSegmentEndpointBehavior"
@@ -414,7 +420,7 @@
        ]]></artwork>
           </figure> <vspace blankLines="0"/> Abstract Data Type: unsigned16
         <vspace blankLines="0"/> Data Type Semantics: identifier <vspace
-        blankLines="0"/> Reference: [RFC-to-be], RFC8986</t>
+        blankLines="0"/> Reference: [RFC-to-be], RFC8986 Section 4</t>
       </section>
     </section>
 
@@ -470,8 +476,8 @@
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
-      <t>I would like to thank Pierre Francois, Yao Liu and Paolo Lucente for
-      their review and valuable comments.</t>
+      <t>The authors would like to thank Yao Liu, Paolo Lucente, Eduard
+      Vasilenko, and Alex Huang Feng for their review and valuable comments.</t>
     </section>
   </middle>
 

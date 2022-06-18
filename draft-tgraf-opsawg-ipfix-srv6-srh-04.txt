@@ -118,7 +118,8 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
       a class or group of packets sharing the same set of properties.
 
    srhSegmentIPv6
-      128-bit IPv6 address that represents an SRv6 segment.
+      128-bit IPv6 address that represents an SRv6 segment (this is a
+      generic field, used in the srhSegmentIPv6BasicList in this draft).
 
    srhTopSegmentIPv6
       128-bit IPv6 address that represents the top SRv6 segment.
@@ -150,17 +151,16 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
    srhSegmentEndpointBehavior
       16-bit unsigned integer that represents a SRv6 Endpoint behavior.
 
+   Note that the srhSegmentIPv6, srhSegmentLocator, and
+   srhSegmentEndpointBehavior IPFIW IEs are generic fields, to be used
+   in the context of IPFIX Options Templates or IPFIX Structured Data
+   [RFC6313].
+
 3.  Use Cases
 
    By using srhSegmentIPv6BasicList(TBD5) or the
    srhSegmentIPv6ListSection (TBD6), srhTopSegmentIPv6 (TBD4),
    srhSegmentIPv6sLeft (TBD7), srhTopSegmentIPv6Type(TBD9), the
-   forwardingStatus(89), and some counters information, it is possible
-   to answer the following questions (amongst others):
-
-   o  how many packets are forwarded or dropped
-
-   o  if dropped, for which reasons,
 
 
 
@@ -169,6 +169,13 @@ Graf, et al.            Expires December 7, 2022                [Page 3]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
+
+   forwardingStatus(89), and some counters information, it is possible
+   to answer the following questions (amongst others):
+
+   o  how many packets are forwarded or dropped
+
+   o  if dropped, for which reasons,
 
    o  identify the active segment and its control plane protocol,
 
@@ -214,13 +221,6 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-
-
-
-
-
-
-
 Graf, et al.            Expires December 7, 2022                [Page 4]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
@@ -237,7 +237,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
         |       |                            |
         +-------+----------------------------+
         | TBD3  | srhSegmentIPv6             |
-        |       |                           |
+        |       |                            |
         +-------+----------------------------+
         | TBD4  | srhTopSegmentIPv6          |
         |       |                            |
@@ -458,7 +458,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
    represents a SRv6 locator.
    Abstract Data Type: ipv6address
    Data Type Semantics: default
-   Reference: [RFC-to-be], RFC8986
+   Reference: [RFC-to-be], RFC8986 Section 3.1
 
 4.11.  srhSegmentEndpointBehavior
 
@@ -488,7 +488,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
    Abstract Data Type: unsigned16
    Data Type Semantics: identifier
-   Reference: [RFC-to-be], RFC8986
+   Reference: [RFC-to-be], RFC8986 Section 4
 
 5.  Operational Considerations
 
@@ -545,11 +545,11 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 7.  Acknowledgements
 
-   I would like to thank Pierre Francois, Yao Liu and Paolo Lucente for
-   their review and valuable comments.
+   The authors would like to thank Yao Liu, Paolo Lucente, Eduard
+   Vasilenko, and Alex Huang Feng for their review and valuable
+   comments.
 
 8.  References
-
 
 
 
