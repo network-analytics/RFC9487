@@ -5,10 +5,10 @@
 Network Working Group                                            T. Graf
 Internet-Draft                                                  Swisscom
 Intended status: Standards Track                               B. Claise
-Expires: December 7, 2022                                         Huawei
+Expires: December 20, 2022                                        Huawei
                                                              P. Francois
                                                                INSA-Lyon
-                                                            June 5, 2022
+                                                           June 18, 2022
 
 
              Export of Segment Routing IPv6 Information in
@@ -37,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 7, 2022.
+   This Internet-Draft will expire on December 20, 2022.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Graf, et al.            Expires December 7, 2022                [Page 1]
+Graf, et al.            Expires December 20, 2022               [Page 1]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Graf, et al.            Expires December 7, 2022                [Page 2]
+Graf, et al.            Expires December 20, 2022               [Page 2]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -121,8 +121,8 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
       128-bit IPv6 address that represents an SRv6 segment (this is a
       generic field, used in the srhSegmentIPv6BasicList in this draft).
 
-   srhTopSegmentIPv6
-      128-bit IPv6 address that represents the top SRv6 segment.
+   srhActiveSegmentIPv6
+      128-bit IPv6 address that represents the active SRv6 segment.
 
    srhSegmentIPv6BasicList
       Ordered basicList [RFC6313] of zero or more 128-bit IPv6 addresses
@@ -141,7 +141,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
       Exposes the SRH and its TLV's as defined in section 2 of [RFC8754]
       as series of n octets.
 
-   srhTopSegmentIPv6Type
+   srhActiveSegmentIPv6Type
       Name of the routing protocol or PCEP extension from where the
       active SRv6 segment has been learned from.
 
@@ -159,13 +159,13 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 3.  Use Cases
 
    By using srhSegmentIPv6BasicList(TBD5) or the
-   srhSegmentIPv6ListSection (TBD6), srhTopSegmentIPv6 (TBD4),
-   srhSegmentIPv6sLeft (TBD7), srhTopSegmentIPv6Type(TBD9), the
+   srhSegmentIPv6ListSection (TBD6), srhActiveSegmentIPv6 (TBD4),
+   srhSegmentIPv6sLeft (TBD7), srhActiveSegmentIPv6Type(TBD9), the
 
 
 
 
-Graf, et al.            Expires December 7, 2022                [Page 3]
+Graf, et al.            Expires December 20, 2022               [Page 3]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -221,7 +221,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022                [Page 4]
+Graf, et al.            Expires December 20, 2022               [Page 4]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -239,7 +239,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
         | TBD3  | srhSegmentIPv6             |
         |       |                            |
         +-------+----------------------------+
-        | TBD4  | srhTopSegmentIPv6          |
+        | TBD4  | srhActiveSegmentIPv6       |
         |       |                            |
         +-------+----------------------------+
         | TBD5  | srhSegmentIPv6BasicList    |
@@ -254,7 +254,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
         | TBD8  | srhSectionIPv6             |
         |       |                            |
         +-------+----------------------------+
-        | TBD9  | srhTopSegmentIPv6Type      |
+        | TBD9  | srhActiveSegmentIPv6Type   |
         |       |                            |
         +-------+----------------------------+
         | TBD10 | srhSegmentLocator          |
@@ -277,7 +277,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022                [Page 5]
+Graf, et al.            Expires December 20, 2022               [Page 5]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -333,7 +333,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022                [Page 6]
+Graf, et al.            Expires December 20, 2022               [Page 6]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -341,12 +341,12 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
    Data Type Semantics: default
    Reference: [RFC-to-be], RFC8754
 
-4.4.  srhTopSegmentIPv6
+4.4.  srhActiveSegmentIPv6
 
-   Name: srhTopSegmentIPv6
+   Name: srhActiveSegmentIPv6
    ElementID: TBD4
    Description: This Information Element identifies the 128-bit IPv6
-   address that represents the top SRv6 segment.
+   address that represents the active SRv6 segment.
    Abstract Data Type: ipv6address
    Data Type Semantics: default
    Reference: [RFC-to-be], RFC8754
@@ -389,7 +389,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022                [Page 7]
+Graf, et al.            Expires December 20, 2022               [Page 7]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -404,9 +404,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
    Data Type Semantics: default
    Reference: [RFC-to-be], RFC8754
 
-4.9.  srhTopSegmentIPv6Type
+4.9.  srhActiveSegmentIPv6Type
 
-   Name: srhTopSegmentIPv6Type
+   Name: srhActiveSegmentIPv6Type
    ElementID: TBD9
    Description: This Information Element identifies the name of the
    routing protocol or PCEP extension from where the active SRv6 segment
@@ -445,7 +445,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022                [Page 8]
+Graf, et al.            Expires December 20, 2022               [Page 8]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -501,7 +501,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022                [Page 9]
+Graf, et al.            Expires December 20, 2022               [Page 9]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -557,7 +557,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 10]
+Graf, et al.            Expires December 20, 2022              [Page 10]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -613,7 +613,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 11]
+Graf, et al.            Expires December 20, 2022              [Page 11]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -651,8 +651,8 @@ A.1.  Template Record and Data Set with Basic List
 
 
       +-----+------+-----+------------------+--------------------------|
-      | SRH | SRH  | SRH | Top Segment Type |       Segment List       |
-      | Nr  | Flags| Tag |                  |                          |
+      | SRH | SRH  | SRH | Active Segment   |       Segment List       |
+      | Nr  | Flags| Tag | Type             |                          |
       +-----+------+-----+------------------+--------------------------+
       | 1   | 0    | 123 |   IS-IS [TBD15]  | 2001:db8::1, 2001:db8::2,|
       |     |      |     |                  | 2001:db8::3              |
@@ -669,7 +669,7 @@ A.1.  Template Record and Data Set with Basic List
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 12]
+Graf, et al.            Expires December 20, 2022              [Page 12]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -688,7 +688,7 @@ A.1.1.  Template Record and Data Set with Segment BasicList
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |0|      srhTagIPv6 = TBD2      |      Field Length = 2         |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |0| srhTopSegmentIPv6Type = TBD9|      Field Length = 1         |
+      |0|srhActiveSegmentIPv... = TBD9|      Field Length = 1         |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |0|srhSegmentIPv6BasicList= TBD5|      Field Length = 0xFFFF    |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -710,8 +710,8 @@ A.1.1.  Template Record and Data Set with Segment BasicList
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |         SET ID = 256          |           Length = 136        |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhTopSegment |
-      | = 0           |                               | IPv6Type=TBD15|
+      | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhActiveSegme|
+      | = 0           |                               | ntIPv...=TBD15|
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |      255      |        List Length = 53       |semantic=      |
       |               |                               |ordered        |
@@ -725,7 +725,7 @@ A.1.1.  Template Record and Data Set with Segment BasicList
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 13]
+Graf, et al.            Expires December 20, 2022              [Page 13]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -750,8 +750,8 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      | srhFlagsIPv6  |        srhTagIPv6 = 456       | srhTopSegment |
-      | = 0           |                               | IPv6Type=TBD15|
+      | srhFlagsIPv6  |        srhTagIPv6 = 456       | srhActiveSegme|
+      | = 0           |                               | ntIPv...=TBD15|
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |      255      |        List Length = 37       |semantic=      |
       |               |                               |ordered        |
@@ -774,14 +774,14 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      | srhFlagsIPv6  |        srhTagIPv6 = 789       | srhTopSegment |
-      | = 0           |                               | IPv6Type=TBD15|
+      | srhFlagsIPv6  |        srhTagIPv6 = 789       | srhActiveSegme|
+      | = 0           |                               | ntIPv...=TBD15|
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |      255      |        List Length = 21       |semantic=      |
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 14]
+Graf, et al.            Expires December 20, 2022              [Page 14]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -816,7 +816,7 @@ A.1.2.  Template Record and Data Set with Segment List Section
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |0|      srhTagIPv6 = TBD2      |      Field Length = 2         |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |0| srhTopSegmentIPv6Type = TBD9|      Field Length = 1         |
+      |0|srhActiveSegmentIPv... = TBD9|      Field Length = 1         |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |0|     srhSegmentIPv6List      |      Field Length = 0xFFFF    |
       | |     Section=TBD6            |                               |
@@ -837,7 +837,7 @@ A.1.2.  Template Record and Data Set with Segment List Section
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 15]
+Graf, et al.            Expires December 20, 2022              [Page 15]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -845,8 +845,8 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |         SET ID = 257          |           Length = 116        |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhTopSegment |
-      | = 0           |                               | IPv6Type=TBD15|
+      | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhActiveSegme|
+      | = 0           |                               | ntIPv...=TBD15|
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |    0xFFFF     |   2001:db8::1                                 |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -875,8 +875,8 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
       |      ...      | srhFlagsIPv6  |        srhTagIPv6 = 456       |
       |               | = 0           |                               |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      | srhTopSegment |    0xFFFF     |   2001:db8::4                 |
-      | IPv6Type=TBD15|               |                               |
+      | srhActiveSegme|    0xFFFF     |   2001:db8::4                 |
+      | ntIPv...=TBD15|               |                               |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -893,7 +893,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 16]
+Graf, et al.            Expires December 20, 2022              [Page 16]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -902,7 +902,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |      ...                      |srhFlagsIPv6=0 | srhTagIPv6... |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      | = 789         |         srhTopSegment         |     0xFFFF    |
+      | = 789         |         srhActiveSegment      |     0xFFFF    |
       |               |         IPv6Type=TBD15        |               |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                        2001:db8::6 ...                        |
@@ -928,7 +928,7 @@ A.1.3.  Template Record and Data Set with SRH Section
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |      Template ID = 258        |      Field Count = 4          |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |0| srhTopSegmentIPv6Type = TBD9|      Field Length = 1         |
+      |0| srhActiveSegmentIP... = TBD9|      Field Length = 1         |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |0|    srhSectionIPv6 = TBD8    |      Field Length = 0xFFFF    |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -949,14 +949,14 @@ A.1.3.  Template Record and Data Set with SRH Section
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 17]
+Graf, et al.            Expires December 20, 2022              [Page 17]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
       |         SET ID = 258          |           Length = (*)        |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |          srhTopSegmentIPv6Type = TBD15        |    0xFFFF     |
+      |        srhActiveSegmentIPv6Type = TBD15       |    0xFFFF     |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -988,7 +988,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       ~          Optional Type Length Value objects (variable)        ~
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |          srhTopSegmentIPv6Type = TBD15        |    0xFFFF     |
+      |        srhActiveSegmentIPv6Type = TBD15       |    0xFFFF     |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1005,7 +1005,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 18]
+Graf, et al.            Expires December 20, 2022              [Page 18]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -1020,7 +1020,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       ~          Optional Type Length Value objects (variable)        ~
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |          srhTopSegmentIPv6Type = TBD15        |    0xFFFF     |
+      |        srhActiveSegmentIPv6Type = TBD15       |    0xFFFF     |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1061,7 +1061,7 @@ A.2.  Options Template Record and Data Set for SRv6 end point behavior
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 19]
+Graf, et al.            Expires December 20, 2022              [Page 19]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -1117,7 +1117,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 20]
+Graf, et al.            Expires December 20, 2022              [Page 20]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -1173,7 +1173,7 @@ Authors' Addresses
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 21]
+Graf, et al.            Expires December 20, 2022              [Page 21]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
@@ -1229,4 +1229,4 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information        June 2022
 
 
 
-Graf, et al.            Expires December 7, 2022               [Page 22]
+Graf, et al.            Expires December 20, 2022              [Page 22]

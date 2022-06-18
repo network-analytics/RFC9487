@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="5" month="June" year="2022"/>
+    <date day="18" month="June" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -114,11 +114,11 @@
           of packets sharing the same set of properties.</t>
 
           <t hangText="srhSegmentIPv6"><vspace blankLines="0"/> 128-bit IPv6
-          address that represents an SRv6 segment (this is a generic field, 
+          address that represents an SRv6 segment (this is a generic field,
           used in the srhSegmentIPv6BasicList in this draft).</t>
 
-          <t hangText="srhTopSegmentIPv6"><vspace blankLines="0"/> 128-bit
-          IPv6 address that represents the top SRv6 segment.</t>
+          <t hangText="srhActiveSegmentIPv6"><vspace blankLines="0"/> 128-bit
+          IPv6 address that represents the active SRv6 segment.</t>
 
           <t hangText="srhSegmentIPv6BasicList"><vspace blankLines="0"/>
           Ordered basicList <xref target="RFC6313"/> of zero or more 128-bit
@@ -138,8 +138,8 @@
           SRH and its TLV's as defined in section 2 of <xref
           target="RFC8754"/> as series of n octets.</t>
 
-          <t hangText="srhTopSegmentIPv6Type"><vspace blankLines="0"/> Name of
-          the routing protocol or PCEP extension from where the active SRv6
+          <t hangText="srhActiveSegmentIPv6Type"><vspace blankLines="0"/> Name
+          of the routing protocol or PCEP extension from where the active SRv6
           segment has been learned from.</t>
 
           <t hangText="srhSegmentLocator"><vspace blankLines="0"/> IPv6 prefix
@@ -150,16 +150,16 @@
           behavior.</t>
         </list></t>
 
-        <t>Note that the srhSegmentIPv6, srhSegmentLocator, and 
-          srhSegmentEndpointBehavior IPFIW IEs are generic fields, 
-          to be used in the context of IPFIX Options Templates or 
-          IPFIX Structured Data <xref target="RFC6313"/>. </t>
+      <t>Note that the srhSegmentIPv6, srhSegmentLocator, and
+      srhSegmentEndpointBehavior IPFIW IEs are generic fields, to be used in
+      the context of IPFIX Options Templates or IPFIX Structured Data <xref
+      target="RFC6313"/>.</t>
     </section>
 
     <section anchor="Use-Cases" title="Use Cases">
       <t>By using srhSegmentIPv6BasicList(TBD5) or the
-      srhSegmentIPv6ListSection (TBD6), srhTopSegmentIPv6 (TBD4),
-      srhSegmentIPv6sLeft (TBD7), srhTopSegmentIPv6Type(TBD9), the
+      srhSegmentIPv6ListSection (TBD6), srhActiveSegmentIPv6 (TBD4),
+      srhSegmentIPv6sLeft (TBD7), srhActiveSegmentIPv6Type(TBD9), the
       forwardingStatus(89), and some counters information, it is possible to
       answer the following questions (amongst others):</t>
 
@@ -202,7 +202,7 @@
      | TBD3  | srhSegmentIPv6             |
      |       |                            |
      +-------+----------------------------+
-     | TBD4  | srhTopSegmentIPv6          |
+     | TBD4  | srhActiveSegmentIPv6       |
      |       |                            |
      +-------+----------------------------+
      | TBD5  | srhSegmentIPv6BasicList    |
@@ -217,7 +217,7 @@
      | TBD8  | srhSectionIPv6             |
      |       |                            |
      +-------+----------------------------+
-     | TBD9  | srhTopSegmentIPv6Type      |
+     | TBD9  | srhActiveSegmentIPv6Type   |
      |       |                            |
      +-------+----------------------------+
      | TBD10 | srhSegmentLocator          |
@@ -290,10 +290,10 @@
         Reference: [RFC-to-be], RFC8754</t>
       </section>
 
-      <section anchor="IANAsrhTopSegmentIPv6" title="srhTopSegmentIPv6">
-        <t>Name: srhTopSegmentIPv6 <vspace blankLines="0"/> ElementID: TBD4
+      <section anchor="IANAsrhActiveSegmentIPv6" title="srhActiveSegmentIPv6">
+        <t>Name: srhActiveSegmentIPv6 <vspace blankLines="0"/> ElementID: TBD4
         <vspace blankLines="0"/> Description: This Information Element
-        identifies the 128-bit IPv6 address that represents the top SRv6
+        identifies the 128-bit IPv6 address that represents the active SRv6
         segment. <vspace blankLines="0"/> Abstract Data Type: ipv6address
         <vspace blankLines="0"/> Data Type Semantics: default <vspace
         blankLines="0"/> Reference: [RFC-to-be], RFC8754</t>
@@ -341,9 +341,9 @@
         RFC8754</t>
       </section>
 
-      <section anchor="IANAsrhTopSegmentIPv6Type"
-               title="srhTopSegmentIPv6Type">
-        <t>Name: srhTopSegmentIPv6Type <vspace blankLines="0"/> ElementID:
+      <section anchor="IANAsrhActiveSegmentIPv6Type"
+               title="srhActiveSegmentIPv6Type">
+        <t>Name: srhActiveSegmentIPv6Type <vspace blankLines="0"/> ElementID:
         TBD9 <vspace blankLines="0"/> Description: This Information Element
         identifies the name of the routing protocol or PCEP extension from
         where the active SRv6 segment has been learned from. Values for this
@@ -477,7 +477,8 @@
 
     <section anchor="Acknowledgements" title="Acknowledgements">
       <t>The authors would like to thank Yao Liu, Paolo Lucente, Eduard
-      Vasilenko, and Alex Huang Feng for their review and valuable comments.</t>
+      Vasilenko, and Alex Huang Feng for their review and valuable
+      comments.</t>
     </section>
   </middle>
 
@@ -521,16 +522,17 @@
       <section anchor="Template-Record-and-Data-Set-with-Basic-List"
                title="Template Record and Data Set with Basic List">
         <t>This appendix represents three different encodings for the newly
-           introduced IEs, for the example values in the table 5. The three
-          different encodings uses the following IEs, respectively: 
-          srhSegmentIPv6BasicList,  srhSegmentIPv6ListSection, and srhSectionIPv6.</t>
+        introduced IEs, for the example values in the table 5. The three
+        different encodings uses the following IEs, respectively:
+        srhSegmentIPv6BasicList, srhSegmentIPv6ListSection, and
+        srhSectionIPv6.</t>
 
         <t><figure>
             <artwork><![CDATA[
 
    +-----+------+-----+------------------+--------------------------|
-   | SRH | SRH  | SRH | Top Segment Type |       Segment List       |
-   | Nr  | Flags| Tag |                  |                          |
+   | SRH | SRH  | SRH | Active Segment   |       Segment List       |
+   | Nr  | Flags| Tag | Type             |                          |
    +-----+------+-----+------------------+--------------------------+
    | 1   | 0    | 123 |   IS-IS [TBD15]  | 2001:db8::1, 2001:db8::2,|
    |     |      |     |                  | 2001:db8::3              |
@@ -544,11 +546,10 @@
        ]]></artwork>
           </figure></t>
 
-      <section anchor="Template-Record-and-Data-Set-with-BasicList"
-        title="Template Record and Data Set with Segment BasicList">
-
-        <t><figure>
-            <artwork><![CDATA[
+        <section anchor="Template-Record-and-Data-Set-with-BasicList"
+                 title="Template Record and Data Set with Segment BasicList">
+          <t><figure>
+              <artwork><![CDATA[
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -561,7 +562,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |0|      srhTagIPv6 = TBD2      |      Field Length = 2         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |0| srhTopSegmentIPv6Type = TBD9|      Field Length = 1         |
+   |0|srhActiveSegmentIPv... = TBD9|      Field Length = 1         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |0|srhSegmentIPv6BasicList= TBD5|      Field Length = 0xFFFF    |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -569,15 +570,15 @@
         Table 6: Template Record with Basic List Encoding Format
 
             ]]></artwork>
-          </figure></t>
+            </figure></t>
 
-          <t>In this example, the Template ID is 256, which will be used in the
-             Data Record. The field length for srhSegmentIPv6BasicList is 0xFFFF,
-             which means the length of this IE is variable, and the actual length
-             of this IE is indicated by the List Length field in the basicList
-             format as per <xref target="RFC6313"/>.</t>
+          <t>In this example, the Template ID is 256, which will be used in
+          the Data Record. The field length for srhSegmentIPv6BasicList is
+          0xFFFF, which means the length of this IE is variable, and the
+          actual length of this IE is indicated by the List Length field in
+          the basicList format as per <xref target="RFC6313"/>.</t>
 
-        <t>The data set is represented as follows:</t>
+          <t>The data set is represented as follows:</t>
 
           <figure>
             <artwork><![CDATA[
@@ -587,8 +588,8 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |         SET ID = 256          |           Length = 136        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhTopSegment |
-   | = 0           |                               | IPv6Type=TBD15|
+   | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhActiveSegme|
+   | = 0           |                               | ntIPv...=TBD15|
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      255      |        List Length = 53       |semantic=      |
    |               |                               |ordered        |
@@ -619,8 +620,8 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                              ...                              |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | srhFlagsIPv6  |        srhTagIPv6 = 456       | srhTopSegment |
-   | = 0           |                               | IPv6Type=TBD15|
+   | srhFlagsIPv6  |        srhTagIPv6 = 456       | srhActiveSegme|
+   | = 0           |                               | ntIPv...=TBD15|
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      255      |        List Length = 37       |semantic=      |
    |               |                               |ordered        |
@@ -643,8 +644,8 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                              ...                              |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | srhFlagsIPv6  |        srhTagIPv6 = 789       | srhTopSegment |
-   | = 0           |                               | IPv6Type=TBD15|
+   | srhFlagsIPv6  |        srhTagIPv6 = 789       | srhActiveSegme|
+   | = 0           |                               | ntIPv...=TBD15|
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      255      |        List Length = 21       |semantic=      |
    |               |                               |ordered        |
@@ -682,7 +683,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |0|      srhTagIPv6 = TBD2      |      Field Length = 2         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |0| srhTopSegmentIPv6Type = TBD9|      Field Length = 1         |
+   |0|srhActiveSegmentIPv... = TBD9|      Field Length = 1         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |0|     srhSegmentIPv6List      |      Field Length = 0xFFFF    |
    | |     Section=TBD6            |                               |
@@ -707,8 +708,8 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |         SET ID = 257          |           Length = 116        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhTopSegment |
-   | = 0           |                               | IPv6Type=TBD15|
+   | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhActiveSegme|
+   | = 0           |                               | ntIPv...=TBD15|
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |    0xFFFF     |   2001:db8::1                                 |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -737,8 +738,8 @@
    |      ...      | srhFlagsIPv6  |        srhTagIPv6 = 456       |
    |               | = 0           |                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | srhTopSegment |    0xFFFF     |   2001:db8::4                 |
-   | IPv6Type=TBD15|               |                               |
+   | srhActiveSegme|    0xFFFF     |   2001:db8::4                 |
+   | ntIPv...=TBD15|               |                               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                              ...                              |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -756,7 +757,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      ...                      |srhFlagsIPv6=0 | srhTagIPv6... |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   | = 789         |         srhTopSegment         |     0xFFFF    |
+   | = 789         |         srhActiveSegment      |     0xFFFF    |
    |               |         IPv6Type=TBD15        |               |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |                        2001:db8::6 ...                        |
@@ -787,7 +788,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |      Template ID = 258        |      Field Count = 4          |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |0| srhTopSegmentIPv6Type = TBD9|      Field Length = 1         |
+   |0| srhActiveSegmentIP... = TBD9|      Field Length = 1         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |0|    srhSectionIPv6 = TBD8    |      Field Length = 0xFFFF    |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -811,7 +812,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |         SET ID = 258          |           Length = (*)        |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |          srhTopSegmentIPv6Type = TBD15        |    0xFFFF     |
+   |        srhActiveSegmentIPv6Type = TBD15       |    0xFFFF     |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -843,7 +844,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    ~          Optional Type Length Value objects (variable)        ~
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |          srhTopSegmentIPv6Type = TBD15        |    0xFFFF     |
+   |        srhActiveSegmentIPv6Type = TBD15       |    0xFFFF     |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -867,7 +868,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    ~          Optional Type Length Value objects (variable)        ~
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |          srhTopSegmentIPv6Type = TBD15        |    0xFFFF     |
+   |        srhActiveSegmentIPv6Type = TBD15       |    0xFFFF     |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
