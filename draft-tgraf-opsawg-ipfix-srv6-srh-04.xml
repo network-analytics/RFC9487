@@ -114,8 +114,7 @@
           of packets sharing the same set of properties.</t>
 
           <t hangText="srhSegmentIPv6"><vspace blankLines="0"/> 128-bit IPv6
-          address that represents an SRv6 segment (this is a generic field,
-          used in the srhSegmentIPv6BasicList in this draft).</t>
+          address that represents an SRv6 segment.</t>
 
           <t hangText="srhActiveSegmentIPv6"><vspace blankLines="0"/> 128-bit
           IPv6 address that represents the active SRv6 segment.</t>
@@ -151,7 +150,7 @@
         </list></t>
 
       <t>Note that the srhSegmentIPv6, srhSegmentLocator, and
-      srhSegmentEndpointBehavior IPFIW IEs are generic fields, to be used in
+      srhSegmentEndpointBehavior IPFIX IEs are generic fields, to be used in
       the context of IPFIX Options Templates or IPFIX Structured Data <xref
       target="RFC6313"/>.</t>
     </section>
@@ -548,6 +547,20 @@
 
         <section anchor="Template-Record-and-Data-Set-with-BasicList"
                  title="Template Record and Data Set with Segment BasicList">
+
+          <t>With this encoding, the examples in Table 5 are represented 
+          with the following IEs:</t>
+
+          <t><list style="symbols">
+            <t>SR Flags => srhFlagsIPv6</t>
+
+            <t>SR Tag => srhTagIPv6</t>
+
+            <t>Active Segment Type => srhActiveSegmentIPv6Type</t>
+
+            <t>Segment List => srhSegmentIPv6BasicList</t>
+          </list></t>
+
           <t><figure>
               <artwork><![CDATA[
 
@@ -669,6 +682,20 @@
 
         <section anchor="Template-Record-and-Data-Set-with-Segment-List-Section"
                  title="Template Record and Data Set with Segment List Section">
+
+          <t>With this encoding, the examples in Table 5 are represented 
+          with the following IEs:</t>
+
+          <t><list style="symbols">
+            <t>SR Flags => srhFlagsIPv6</t>
+
+            <t>SR Tag => srhTagIPv6</t>
+
+            <t>Active Segment Type => srhActiveSegmentIPv6Type</t>
+
+            <t>Segment List => srhSegmentIPv6List</t>
+          </list></t>
+
           <t><figure>
               <artwork><![CDATA[
 
@@ -778,6 +805,17 @@
 
         <section anchor="Template-Record-and-Data-Set-with-SRH-Section"
                  title="Template Record and Data Set with SRH Section">
+
+          <t>With this encoding, the examples in Table 5 are represented 
+          with the following IEs:</t>
+
+          <t><list style="symbols">
+            <t>SR Flags + SR Tag + Segment List => srhSectionIPv6</t>
+
+            <t>Active Segment Type => srhActiveSegmentIPv6Type</t>
+
+          </list></t>
+
           <t><figure>
               <artwork><![CDATA[
 
@@ -786,7 +824,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |          SET ID = 2           |       Length = 16             |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   |      Template ID = 258        |      Field Count = 4          |
+   |      Template ID = 258        |      Field Count = 2          |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    |0| srhActiveSegmentIP... = TBD9|      Field Length = 1         |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -799,7 +837,7 @@
             </figure></t>
 
           <t>In this example, the Template ID is 258, which will be used in
-          the Data Record. The field length for srhSegmentIPv6ListSection is
+          the Data Record. The field length for srhSectionIPv6 is
           0xFFFF, which means the length of this IE is variable.</t>
 
           <t>The data set is represented as follows:</t>
