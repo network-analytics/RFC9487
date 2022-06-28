@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="25" month="June" year="2022"/>
+    <date day="28" month="June" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -142,7 +142,7 @@
           segment has been learned from.</t>
 
           <t hangText="srhSegmentLocatorLength"><vspace blankLines="0"/> The
-          number of contiguous bits. Together with srhSegmentIPv6 it enables
+          number of significant bits. Together with srhSegmentIPv6 it enables
           the calulation of the SRv6 Locator.</t>
 
           <t hangText="srhSegmentEndpointBehavior"><vspace blankLines="0"/>
@@ -183,8 +183,8 @@
       new subregistries called "IPFIX IPv6 SRH Flags" (table 2), "IPFIX IPv6
       SRH Segment type" (table 3) and "IPFIX SRV6 Endpoint Behavior" (table 4)
       under the "IPFIX Information Elements" registry <xref target="RFC7012"/>
-      available at <xref target="IANA-IPFIX"/> and assign the following code
-      initial points.</t>
+      available at <xref target="IANA-IPFIX"/> and assign the following
+      initial code points.</t>
 
       <t><figure>
           <artwork><![CDATA[
@@ -386,11 +386,11 @@
                title="srhSegmentLocatorLength">
         <t>Name: srhSegmentLocatorLength <vspace blankLines="0"/> ElementID:
         TBD10 <vspace blankLines="0"/> Description: This Information Element
-        identifies the number of contiguous bits and together with
+        identifies the number of significant bits and together with
         srhSegmentIPv6 enables the calulation of the SRv6 Locator. <vspace
-        blankLines="0"/> Abstract Data Type: ipv6address <vspace
-        blankLines="0"/> Data Type Semantics: default <vspace blankLines="0"/>
-        Reference: [RFC-to-be], RFC8986 Section 3.1</t>
+        blankLines="0"/> Abstract Data Type: uint8 <vspace blankLines="0"/>
+        Data Type Semantics: default <vspace blankLines="0"/> Reference:
+        [RFC-to-be], RFC8986 Section 3.1</t>
       </section>
 
       <section anchor="IANAsrhSegmentEndpointBehavior"
