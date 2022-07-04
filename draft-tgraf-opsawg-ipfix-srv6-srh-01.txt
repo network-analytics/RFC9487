@@ -4,8 +4,8 @@
 
 Network Working Group                                            T. Graf
 Internet-Draft                                                  Swisscom
-Intended status: Informational                         February 12, 2022
-Expires: August 16, 2022
+Intended status: Informational                         February 18, 2022
+Expires: August 22, 2022
 
 
              Export of Segment Routing IPv6 Information in
@@ -34,7 +34,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 16, 2022.
+   This Internet-Draft will expire on August 22, 2022.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Graf                     Expires August 16, 2022                [Page 1]
+Graf                     Expires August 22, 2022                [Page 1]
 
-Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Graf                     Expires August 16, 2022                [Page 2]
+Graf                     Expires August 22, 2022                [Page 2]
 
-Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 
       Ordered basicList [RFC6313] of zero or more 128-bit IPv6 addresses
@@ -165,9 +165,9 @@ Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
 
-Graf                     Expires August 16, 2022                [Page 3]
+Graf                     Expires August 22, 2022                [Page 3]
 
-Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 
    +-------+--------------------+------------+-----------+-------------+
@@ -221,9 +221,9 @@ Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
 
-Graf                     Expires August 16, 2022                [Page 4]
+Graf                     Expires August 22, 2022                [Page 4]
 
-Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 
    +-------+--------------------+--------------------------------------+
@@ -261,8 +261,8 @@ Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 6.  Acknowledgements
 
-   I would like to thank Pierre Francois, Yao Liu and Paolo Lucente for
-   their review and valuable comments.
+   I would like to thank Pierre Francois, Yao Liu, Paolo Lucente and
+   Benoit Claise for their review and valuable comments.
 
 7.  References
 
@@ -277,9 +277,9 @@ Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
 
-Graf                     Expires August 16, 2022                [Page 5]
+Graf                     Expires August 22, 2022                [Page 5]
 
-Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 
    [RFC7012]  Claise, B., Ed. and B. Trammell, Ed., "Information Model
@@ -333,9 +333,9 @@ Appendix A.  IPFIX Encoding Example
 
 
 
-Graf                     Expires August 16, 2022                [Page 6]
+Graf                     Expires August 22, 2022                [Page 6]
 
-Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 
    +-----+------+-----+--------+---------------------------------------|
@@ -389,9 +389,9 @@ A.2.  Data Set
 
 
 
-Graf                     Expires August 16, 2022                [Page 7]
+Graf                     Expires August 22, 2022                [Page 7]
 
-Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 
        0                   1                   2                   3
@@ -445,9 +445,9 @@ Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
 
 
 
-Graf                     Expires August 16, 2022                [Page 8]
+Graf                     Expires August 22, 2022                [Page 8]
 
-Internet-DraftExport of Segment Routing IPv6 Information inFebruary 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information    February 2022
 
 
 Author's Address
@@ -501,4 +501,4 @@ Author's Address
 
 
 
-Graf                     Expires August 16, 2022                [Page 9]
+Graf                     Expires August 22, 2022                [Page 9]
