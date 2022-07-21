@@ -2,7 +2,7 @@
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd">
 <?rfc toc="yes"?>
 <?rfc tocompact="yes"?>
-<?rfc tocdepth="1"?>
+<?rfc tocdepth="2"?>
 <?rfc tocindent="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="2" month="July" year="2022"/>
+    <date day="21" month="July" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -122,8 +122,11 @@
           <t hangText="srhSegmentIPv6BasicList"><vspace blankLines="0"/>
           Ordered basicList <xref target="RFC6313"/> of zero or more 128-bit
           IPv6 addresses in the SRH that represents the SRv6 segment list. The
-          Segment List is encoded starting from the active segment of the SR
-          Policy.</t>
+          Segment List is encoded starting from the last segment of the SR
+          Policy. That is, the first element of the Segment List (Segment
+          List[0]) contains the last segment of the SR Policy, the second
+          element contains the penultimate segment of the SR Policy, and so
+          on.</t>
 
           <t hangText="srhSegmentIPv6ListSection"><vspace blankLines="0"/>
           Exposes the SRH Segment List as defined in section 2 of <xref
@@ -305,8 +308,11 @@
         TBD5 <vspace blankLines="0"/> Description: This Information Element
         identifies the Ordered basicList [RFC6313] of zero or more 128-bit
         IPv6 addresses in the SRH that represents the SRv6 segment list. The
-        Segment List is encoded starting from the active segment of the SR
-        Policy. <vspace blankLines="0"/> Abstract Data Type: basicList <vspace
+        Segment List is encoded starting from the last segment of the SR
+        Policy. That is, the first element of the Segment List (Segment
+        List[0]) contains the last segment of the SR Policy, the second
+        element contains the penultimate segment of the SR Policy, and so on.
+        <vspace blankLines="0"/> Abstract Data Type: basicList <vspace
         blankLines="0"/> Data Type Semantics: list <vspace blankLines="0"/>
         Reference: [RFC-to-be], RFC8754</t>
       </section>
@@ -479,8 +485,8 @@
 
     <section anchor="Acknowledgements" title="Acknowledgements">
       <t>The authors would like to thank Yao Liu, Paolo Lucente, Eduard
-      Vasilenko, and Alex Huang Feng for their review and valuable
-      comments.</t>
+      Vasilenko, Alex Huang Feng and Bruno Decraene for their review and
+      valuable comments.</t>
     </section>
   </middle>
 
@@ -521,16 +527,14 @@
     </references>
 
     <section anchor="Encoding-Example" title="IPFIX Encoding Examples">
-      <section anchor="Template-Record-and-Data-Set-with-Basic-List"
-               title="Template Record and Data Set with Basic List">
-        <t>This appendix represents three different encodings for the newly
-        introduced IEs, for the example values in the table 5. The three
-        different encodings uses the following IEs, respectively:
-        srhSegmentIPv6BasicList, srhSegmentIPv6ListSection, and
-        srhSectionIPv6.</t>
+      <t>This appendix represents three different encodings for the newly
+      introduced IEs, for the example values in the table 5. The three
+      different encodings uses the following IEs, respectively:
+      srhSegmentIPv6BasicList, srhSegmentIPv6ListSection, and
+      srhSectionIPv6.</t>
 
-        <t><figure>
-            <artwork><![CDATA[
+      <t><figure>
+          <artwork><![CDATA[
 
    +-----+------+-----+------------------+--------------------------|
    | SRH | SRH  | SRH | Active Segment   |       Segment List       |
@@ -546,25 +550,25 @@
 
      Table 5: three observed SRH headers and their routing protocol
        ]]></artwork>
-          </figure></t>
+        </figure></t>
 
-        <section anchor="Template-Record-and-Data-Set-with-BasicList"
-                 title="Template Record and Data Set with Segment BasicList">
-          <t>With this encoding, the examples in Table 5 are represented with
-          the following IEs:</t>
+      <section anchor="Template-Record-and-Data-Set-with-BasicList"
+               title="Template Record and Data Set with Segment Basic List">
+        <t>With this encoding, the examples in Table 5 are represented with
+        the following IEs:</t>
 
-          <t><list style="symbols">
-              <t>SR Flags =&gt; srhFlagsIPv6</t>
+        <t><list style="symbols">
+            <t>SR Flags =&gt; srhFlagsIPv6</t>
 
-              <t>SR Tag =&gt; srhTagIPv6</t>
+            <t>SR Tag =&gt; srhTagIPv6</t>
 
-              <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type</t>
+            <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type</t>
 
-              <t>Segment List =&gt; srhSegmentIPv6BasicList</t>
-            </list></t>
+            <t>Segment List =&gt; srhSegmentIPv6BasicList</t>
+          </list></t>
 
-          <t><figure>
-              <artwork><![CDATA[
+        <t><figure>
+            <artwork><![CDATA[
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -585,18 +589,18 @@
         Table 6: Template Record with Basic List Encoding Format
 
             ]]></artwork>
-            </figure></t>
+          </figure></t>
 
-          <t>In this example, the Template ID is 256, which will be used in
-          the Data Record. The field length for srhSegmentIPv6BasicList is
-          0xFFFF, which means the length of this IE is variable, and the
-          actual length of this IE is indicated by the List Length field in
-          the basicList format as per <xref target="RFC6313"/>.</t>
+        <t>In this example, the Template ID is 256, which will be used in the
+        Data Record. The field length for srhSegmentIPv6BasicList is 0xFFFF,
+        which means the length of this IE is variable, and the actual length
+        of this IE is indicated by the List Length field in the basicList
+        format as per <xref target="RFC6313"/>.</t>
 
-          <t>The data set is represented as follows:</t>
+        <t>The data set is represented as follows:</t>
 
-          <figure>
-            <artwork><![CDATA[
+        <figure>
+          <artwork><![CDATA[
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -679,26 +683,26 @@
            Table 7: Data Set Encoding Format for Basic List
 
             ]]></artwork>
-          </figure>
-        </section>
+        </figure>
+      </section>
 
-        <section anchor="Template-Record-and-Data-Set-with-Segment-List-Section"
-                 title="Template Record and Data Set with Segment List Section">
-          <t>With this encoding, the examples in Table 5 are represented with
-          the following IEs:</t>
+      <section anchor="Template-Record-and-Data-Set-with-Segment-List-Section"
+               title="Template Record and Data Set with Segment List Section">
+        <t>With this encoding, the examples in Table 5 are represented with
+        the following IEs:</t>
 
-          <t><list style="symbols">
-              <t>SR Flags =&gt; srhFlagsIPv6</t>
+        <t><list style="symbols">
+            <t>SR Flags =&gt; srhFlagsIPv6</t>
 
-              <t>SR Tag =&gt; srhTagIPv6</t>
+            <t>SR Tag =&gt; srhTagIPv6</t>
 
-              <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type</t>
+            <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type</t>
 
-              <t>Segment List =&gt; srhSegmentIPv6List</t>
-            </list></t>
+            <t>Segment List =&gt; srhSegmentIPv6List</t>
+          </list></t>
 
-          <t><figure>
-              <artwork><![CDATA[
+        <t><figure>
+            <artwork><![CDATA[
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -720,16 +724,16 @@
    Table 8: Template Record with Segment List Section Encoding Format
 
             ]]></artwork>
-            </figure></t>
+          </figure></t>
 
-          <t>In this example, the Template ID is 257, which will be used in
-          the Data Record. The field length for srhSegmentIPv6ListSection is
-          0xFFFF, which means the length of this IE is variable.</t>
+        <t>In this example, the Template ID is 257, which will be used in the
+        Data Record. The field length for srhSegmentIPv6ListSection is 0xFFFF,
+        which means the length of this IE is variable.</t>
 
-          <t>The data set is represented as follows:</t>
+        <t>The data set is represented as follows:</t>
 
-          <figure>
-            <artwork><![CDATA[
+        <figure>
+          <artwork><![CDATA[
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -801,22 +805,22 @@
        Table 9: Data Set Encoding Format for Segment List Section
 
             ]]></artwork>
-          </figure>
-        </section>
+        </figure>
+      </section>
 
-        <section anchor="Template-Record-and-Data-Set-with-SRH-Section"
-                 title="Template Record and Data Set with SRH Section">
-          <t>With this encoding, the examples in Table 5 are represented with
-          the following IEs:</t>
+      <section anchor="Template-Record-and-Data-Set-with-SRH-Section"
+               title="Template Record and Data Set with SRH Section">
+        <t>With this encoding, the examples in Table 5 are represented with
+        the following IEs:</t>
 
-          <t><list style="symbols">
-              <t>SR Flags + SR Tag + Segment List =&gt; srhSectionIPv6</t>
+        <t><list style="symbols">
+            <t>SR Flags + SR Tag + Segment List =&gt; srhSectionIPv6</t>
 
-              <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type</t>
-            </list></t>
+            <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type</t>
+          </list></t>
 
-          <t><figure>
-              <artwork><![CDATA[
+        <t><figure>
+            <artwork><![CDATA[
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -833,16 +837,16 @@
        Table 10: Template Record with SRH Section Encoding Format
 
             ]]></artwork>
-            </figure></t>
+          </figure></t>
 
-          <t>In this example, the Template ID is 258, which will be used in
-          the Data Record. The field length for srhSectionIPv6 is 0xFFFF,
-          which means the length of this IE is variable.</t>
+        <t>In this example, the Template ID is 258, which will be used in the
+        Data Record. The field length for srhSectionIPv6 is 0xFFFF, which
+        means the length of this IE is variable.</t>
 
-          <t>The data set is represented as follows:</t>
+        <t>The data set is represented as follows:</t>
 
-          <figure>
-            <artwork><![CDATA[
+        <figure>
+          <artwork><![CDATA[
 
     0                   1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -925,15 +929,14 @@
            Table 11: Data Set Encoding Format for SRH Section
 
             ]]></artwork>
-          </figure>
+        </figure>
 
-          <t>(*) The Length must be calculated to include the optional Type
-          Length Value objects.</t>
-        </section>
+        <t>(*) The Length must be calculated to include the optional Type
+        Length Value objects.</t>
       </section>
 
       <section anchor="Options-Template-Record-and-Data-Set-for-SRv6-Endpoint-Behavior"
-               title="Options Template Record and Data Set for SRv6 end point behavior Section">
+               title="Options Template Record and Data Set for SRv6 end point behavior and Locator Length">
         <t>This appendix provides an SRv6 EndPoint Bevahior Options Template
         example, for the values presented in Table 12. In the Options Template
         case, the srhEndPointIPv6 Information Element is a Scope field</t>
