@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-tgraf-opsawg-ipfix-srv6-srh-05"
+<rfc category="std" docName="draft-tgraf-opsawg-ipfix-srv6-srh-06"
      ipr="trust200902">
   <front>
     <title
@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="25" month="July" year="2022"/>
+    <date day="14" month="August" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -128,12 +128,12 @@
 
           <t hangText="srhSegmentIPv6BasicList"><vspace blankLines="0"/>
           Ordered basicList <xref target="RFC6313"/> of zero or more 128-bit
-          IPv6 addresses in the SRH that represents the SRv6 segment list. The
-          Segment List is encoded starting from the last segment of the SR
-          Policy. That is, the first element of the Segment List (Segment
-          List[0]) contains the last segment of the SR Policy, the second
-          element contains the penultimate segment of the SR Policy, and so
-          on.</t>
+          IPv6 addresses in the SRH that represents the SRv6 segment list. As
+          described in section 2 of <xref target="RFC8754"/>, the Segment List
+          is encoded starting from the last segment of the SR Policy. That is,
+          the first element of the Segment List (Segment List[0]) contains the
+          last segment of the SR Policy, the second element contains the
+          penultimate segment of the SR Policy, and so on.</t>
 
           <t hangText="srhSegmentIPv6ListSection"><vspace blankLines="0"/>
           Exposes the SRH Segment List as defined in section 2 of <xref
@@ -314,14 +314,14 @@
         <t>Name: srhSegmentIPv6BasicList <vspace blankLines="0"/> ElementID:
         TBD5 <vspace blankLines="0"/> Description: This Information Element
         identifies the Ordered basicList [RFC6313] of zero or more 128-bit
-        IPv6 addresses in the SRH that represents the SRv6 segment list. The
-        Segment List is encoded starting from the last segment of the SR
-        Policy. That is, the first element of the Segment List (Segment
-        List[0]) contains the last segment of the SR Policy, the second
-        element contains the penultimate segment of the SR Policy, and so on.
-        <vspace blankLines="0"/> Abstract Data Type: basicList <vspace
-        blankLines="0"/> Data Type Semantics: list <vspace blankLines="0"/>
-        Reference: [RFC-to-be], RFC8754</t>
+        IPv6 addresses in the SRH that represents the SRv6 segment list. As
+        described in section 2 of <xref target="RFC8754"/>, theSegment List is
+        encoded starting from the last segment of the SR Policy. That is, the
+        first element of the Segment List (Segment List[0]) contains the last
+        segment of the SR Policy, the second element contains the penultimate
+        segment of the SR Policy, and so on. <vspace blankLines="0"/> Abstract
+        Data Type: basicList <vspace blankLines="0"/> Data Type Semantics:
+        list <vspace blankLines="0"/> Reference: [RFC-to-be], RFC8754</t>
       </section>
 
       <section anchor="IANAsrhSegmentIPv6ListSection"
