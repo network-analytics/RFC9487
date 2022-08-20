@@ -5,10 +5,10 @@
 Network Working Group                                            T. Graf
 Internet-Draft                                                  Swisscom
 Intended status: Standards Track                               B. Claise
-Expires: 15 February 2023                                         Huawei
+Expires: 21 February 2023                                         Huawei
                                                              P. Francois
                                                                INSA-Lyon
-                                                          14 August 2022
+                                                          20 August 2022
 
 
              Export of Segment Routing IPv6 Information in
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 February 2023.
+   This Internet-Draft will expire on 21 February 2023.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Graf, et al.            Expires 15 February 2023                [Page 1]
+Graf, et al.            Expires 21 February 2023                [Page 1]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Graf, et al.            Expires 15 February 2023                [Page 2]
+Graf, et al.            Expires 21 February 2023                [Page 2]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -165,7 +165,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023                [Page 3]
+Graf, et al.            Expires 21 February 2023                [Page 3]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -221,7 +221,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023                [Page 4]
+Graf, et al.            Expires 21 February 2023                [Page 4]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -277,7 +277,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023                [Page 5]
+Graf, et al.            Expires 21 February 2023                [Page 5]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -333,7 +333,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023                [Page 6]
+Graf, et al.            Expires 21 February 2023                [Page 6]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -389,7 +389,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023                [Page 7]
+Graf, et al.            Expires 21 February 2023                [Page 7]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -445,7 +445,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023                [Page 8]
+Graf, et al.            Expires 21 February 2023                [Page 8]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -501,7 +501,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023                [Page 9]
+Graf, et al.            Expires 21 February 2023                [Page 9]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -557,7 +557,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 10]
+Graf, et al.            Expires 21 February 2023               [Page 10]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -613,7 +613,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 11]
+Graf, et al.            Expires 21 February 2023               [Page 11]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -669,7 +669,7 @@ A.1.  Template Record and Data Set with Segment Basic List
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 12]
+Graf, et al.            Expires 21 February 2023               [Page 12]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -725,7 +725,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 13]
+Graf, et al.            Expires 21 February 2023               [Page 13]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -781,7 +781,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 14]
+Graf, et al.            Expires 21 February 2023               [Page 14]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -837,7 +837,7 @@ A.2.  Template Record and Data Set with Segment List Section
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 15]
+Graf, et al.            Expires 21 February 2023               [Page 15]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -876,7 +876,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
       | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhActiveSegme|
       | = 0           |                               | ntIPv...=TBD15|
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      |    0xFFFF     |   2001:db8::1                                 |
+      | Length = 48   |   2001:db8::1                                 |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -893,7 +893,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 16]
+Graf, et al.            Expires 21 February 2023               [Page 16]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -911,7 +911,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
       |      ...      | srhFlagsIPv6  |        srhTagIPv6 = 456       |
       |               | = 0           |                               |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      | srhActiveSegme|    0xFFFF     |   2001:db8::4                 |
+      | srhActiveSegme| Length = 32   |   2001:db8::4                 |
       | ntIPv...=TBD15|               |                               |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
@@ -930,7 +930,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |      ...                      |srhFlagsIPv6=0 | srhTagIPv6... |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      | = 789         |         srhActiveSegment      |     0xFFFF    |
+      | = 789         |         srhActiveSegment      | Length = 16   |
       |               |         IPv6Type=TBD15        |               |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                        2001:db8::6 ...                        |
@@ -949,7 +949,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 17]
+Graf, et al.            Expires 21 February 2023               [Page 17]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -1005,7 +1005,7 @@ A.3.  Template Record and Data Set with SRH Section
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 18]
+Graf, et al.            Expires 21 February 2023               [Page 18]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -1061,7 +1061,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 19]
+Graf, et al.            Expires 21 February 2023               [Page 19]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -1117,7 +1117,7 @@ A.4.  Options Template Record and Data Set for SRv6 end point behavior
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 20]
+Graf, et al.            Expires 21 February 2023               [Page 20]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -1173,7 +1173,7 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 21]
+Graf, et al.            Expires 21 February 2023               [Page 21]
 
 Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
@@ -1229,4 +1229,4 @@ Authors' Addresses
 
 
 
-Graf, et al.            Expires 15 February 2023               [Page 22]
+Graf, et al.            Expires 21 February 2023               [Page 22]
