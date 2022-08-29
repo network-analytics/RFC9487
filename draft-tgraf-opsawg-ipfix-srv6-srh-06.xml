@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="20" month="August" year="2022"/>
+    <date day="29" month="August" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -104,10 +104,16 @@
       <t>SRv6 segment endpoint behaviors have been defined in <xref
       target="RFC8986"/> and describe how packets should be processed.</t>
 
-      <t>This document defines eleven new IPFIX Information Elements (IEs) and
-      three new subregistries within the "IPFIX Information Elements" registry
-      <xref target="RFC7012"/>, respectively for the new SRH dimensions, SRv6
-      endpoint behaviors and routing protocol and PCEP extensions.</t>
+      <t>This document specifies eleven new IPFIX Information Elements (IEs) 
+      and three new subregistries within the "IPFIX Information Elements" 
+      registry <xref target="RFC7012"/>, respectively for the new SRH 
+      dimensions, SRv6 endpoint behaviors and routing protocol and PCEP 
+      extensions.</t>
+
+      <t>With those new IEs, this specification supports the export of the 
+      SRv6 active segment and its control plane protocol, the SRv6 segment 
+      list, the next SRv6 node and its type, and then numbers of SRv6 
+      segments left.</t>
     </section>
 
     <section anchor="IE" title="IPFIX Information Elements">
@@ -170,8 +176,10 @@
       <t>By using srhSegmentIPv6BasicList(TBD5) or the
       srhSegmentIPv6ListSection (TBD6), srhActiveSegmentIPv6 (TBD4),
       srhSegmentIPv6sLeft (TBD7), srhActiveSegmentIPv6Type(TBD9), the
-      forwardingStatus(89), and some counters information, it is possible to
-      answer the following questions (amongst others):</t>
+      forwardingStatus(89) <xref target="RFC7270"/> 
+      <xref target="IANA-IPFIX"/>, and some counters information 
+      <xref target="IANA-IPFIX"/> , it is possible to answer the following 
+      questions (amongst others):</t>
 
       <t><list style="symbols">
           <t>how many packets are forwarded or dropped</t>
@@ -398,7 +406,7 @@
 |       | Segment Routing    | draft-ietf-lsr-isis-srv6-extensions  |
 +-------+--------------------+--------------------------------------+
 | TBD16 | BGP Segment        | [RFC-to-be],                         |
-|       | Routing Prefix-SID | draft-ietf-bess-srv6-services        |
+|       | Routing Prefix-SID | <xref target="RFC9252"/>             |
 +-------+--------------------+--------------------------------------+
 
   Table 3: "IPFIX IPv6 SRH Segment type" subregistry
@@ -527,6 +535,8 @@
     </references>
 
     <references title="Informative References">
+      <?rfc include='reference.RFC.7270'?>
+
       <?rfc include='reference.RFC.8754'?>
 
       <?rfc include='reference.RFC.8986'?>
