@@ -5,10 +5,10 @@
 Network Working Group                                            T. Graf
 Internet-Draft                                                  Swisscom
 Intended status: Standards Track                               B. Claise
-Expires: 2 March 2023                                             Huawei
+Expires: 7 March 2023                                             Huawei
                                                              P. Francois
                                                                INSA-Lyon
-                                                          29 August 2022
+                                                        3 September 2022
 
 
              Export of Segment Routing IPv6 Information in
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 March 2023.
+   This Internet-Draft will expire on 7 March 2023.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Graf, et al.              Expires 2 March 2023                  [Page 1]
+Graf, et al.              Expires 7 March 2023                  [Page 1]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Graf, et al.              Expires 2 March 2023                  [Page 2]
+Graf, et al.              Expires 7 March 2023                  [Page 2]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
    Three routing protocol extensions, OSPFv3 Extensions
@@ -165,9 +165,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.              Expires 2 March 2023                  [Page 3]
+Graf, et al.              Expires 7 March 2023                  [Page 3]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
    srhSegmentIPv6ListSection
@@ -221,9 +221,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.              Expires 2 March 2023                  [Page 4]
+Graf, et al.              Expires 7 March 2023                  [Page 4]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
 4.  IANA Considerations
@@ -277,9 +277,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.              Expires 2 March 2023                  [Page 5]
+Graf, et al.              Expires 7 March 2023                  [Page 5]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
    Note to the RFC-Editor:
@@ -291,195 +291,193 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 4.1.  srhFlagsIPv6
 
-   Name: srhFlagsIPv6
+   Name:  srhFlagsIPv6
 
-   ElementID: TBD1
+   ElementID:  TBD1
 
-   Description: This Information Element identifies the 8-bit flags
-   defined in the SRH.  Values for this Information Element are listed
-   in the "IPFIX IPv6 SRH Flags" registry, see [IANA-IPFIX].
-   srhFlagsIPv6 values must not be directly added to this "IPFIX IPv6
-   SRH Flags" registry.  They must instead be added to the "Segment
-   Routing Header Flags" registry.  Both the "IPFIX IPv6 SRH Flags" and
-   the "Segment Routing Header Flags" registries must be kept in synch.
-   Initial values in the registry are defined by the table below.
+   Description:  This Information Element identifies the 8-bit flags
+      defined in the SRH.  Values for this Information Element are
+      listed in the "IPFIX IPv6 SRH Flags" registry, see [IANA-IPFIX].
+      srhFlagsIPv6 values must not be directly added to this "IPFIX IPv6
+      SRH Flags" registry.  They must instead be added to the "Segment
+      Routing Header Flags" registry.  Both the "IPFIX IPv6 SRH Flags"
+      and the "Segment Routing Header Flags" registries must be kept in
+      synch.  Initial values in the registry are defined by the table
+      below.
 
-   +--------+-------------------+--------------------------------------+
-   | Value  |    Description    |              Reference               |
-   +--------+-------------------+--------------------------------------+
-   | 0-1    | Unassigned        |                                      |
-   +--------+-------------------+--------------------------------------+
-   | 2      | O-flag            |  [RFC-ietf-6man-spring-srv6-oam-13]  |
-   +--------+-------------------+--------------------------------------+
-   | 3-7    | Unassigned        |                                      |
-   +--------+-------------------+--------------------------------------+
+      +--------+-------------------+--------------------------------------+
+      | Value  |    Description    |              Reference               |
+      +--------+-------------------+--------------------------------------+
+      | 0-1    | Unassigned        |                                      |
+      +--------+-------------------+--------------------------------------+
+      | 2      | O-flag            |  [RFC-ietf-6man-spring-srv6-oam-13]  |
+      +--------+-------------------+--------------------------------------+
+      | 3-7    | Unassigned        |                                      |
+      +--------+-------------------+--------------------------------------+
 
-         Table 2: "IPFIX IPv6 SRH Flags" registry
+                   Table 2: "IPFIX IPv6 SRH Flags" registry
 
 
-   Abstract Data Type: unsigned8
+   Abstract Data Type:  unsigned8
 
-   Data Type Semantics: flags
+   Data Type Semantics:  flags
 
-   Reference: [RFC-to-be], RFC8754
+   Reference:  [RFC-to-be], RFC8754
 
 4.2.  srhTagIPv6
 
-   Name: srhTagIPv6
+   Name:  srhTagIPv6
 
-   ElementID: TBD2
-
-
+   ElementID:  TBD2
 
 
 
-Graf, et al.              Expires 2 March 2023                  [Page 6]
+
+Graf, et al.              Expires 7 March 2023                  [Page 6]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
-   Description: This Information Element identifies the 16-bit tag field
-   defined in the SRH that marks a packet as part of a class or group of
-   packets sharing the same set of properties.
+   Description:  This Information Element identifies the 16-bit tag
+      field defined in the SRH that marks a packet as part of a class or
+      group of packets sharing the same set of properties.
 
-   Abstract Data Type: unsigned16
+   Abstract Data Type:  unsigned16
 
-   Data Type Semantics: identifier
+   Data Type Semantics:  identifier
 
-   Reference: [RFC-to-be], RFC8754
+   Reference:  [RFC-to-be], RFC8754
 
 4.3.  srhSegmentIPv6
 
-   Name: srhSegmentIPv6
+   Name:  srhSegmentIPv6
 
-   ElementID: TBD3
+   ElementID:  TBD3
 
-   Description: This Information Element identifies the 128-bit IPv6
-   address that represents an SRv6 segment.
+   Description:  This Information Element identifies the 128-bit IPv6
+      address that represents an SRv6 segment.
 
-   Abstract Data Type: ipv6address
+   Abstract Data Type:  ipv6address
 
-   Data Type Semantics: default
+   Data Type Semantics:  default
 
-   Reference: [RFC-to-be], RFC8754
+   Reference:  [RFC-to-be], RFC8754
 
 4.4.  srhActiveSegmentIPv6
 
-   Name: srhActiveSegmentIPv6
+   Name:  srhActiveSegmentIPv6
 
-   ElementID: TBD4
+   ElementID:  TBD4
 
-   Description: This Information Element identifies the 128-bit IPv6
-   address that represents the active SRv6 segment.
+   Description:  This Information Element identifies the 128-bit IPv6
+      address that represents the active SRv6 segment.
 
-   Abstract Data Type: ipv6address
+   Abstract Data Type:  ipv6address
 
-   Data Type Semantics: default
+   Data Type Semantics:  default
 
-   Reference: [RFC-to-be], RFC8754
+   Reference:  [RFC-to-be], RFC8754
 
 4.5.  srhSegmentIPv6BasicList
 
-   Name: srhSegmentIPv6BasicList
+   Name:  srhSegmentIPv6BasicList
 
-   ElementID: TBD5
+   ElementID:  TBD5
 
-
-
-
+   Description:  This Information Element identifies the Ordered
 
 
-Graf, et al.              Expires 2 March 2023                  [Page 7]
+
+
+Graf, et al.              Expires 7 March 2023                  [Page 7]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
-   Description: This Information Element identifies the Ordered
-   basicList [RFC6313] of zero or more 128-bit IPv6 addresses in the SRH
-   that represents the SRv6 segment list.  As described in section 2 of
-   [RFC8754], theSegment List is encoded starting from the last segment
-   of the SR Policy.  That is, the first element of the Segment List
-   (Segment List[0]) contains the last segment of the SR Policy, the
-   second element contains the penultimate segment of the SR Policy, and
-   so on.
+      basicList [RFC6313] of zero or more 128-bit IPv6 addresses in the
+      SRH that represents the SRv6 segment list.  As described in
+      section 2 of [RFC8754], theSegment List is encoded starting from
+      the last segment of the SR Policy.  That is, the first element of
+      the Segment List (Segment List[0]) contains the last segment of
+      the SR Policy, the second element contains the penultimate segment
+      of the SR Policy, and so on.
 
-   Abstract Data Type: basicList
+   Abstract Data Type:  basicList
 
-   Data Type Semantics: list
+   Data Type Semantics:  list
 
-   Reference: [RFC-to-be], RFC8754
+   Reference:  [RFC-to-be], RFC8754
 
 4.6.  srhSegmentIPv6ListSection
 
-   Name: srhSegmentIPv6ListSection
+   Name:  srhSegmentIPv6ListSection
 
-   ElementID: TBD6
+   ElementID:  TBD6
 
-   Description: Exposes the SRH Segment List as defined in section 2 of
-   [RFC8754] as series of n octets.
+   Description:  Exposes the SRH Segment List as defined in section 2 of
+      [RFC8754] as series of n octets.
 
-   Abstract Data Type: octetArray
+   Abstract Data Type:  octetArray
 
-   Data Type Semantics: default
+   Data Type Semantics:  default
 
-   Reference: [RFC-to-be], RFC8754
+   Reference:  [RFC-to-be], RFC8754
 
 4.7.  srhSegmentIPv6sLeft
 
-   Name: srhSegmentIPv6sLeft
+   Name:  srhSegmentIPv6sLeft
 
-   ElementID: TBD7
+   ElementID:  TBD7
 
-   Description: This Information Element identifies the 8-bit unsigned
-   integer defining the number of route segments remaining to reach the
-   end of the segment list.
+   Description:  This Information Element identifies the 8-bit unsigned
+      integer defining the number of route segments remaining to reach
+      the end of the segment list.
 
-   Abstract Data Type: unsigned8
+   Abstract Data Type:  unsigned8
 
-   Data Type Semantics: quantity
+   Data Type Semantics:  quantity
 
-   Reference: [RFC-to-be], RFC8754
-
-
+   Reference:  [RFC-to-be], RFC8754
 
 
 
 
-Graf, et al.              Expires 2 March 2023                  [Page 8]
+
+
+
+Graf, et al.              Expires 7 March 2023                  [Page 8]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
 4.8.  srhSectionIPv6
 
-   Name: srhSectionIPv6
+   Name:  srhSectionIPv6
 
-   Description: This Information Element exposes the SRH and its TLV's
-   as defined in section 2 of [RFC8754] as series of n octets.
+   Description:  This Information Element exposes the SRH and its TLV's
+      as defined in section 2 of [RFC8754] as series of n octets.
 
-   Abstract Data Type: octetArray
+   Abstract Data Type:  octetArray
 
-   Data Type Semantics: default
+   Data Type Semantics:  default
 
-   Reference: [RFC-to-be], RFC8754
+   Reference:  [RFC-to-be], RFC8754
 
 4.9.  srhActiveSegmentIPv6Type
 
-   Name: srhActiveSegmentIPv6Type
+   Name:  srhActiveSegmentIPv6Type
 
-   ElementID: TBD9
+   ElementID:  TBD9
 
-   Description: This Information Element identifies the name of the
-   routing protocol or PCEP extension from where the active SRv6 segment
-   has been learned from.  Values for this Information Element are
-   listed in the "IPFIX IPv6 SRH Segment type" registry, see
-   [IANA-IPFIX].  Initial values in the registry are defined by the
-   table below.  New assignments of values will be administered by IANA
-   and are subject to Expert Review [RFC8126].  Experts need to check
-   definitions of new values for completeness, accuracy, and redundancy.
-
-
-
+   Description:  This Information Element identifies the name of the
+      routing protocol or PCEP extension from where the active SRv6
+      segment has been learned from.  Values for this Information
+      Element are listed in the "IPFIX IPv6 SRH Segment type" registry,
+      see [IANA-IPFIX].  Initial values in the registry are defined by
+      the table below.  New assignments of values will be administered
+      by IANA and are subject to Expert Review [RFC8126].  Experts need
+      to check definitions of new values for completeness, accuracy, and
+      redundancy.
 
 
 
@@ -501,96 +499,99 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.              Expires 2 March 2023                  [Page 9]
+
+
+Graf, et al.              Expires 7 March 2023                  [Page 9]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
-   +-------+--------------------+--------------------------------------+
-   | Value |     Description    |              Reference               |
-   +-------+--------------------+--------------------------------------+
-   | TBD12 | Unknown            | [RFC-to-be]                          |
-   |       |                    |                                      |
-   +-------+--------------------+--------------------------------------+
-   | TBD13 | Path Computation   | [RFC-to-be],                         |
-   |       | Element            | draft-ietf-pce-segment-routing-ipv6  |
-   +-------+--------------------+--------------------------------------+
-   | TBD14 | OSPFv3             | [RFC-to-be],                         |
-   |       | Segment Routing    | draft-li-ospf-ospfv3-srv6-extensions |
-   +-------+--------------------+--------------------------------------+
-   | TBD15 | IS-IS              | [RFC-to-be]                          |
-   |       | Segment Routing    | draft-ietf-lsr-isis-srv6-extensions  |
-   +-------+--------------------+--------------------------------------+
-   | TBD16 | BGP Segment        | [RFC-to-be],                         |
-   |       | Routing Prefix-SID | <xref target="RFC9252"/>             |
-   +-------+--------------------+--------------------------------------+
+      +-------+--------------------+--------------------------------------+
+      | Value |     Description    |              Reference               |
+      +-------+--------------------+--------------------------------------+
+      | TBD12 | Unknown            | [RFC-to-be]                          |
+      |       |                    |                                      |
+      +-------+--------------------+--------------------------------------+
+      | TBD13 | Path Computation   | [RFC-to-be],                         |
+      |       | Element            | draft-ietf-pce-segment-routing-ipv6  |
+      +-------+--------------------+--------------------------------------+
+      | TBD14 | OSPFv3             | [RFC-to-be],                         |
+      |       | Segment Routing    | draft-li-ospf-ospfv3-srv6-extensions |
+      +-------+--------------------+--------------------------------------+
+      | TBD15 | IS-IS              | [RFC-to-be]                          |
+      |       | Segment Routing    | draft-ietf-lsr-isis-srv6-extensions  |
+      +-------+--------------------+--------------------------------------+
+      | TBD16 | BGP Segment        | [RFC-to-be],                         |
+      |       | Routing Prefix-SID | <xref target="RFC9252"/>             |
+      +-------+--------------------+--------------------------------------+
 
-     Table 3: "IPFIX IPv6 SRH Segment type" subregistry
+              Table 3: "IPFIX IPv6 SRH Segment type" subregistry
 
 
-   Abstract Data Type: unsigned8
+   Abstract Data Type:  unsigned8
 
-   Data Type Semantics: identifier
+   Data Type Semantics:  identifier
 
-   Reference: [RFC-to-be]
+   Reference:  [RFC-to-be]
 
 4.10.  srhSegmentLocatorLength
 
-   Name: srhSegmentLocatorLength
+   Name:  srhSegmentLocatorLength
 
-   ElementID: TBD10
+   ElementID:  TBD10
 
-   Description: This Information Element identifies the number of
-   significant bits and together with srhSegmentIPv6 enables the
-   calculation of the SRv6 Locator.
+   Description:  This Information Element identifies the number of
+      significant bits and together with srhSegmentIPv6 enables the
+      calculation of the SRv6 Locator.
 
-   Abstract Data Type: unsigned8
+   Abstract Data Type:  unsigned8
 
-   Data Type Semantics: default
+   Data Type Semantics:  default
 
-   Reference: [RFC-to-be], RFC8986 Section 3.1
+   Reference:  [RFC-to-be], RFC8986 Section 3.1
 
 4.11.  srhSegmentEndpointBehavior
 
-   Name: srhSegmentEndpointBehavior
+   Name:  srhSegmentEndpointBehavior
 
 
 
 
-Graf, et al.              Expires 2 March 2023                 [Page 10]
+Graf, et al.              Expires 7 March 2023                 [Page 10]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
-   ElementID: TBD11
+   ElementID:  TBD11
 
-   Description: This Information Element identifies the 16-bit SRv6
-   Endpoint behavior.  Values for this Information Element are listed in
-   the "IPFIX SRV6 Endpoint Behavior" registry, see [IANA-IPFIX].
-   srhSegmentEndpointBehavior values must not be directly added to this
-   "IPFIX SRV6 Endpoint Behavior" registry.  They must instead be added
-   to the "Segment Routing SRv6 Endpoint Behaviors" registry.  Both the
-   "IPFIX SRV6 Endpoint Behavior" and the "Segment Routing SRv6 Endpoint
-   Behaviors" registries must be kept in synch.
+   Description:  This Information Element identifies the 16-bit SRv6
+      Endpoint behavior.  Values for this Information Element are listed
+      in the "IPFIX SRV6 Endpoint Behavior" registry, see [IANA-IPFIX].
+      srhSegmentEndpointBehavior values must not be directly added to
+      this "IPFIX SRV6 Endpoint Behavior" registry.  They must instead
+      be added to the "Segment Routing SRv6 Endpoint Behaviors"
+      registry.  Both the "IPFIX SRV6 Endpoint Behavior" and the
+      "Segment Routing SRv6 Endpoint Behaviors" registries must be kept
+      in synch.
 
-   +--------+-------+-------------------------------+------------------+
-   | Value  | Hex   | Endpoint Behavior | Reference | Change Controller|
-   +--------+-------+-------------------------------+------------------+
-   |        |       |                   |           |                  |
-   +--------+-------+-------------------------------+------------------+
-   |        |       |                   |           |                  |
-   +--------+-------+-------------------------------+------------------+
-   |        |       |                   |           |                  |
-   +--------+-------+-------------------------------+------------------+
+      +--------+-------+-------------------------------+------------------+
+      | Value  | Hex   | Endpoint Behavior | Reference | Change Controller|
+      +--------+-------+-------------------------------+------------------+
+      |        |       |                   |           |                  |
+      +--------+-------+-------------------------------+------------------+
+      |        |       |                   |           |                  |
+      +--------+-------+-------------------------------+------------------+
+      |        |       |                   |           |                  |
+      +--------+-------+-------------------------------+------------------+
 
-         Table 4: "IPFIX SRV6 Endpoint Behavior" registry
+               Table 4: "IPFIX SRV6 Endpoint Behavior" registry
 
 
-   Abstract Data Type: unsigned16
+   Abstract Data Type:  unsigned16
 
-   Data Type Semantics: identifier
+   Data Type Semantics:  identifier
 
-   Reference: [RFC-to-be], RFC8986 Section 4
+   Reference:  [RFC-to-be], RFC8986 Section 4
 
 5.  Operational Considerations
 
@@ -603,6 +604,20 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
    *  srhSegmentIPv6ListSection
 
+
+
+
+
+
+
+
+
+
+Graf, et al.              Expires 7 March 2023                 [Page 11]
+
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
+
+
    The srhSegmentIPv6BasicList encodes the SID list of IPv6 addresses
    with a basicList, specified in the IPFIX Structured Data [RFC6313].
    This encoding offers the advantage to the data collection that the
@@ -610,13 +625,6 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
    the need of post processing.  However, this method requires some
    extra processing on the exporter, to realize the BasicList data
    mapping.
-
-
-
-Graf, et al.              Expires 2 March 2023                 [Page 11]
-
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
-
 
    The srhSegmentIPv6ListSection, on the other hand, encodes the list of
    IPv6 addresses as an octetArray.  This doesn't impose any data flow
@@ -655,6 +663,17 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 8.1.  Normative References
 
+
+
+
+
+
+
+Graf, et al.              Expires 7 March 2023                 [Page 12]
+
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
+
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -664,15 +683,6 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
               "Export of Structured Data in IP Flow Information Export
               (IPFIX)", RFC 6313, DOI 10.17487/RFC6313, July 2011,
               <https://www.rfc-editor.org/info/rfc6313>.
-
-
-
-
-
-Graf, et al.              Expires 2 March 2023                 [Page 12]
-
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
-
 
    [RFC7012]  Claise, B., Ed. and B. Trammell, Ed., "Information Model
               for IP Flow Information Export (IPFIX)", RFC 7012,
@@ -688,19 +698,19 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
    [I-D.ietf-bess-srv6-services]
               Dawra, G., Talaulikar, K., Raszuk, R., Decraene, B.,
-              Zhuang, S., and J. Rabadan, "BGP Overlay Services Based on
-              Segment Routing over IPv6 (SRv6)", Work in Progress,
-              Internet-Draft, draft-ietf-bess-srv6-services-15, 22 March
-              2022, <https://datatracker.ietf.org/api/v1/doc/document/
-              draft-ietf-bess-srv6-services/>.
+              Zhuang, S., and J. Rabadan, "SRv6 BGP based Overlay
+              Services", Work in Progress, Internet-Draft, draft-ietf-
+              bess-srv6-services-15, 22 March 2022,
+              <https://www.ietf.org/archive/id/draft-ietf-bess-srv6-
+              services-15.txt>.
 
    [I-D.ietf-lsr-isis-srv6-extensions]
               Psenak, P., Filsfils, C., Bashandy, A., Decraene, B., and
               Z. Hu, "IS-IS Extensions to Support Segment Routing over
               IPv6 Dataplane", Work in Progress, Internet-Draft, draft-
               ietf-lsr-isis-srv6-extensions-18, 20 October 2021,
-              <https://datatracker.ietf.org/api/v1/doc/document/draft-
-              ietf-lsr-isis-srv6-extensions/>.
+              <https://www.ietf.org/archive/id/draft-ietf-lsr-isis-srv6-
+              extensions-18.txt>.
 
    [I-D.ietf-pce-segment-routing-ipv6]
               Li(Editor), C., Negi, M. S., Sivabalan, S., Koldychev, M.,
@@ -708,9 +718,17 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
               Communication Protocol (PCEP) Extensions for Segment
               Routing leveraging the IPv6 dataplane", Work in Progress,
               Internet-Draft, draft-ietf-pce-segment-routing-ipv6-14, 10
-              July 2022,
-              <https://datatracker.ietf.org/api/v1/doc/document/draft-
-              ietf-pce-segment-routing-ipv6/>.
+              July 2022, <https://www.ietf.org/archive/id/draft-ietf-
+              pce-segment-routing-ipv6-14.txt>.
+
+
+
+
+
+Graf, et al.              Expires 7 March 2023                 [Page 13]
+
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
+
 
    [I-D.ietf-spring-srv6-srh-compression]
               Cheng, W., Filsfils, C., Li, Z., Decraene, B., Cai, D.,
@@ -718,24 +736,15 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
               L., Raszuk, R., and C. Li, "Compressed SRv6 Segment List
               Encoding in SRH", Work in Progress, Internet-Draft, draft-
               ietf-spring-srv6-srh-compression-02, 11 July 2022,
-              <https://datatracker.ietf.org/api/v1/doc/document/draft-
-              ietf-spring-srv6-srh-compression/>.
-
-
-
-
-
-Graf, et al.              Expires 2 March 2023                 [Page 13]
-
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
-
+              <https://www.ietf.org/archive/id/draft-ietf-spring-srv6-
+              srh-compression-02.txt>.
 
    [I-D.li-lsr-ospfv3-srv6-extensions]
               Li, Z., Hu, Z., Cheng, D., Talaulikar, K., and P. Psenak,
               "OSPFv3 Extensions for SRv6", Work in Progress, Internet-
               Draft, draft-li-lsr-ospfv3-srv6-extensions-00, 15 January
-              2020, <https://datatracker.ietf.org/api/v1/doc/document/
-              draft-li-lsr-ospfv3-srv6-extensions/>.
+              2020, <https://www.ietf.org/archive/id/draft-li-lsr-
+              ospfv3-srv6-extensions-00.txt>.
 
    [IANA-IPFIX]
               "IANA, "IP Flow Information Export (IPFIX) Entities"",
@@ -772,18 +781,9 @@ Appendix A.  IPFIX Encoding Examples
 
 
 
-
-
-
-
-
-
-
-
-
-Graf, et al.              Expires 2 March 2023                 [Page 14]
+Graf, et al.              Expires 7 March 2023                 [Page 14]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
       +-----+------+-----+------------------+--------------------------|
@@ -837,9 +837,9 @@ A.1.  Template Record and Data Set with Segment Basic List
 
 
 
-Graf, et al.              Expires 2 March 2023                 [Page 15]
+Graf, et al.              Expires 7 March 2023                 [Page 15]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
    In this example, the Template ID is 256, which will be used in the
@@ -893,9 +893,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.              Expires 2 March 2023                 [Page 16]
+Graf, et al.              Expires 7 March 2023                 [Page 16]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
       |      255      |        List Length = 37       |semantic=      |
@@ -949,9 +949,9 @@ A.2.  Template Record and Data Set with Segment List Section
 
 
 
-Graf, et al.              Expires 2 March 2023                 [Page 17]
+Graf, et al.              Expires 7 March 2023                 [Page 17]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
    *  SR Tag => srhTagIPv6
@@ -1005,9 +1005,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.              Expires 2 March 2023                 [Page 18]
+Graf, et al.              Expires 7 March 2023                 [Page 18]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
       |      ...      |   2001:db8::2                                 |
@@ -1061,9 +1061,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.              Expires 2 March 2023                 [Page 19]
+Graf, et al.              Expires 7 March 2023                 [Page 19]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1117,9 +1117,9 @@ A.3.  Template Record and Data Set with SRH Section
 
 
 
-Graf, et al.              Expires 2 March 2023                 [Page 20]
+Graf, et al.              Expires 7 March 2023                 [Page 20]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1173,9 +1173,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.              Expires 2 March 2023                 [Page 21]
+Graf, et al.              Expires 7 March 2023                 [Page 21]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1229,9 +1229,9 @@ A.4.  Options Template Record and Data Set for SRv6 end point behavior
 
 
 
-Graf, et al.              Expires 2 March 2023                 [Page 22]
+Graf, et al.              Expires 7 March 2023                 [Page 22]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
          0                   1                   2                   3
@@ -1285,9 +1285,9 @@ Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
 
 
 
-Graf, et al.              Expires 2 March 2023                 [Page 23]
+Graf, et al.              Expires 7 March 2023                 [Page 23]
 
-Internet-Draft   IPFIX Segment Routing IPv6 Information      August 2022
+Internet-Draft   IPFIX Segment Routing IPv6 Information   September 2022
 
 
    (*) The Length MUST be calculated to include the optional Type Length
@@ -1341,4 +1341,4 @@ Authors' Addresses
 
 
 
-Graf, et al.              Expires 2 March 2023                 [Page 24]
+Graf, et al.              Expires 7 March 2023                 [Page 24]

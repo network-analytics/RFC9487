@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="29" month="August" year="2022"/>
+    <date day="03" month="September" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -104,16 +104,16 @@
       <t>SRv6 segment endpoint behaviors have been defined in <xref
       target="RFC8986"/> and describe how packets should be processed.</t>
 
-      <t>This document specifies eleven new IPFIX Information Elements (IEs) 
-      and three new subregistries within the "IPFIX Information Elements" 
-      registry <xref target="RFC7012"/>, respectively for the new SRH 
-      dimensions, SRv6 endpoint behaviors and routing protocol and PCEP 
+      <t>This document specifies eleven new IPFIX Information Elements (IEs)
+      and three new subregistries within the "IPFIX Information Elements"
+      registry <xref target="RFC7012"/>, respectively for the new SRH
+      dimensions, SRv6 endpoint behaviors and routing protocol and PCEP
       extensions.</t>
 
-      <t>With those new IEs, this specification supports the export of the 
-      SRv6 active segment and its control plane protocol, the SRv6 segment 
-      list, the next SRv6 node and its type, and then numbers of SRv6 
-      segments left.</t>
+      <t>With those new IEs, this specification supports the export of the
+      SRv6 active segment and its control plane protocol, the SRv6 segment
+      list, the next SRv6 node and its type, and then numbers of SRv6 segments
+      left.</t>
     </section>
 
     <section anchor="IE" title="IPFIX Information Elements">
@@ -176,10 +176,10 @@
       <t>By using srhSegmentIPv6BasicList(TBD5) or the
       srhSegmentIPv6ListSection (TBD6), srhActiveSegmentIPv6 (TBD4),
       srhSegmentIPv6sLeft (TBD7), srhActiveSegmentIPv6Type(TBD9), the
-      forwardingStatus(89) <xref target="RFC7270"/> 
-      <xref target="IANA-IPFIX"/>, and some counters information 
-      <xref target="IANA-IPFIX"/> , it is possible to answer the following 
-      questions (amongst others):</t>
+      forwardingStatus(89) <xref target="RFC7270"/> <xref
+      target="IANA-IPFIX"/>, and some counters information <xref
+      target="IANA-IPFIX"/> , it is possible to answer the following questions
+      (amongst others):</t>
 
       <t><list style="symbols">
           <t>how many packets are forwarded or dropped</t>
@@ -259,18 +259,31 @@
         </list></t>
 
       <section anchor="IANAsrhFlagsIPv6" title="srhFlagsIPv6">
-        <t>Name: srhFlagsIPv6</t>
-        <t>ElementID: TBD1</t>
-        <t>Description: This Information Element identifies the
-        8-bit flags defined in the SRH. Values for this Information Element
-        are listed in the "IPFIX IPv6 SRH Flags" registry, see <xref
-        target="IANA-IPFIX"/>. srhFlagsIPv6 values must not be directly added
-        to this "IPFIX IPv6 SRH Flags" registry. They must instead be added to
-        the "Segment Routing Header Flags" registry. Both the "IPFIX IPv6 SRH
-        Flags" and the "Segment Routing Header Flags" registries must be kept
-        in synch. Initial values in the registry are defined by the table
-        below. <figure>
-            <artwork><![CDATA[
+        <dl>
+          <dt>Name:</dt>
+
+          <dd>srhFlagsIPv6</dd>
+        </dl>
+
+        <dl>
+          <dt>ElementID:</dt>
+
+          <dd>TBD1</dd>
+        </dl>
+
+        <dl>
+          <dt>Description:</dt>
+
+          <dd>This Information Element identifies the 8-bit flags defined in
+          the SRH. Values for this Information Element are listed in the
+          "IPFIX IPv6 SRH Flags" registry, see <xref target="IANA-IPFIX"/>.
+          srhFlagsIPv6 values must not be directly added to this "IPFIX IPv6
+          SRH Flags" registry. They must instead be added to the "Segment
+          Routing Header Flags" registry. Both the "IPFIX IPv6 SRH Flags" and
+          the "Segment Routing Header Flags" registries must be kept in synch.
+          Initial values in the registry are defined by the table below.
+          <figure>
+              <artwork><![CDATA[
 
 +--------+-------------------+--------------------------------------+
 | Value  |    Description    |              Reference               |
@@ -282,113 +295,336 @@
 | 3-7    | Unassigned        |                                      |
 +--------+-------------------+--------------------------------------+
 
-      Table 2: "IPFIX IPv6 SRH Flags" registry
+             Table 2: "IPFIX IPv6 SRH Flags" registry
 
        ]]></artwork>
-          </figure></t>
-        <t>Abstract Data Type: unsigned8</t>
-        <t>Data Type Semantics: flags</t>
-        <t>Reference: [RFC-to-be], RFC8754</t>
+            </figure></dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>unsigned8</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>flags</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be], RFC8754</dd>
+        </dl>
       </section>
 
       <section anchor="IANAsrhTagIPv6" title="srhTagIPv6">
-        <t>Name: srhTagIPv6</t>
-        <t>ElementID: TBD2</t>
-        <t>Description: This Information Element identifies the
-        16-bit tag field defined in the SRH that marks a packet as part of a
-        class or group of packets sharing the same set of properties. </t>
-        <t>Abstract Data Type: unsigned16</t>
-        <t>Data Type Semantics: identifier</t>
-        <t>Reference: [RFC-to-be], RFC8754</t>
+        <dl>
+          <dt>Name:</dt>
+
+          <dd>srhTagIPv6</dd>
+        </dl>
+
+        <dl>
+          <dt>ElementID:</dt>
+
+          <dd>TBD2</dd>
+        </dl>
+
+        <dl>
+          <dt>Description:</dt>
+
+          <dd>This Information Element identifies the 16-bit tag field defined
+          in the SRH that marks a packet as part of a class or group of
+          packets sharing the same set of properties.</dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>unsigned16</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>identifier</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be], RFC8754</dd>
+        </dl>
       </section>
 
       <section anchor="IANAsrhSegmentIPv6" title="srhSegmentIPv6">
-        <t>Name: srhSegmentIPv6 </t>
-        <t>ElementID: TBD3</t>
-        <t>Description: This Information Element
-        identifies the 128-bit IPv6 address that represents an SRv6 segment.</t>
-        <t>Abstract Data Type: ipv6address</t>
-        <t>Data Type Semantics: default</t>
-        <t>Reference: [RFC-to-be], RFC8754</t>
+        <dl>
+          <dt>Name:</dt>
+
+          <dd>srhSegmentIPv6</dd>
+        </dl>
+
+        <dl>
+          <dt>ElementID:</dt>
+
+          <dd>TBD3</dd>
+        </dl>
+
+        <dl>
+          <dt>Description:</dt>
+
+          <dd>This Information Element identifies the 128-bit IPv6 address
+          that represents an SRv6 segment.</dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>ipv6address</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>default</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be], RFC8754</dd>
+        </dl>
       </section>
 
       <section anchor="IANAsrhActiveSegmentIPv6" title="srhActiveSegmentIPv6">
-        <t>Name: srhActiveSegmentIPv6 </t>
-        <t>ElementID: TBD4</t>
-        <t>Description: This Information Element
-        identifies the 128-bit IPv6 address that represents the active SRv6
-        segment.</t>
-        <t>Abstract Data Type: ipv6address</t>
-        <t>Data Type Semantics: default</t>
-        <t>Reference: [RFC-to-be], RFC8754</t>
+        <dl>
+          <dt>Name:</dt>
+
+          <dd>srhActiveSegmentIPv6</dd>
+        </dl>
+
+        <dl>
+          <dt>ElementID:</dt>
+
+          <dd>TBD4</dd>
+        </dl>
+
+        <dl>
+          <dt>Description:</dt>
+
+          <dd>This Information Element identifies the 128-bit IPv6 address
+          that represents the active SRv6 segment.</dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>ipv6address</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>default</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be], RFC8754</dd>
+        </dl>
       </section>
 
       <section anchor="IANAsrhSegmentIPv6BasicList"
                title="srhSegmentIPv6BasicList">
-        <t>Name: srhSegmentIPv6BasicList </t>
-        <t>ElementID: TBD5</t>
-        <t>Description: This Information Element
-        identifies the Ordered basicList [RFC6313] of zero or more 128-bit
-        IPv6 addresses in the SRH that represents the SRv6 segment list. As
-        described in section 2 of <xref target="RFC8754"/>, theSegment List is
-        encoded starting from the last segment of the SR Policy. That is, the
-        first element of the Segment List (Segment List[0]) contains the last
-        segment of the SR Policy, the second element contains the penultimate
-        segment of the SR Policy, and so on.</t>
-        <t>Abstract
-        Data Type: basicList</t>
-        <t>Data Type Semantics: list</t>
-        <t>Reference: [RFC-to-be], RFC8754</t>
+        <dl>
+          <dt>Name:</dt>
+
+          <dd>srhSegmentIPv6BasicList</dd>
+        </dl>
+
+        <dl>
+          <dt>ElementID:</dt>
+
+          <dd>TBD5</dd>
+        </dl>
+
+        <dl>
+          <dt>Description:</dt>
+
+          <dd>This Information Element identifies the Ordered basicList
+          [RFC6313] of zero or more 128-bit IPv6 addresses in the SRH that
+          represents the SRv6 segment list. As described in section 2 of <xref
+          target="RFC8754"/>, theSegment List is encoded starting from the
+          last segment of the SR Policy. That is, the first element of the
+          Segment List (Segment List[0]) contains the last segment of the SR
+          Policy, the second element contains the penultimate segment of the
+          SR Policy, and so on.</dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>basicList</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>list</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be], RFC8754</dd>
+        </dl>
       </section>
 
       <section anchor="IANAsrhSegmentIPv6ListSection"
                title="srhSegmentIPv6ListSection">
-        <t>Name: srhSegmentIPv6ListSection</t>
-        <t>ElementID: TBD6</t>
-        <t>Description: Exposes the SRH Segment
-        List as defined in section 2 of <xref target="RFC8754"/> as series of
-        n octets.</t>
-        <t>Abstract Data Type: octetArray</t>
-        <t>Data Type Semantics: default </t>
-        <t>Reference: [RFC-to-be], RFC8754</t>
+        <dl>
+          <dt>Name:</dt>
+
+          <dd>srhSegmentIPv6ListSection</dd>
+        </dl>
+
+        <dl>
+          <dt>ElementID:</dt>
+
+          <dd>TBD6</dd>
+        </dl>
+
+        <dl>
+          <dt>Description:</dt>
+
+          <dd>Exposes the SRH Segment List as defined in section 2 of <xref
+          target="RFC8754"/> as series of n octets.</dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>octetArray</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>default</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be], RFC8754</dd>
+        </dl>
       </section>
 
       <section anchor="IANAsrhSegmentIPv6sLeft" title="srhSegmentIPv6sLeft">
-        <t>Name: srhSegmentIPv6sLeft</t>
-        <t>ElementID: TBD7</t>
-        <t>Description: This Information Element
-        identifies the 8-bit unsigned integer defining the number of route
-        segments remaining to reach the end of the segment list.</t>
-        <t>Abstract Data Type: unsigned8 </t>
-        <t>Data Type Semantics: quantity</t>
-        <t>Reference: [RFC-to-be], RFC8754</t>
+        <dl>
+          <dt>Name:</dt>
+
+          <dd>srhSegmentIPv6sLeft</dd>
+        </dl>
+
+        <dl>
+          <dt>ElementID:</dt>
+
+          <dd>TBD7</dd>
+        </dl>
+
+        <dl>
+          <dt>Description:</dt>
+
+          <dd>This Information Element identifies the 8-bit unsigned integer
+          defining the number of route segments remaining to reach the end of
+          the segment list.</dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>unsigned8</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>quantity</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be], RFC8754</dd>
+        </dl>
       </section>
 
       <section anchor="IANAsrhSectionIPv6" title="srhSectionIPv6">
-        <t>Name: srhSectionIPv6</t>
-        <t>Description: This Information Element exposes
-        the SRH and its TLV's as defined in section 2 of <xref
-        target="RFC8754"/> as series of n octets.</t>
-        <t>Abstract Data Type: octetArray</t>
-        <t>Data Type
-        Semantics: default</t>
-        <t>Reference: [RFC-to-be], RFC8754</t>
+        <dl>
+          <dt>Name:</dt>
+
+          <dd>srhSectionIPv6</dd>
+        </dl>
+
+        <dl>
+          <dt>Description:</dt>
+
+          <dd>This Information Element exposes the SRH and its TLV's as
+          defined in section 2 of <xref target="RFC8754"/> as series of n
+          octets.</dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>octetArray</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>default</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be], RFC8754</dd>
+        </dl>
       </section>
 
       <section anchor="IANAsrhActiveSegmentIPv6Type"
                title="srhActiveSegmentIPv6Type">
-        <t>Name: srhActiveSegmentIPv6Type</t>
-        <t>ElementID: TBD9</t>
-        <t>Description: This Information Element
-        identifies the name of the routing protocol or PCEP extension from
-        where the active SRv6 segment has been learned from. Values for this
-        Information Element are listed in the "IPFIX IPv6 SRH Segment type"
-        registry, see <xref target="IANA-IPFIX"/>. Initial values in the
-        registry are defined by the table below. New assignments of values
-        will be administered by IANA and are subject to Expert Review <xref
-        target="RFC8126"/>. Experts need to check definitions of new values
-        for completeness, accuracy, and redundancy. <figure>
-            <artwork><![CDATA[
+        <dl>
+          <dt>Name:</dt>
+
+          <dd>srhActiveSegmentIPv6Type</dd>
+        </dl>
+
+        <dl>
+          <dt>ElementID:</dt>
+
+          <dd>TBD9</dd>
+        </dl>
+
+        <dl>
+          <dt>Description:</dt>
+
+          <dd>This Information Element identifies the name of the routing
+          protocol or PCEP extension from where the active SRv6 segment has
+          been learned from. Values for this Information Element are listed in
+          the "IPFIX IPv6 SRH Segment type" registry, see <xref
+          target="IANA-IPFIX"/>. Initial values in the registry are defined by
+          the table below. New assignments of values will be administered by
+          IANA and are subject to Expert Review <xref target="RFC8126"/>.
+          Experts need to check definitions of new values for completeness,
+          accuracy, and redundancy. <figure>
+              <artwork><![CDATA[
 
 +-------+--------------------+--------------------------------------+
 | Value |     Description    |              Reference               |
@@ -409,41 +645,99 @@
 |       | Routing Prefix-SID | <xref target="RFC9252"/>             |
 +-------+--------------------+--------------------------------------+
 
-  Table 3: "IPFIX IPv6 SRH Segment type" subregistry
+        Table 3: "IPFIX IPv6 SRH Segment type" subregistry
 
        ]]></artwork>
-          </figure></t>
-        <t>Abstract Data Type: unsigned8</t>
-        <t>Data Type Semantics: identifier </t>
-        <t>Reference: [RFC-to-be]</t>
+            </figure></dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>unsigned8</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>identifier</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be]</dd>
+        </dl>
       </section>
 
       <section anchor="IANAsrhSegmentLocatorLength"
                title="srhSegmentLocatorLength">
-        <t>Name: srhSegmentLocatorLength</t>
-        <t>ElementID: TBD10</t>
-        <t>Description: This Information Element
-        identifies the number of significant bits and together with
-        srhSegmentIPv6 enables the calculation of the SRv6 Locator.</t>
-        <t>Abstract Data Type: unsigned8</t>
-        <t>Data Type Semantics: default</t>
-        <t>Reference: [RFC-to-be], RFC8986 Section 3.1</t>
+        <dl>
+          <dt>Name:</dt>
+
+          <dd>srhSegmentLocatorLength</dd>
+        </dl>
+
+        <dl>
+          <dt>ElementID:</dt>
+
+          <dd>TBD10</dd>
+        </dl>
+
+        <dl>
+          <dt>Description:</dt>
+
+          <dd>This Information Element identifies the number of significant
+          bits and together with srhSegmentIPv6 enables the calculation of the
+          SRv6 Locator.</dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>unsigned8</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>default</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be], RFC8986 Section 3.1</dd>
+        </dl>
       </section>
 
       <section anchor="IANAsrhSegmentEndpointBehavior"
                title="srhSegmentEndpointBehavior">
-        <t>Name: srhSegmentEndpointBehavior</t>
-        <t>ElementID: TBD11</t>
-        <t>Description: This
-        Information Element identifies the 16-bit SRv6 Endpoint behavior.
-        Values for this Information Element are listed in the "IPFIX SRV6
-        Endpoint Behavior" registry, see <xref target="IANA-IPFIX"/>.
-        srhSegmentEndpointBehavior values must not be directly added to this
-        "IPFIX SRV6 Endpoint Behavior" registry. They must instead be added to
-        the "Segment Routing SRv6 Endpoint Behaviors" registry. Both the
-        "IPFIX SRV6 Endpoint Behavior" and the "Segment Routing SRv6 Endpoint
-        Behaviors" registries must be kept in synch.<figure>
-            <artwork><![CDATA[
+        <dl>
+          <dt>Name:</dt>
+
+          <dd>srhSegmentEndpointBehavior</dd>
+        </dl>
+
+        <dl>
+          <dt>ElementID:</dt>
+
+          <dd>TBD11</dd>
+        </dl>
+
+        <dl>
+          <dt>Description:</dt>
+
+          <dd>This Information Element identifies the 16-bit SRv6 Endpoint
+          behavior. Values for this Information Element are listed in the
+          "IPFIX SRV6 Endpoint Behavior" registry, see <xref
+          target="IANA-IPFIX"/>. srhSegmentEndpointBehavior values must not be
+          directly added to this "IPFIX SRV6 Endpoint Behavior" registry. They
+          must instead be added to the "Segment Routing SRv6 Endpoint
+          Behaviors" registry. Both the "IPFIX SRV6 Endpoint Behavior" and the
+          "Segment Routing SRv6 Endpoint Behaviors" registries must be kept in
+          synch.<figure>
+              <artwork><![CDATA[
 
 +--------+-------+-------------------------------+------------------+
 | Value  | Hex   | Endpoint Behavior | Reference | Change Controller|
@@ -455,13 +749,29 @@
 |        |       |                   |           |                  |
 +--------+-------+-------------------------------+------------------+
 
-      Table 4: "IPFIX SRV6 Endpoint Behavior" registry
+         Table 4: "IPFIX SRV6 Endpoint Behavior" registry
 
        ]]></artwork>
-          </figure></t>
-        <t>Abstract Data Type: unsigned16</t>
-        <t>Data Type Semantics: identifier </t>
-        <t>Reference: [RFC-to-be], RFC8986 Section 4</t>
+            </figure></dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>unsigned16</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>identifier</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be], RFC8986 Section 4</dd>
+        </dl>
       </section>
     </section>
 
