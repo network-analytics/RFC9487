@@ -833,8 +833,8 @@
 
     <section anchor="Acknowledgements" title="Acknowledgements">
       <t>The authors would like to thank Yao Liu, Paolo Lucente, Eduard
-      Vasilenko, Alex Huang Feng and Bruno Decraene for their review and
-      valuable comments.</t>
+      Vasilenko, Alex Huang Feng, Bruno Decraene and Mohamed Boucadair for
+      their review and valuable comments.</t>
     </section>
   </middle>
 
@@ -916,7 +916,7 @@
 
             <t>SR Tag =&gt; srhTagIPv6 (TBD2)</t>
 
-            <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type (TBD4)</t>
+            <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type (TBD9)</t>
 
             <t>Segment List =&gt; srhSegmentIPv6BasicList (TBD5)</t>
           </list></t>
@@ -1043,16 +1043,17 @@
       <section anchor="Template-Record-and-Data-Set-with-Segment-List-Section"
                title="Template Record and Data Set with Segment List Section">
         <t>With this encoding, the examples in Table 5 are represented with
-        the following IEs:</t>
+        the following IEs: &ldquo;=&gt;&rdquo; is used to indicate which IE is
+        mapped to a given information.</t>
 
         <t><list style="symbols">
-            <t>SR Flags =&gt; srhFlagsIPv6</t>
+            <t>SR Flags =&gt; srhFlagsIPv6 (TBD1)</t>
 
-            <t>SR Tag =&gt; srhTagIPv6</t>
+            <t>SR Tag =&gt; srhTagIPv6 (TBD2)</t>
 
-            <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type</t>
+            <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type (TBD9)</t>
 
-            <t>Segment List =&gt; srhSegmentIPv6List</t>
+            <t>Segment List =&gt; srhSegmentIPv6ListSection (TBD6)</t>
           </list></t>
 
         <t><figure>
@@ -1165,12 +1166,14 @@
       <section anchor="Template-Record-and-Data-Set-with-SRH-Section"
                title="Template Record and Data Set with SRH Section">
         <t>With this encoding, the examples in Table 5 are represented with
-        the following IEs:</t>
+        the following IEs: &ldquo;=&gt;&rdquo; is used to indicate which IE is
+        mapped to a given information.</t>
 
         <t><list style="symbols">
-            <t>SR Flags + SR Tag + Segment List =&gt; srhSectionIPv6</t>
+            <t>SR Flags + SR Tag + Segment List =&gt; srhSectionIPv6
+            (TBD8)</t>
 
-            <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type</t>
+            <t>Active Segment Type =&gt; srhActiveSegmentIPv6Type (TBD9)</t>
           </list></t>
 
         <t><figure>
