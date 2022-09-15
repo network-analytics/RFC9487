@@ -14,7 +14,7 @@
      ipr="trust200902">
   <front>
     <title
-    abbrev="IPFIX Segment Routing IPv6 Information">Export&nbsp;of&nbsp;Segment&nbsp;Routing&nbsp;IPv6&nbsp;Information&nbsp;in
+    abbrev="IPFIX Segment Routing over IPv6 Information">Export&nbsp;of&nbsp;Segment&nbsp;Routing&nbsp;over&nbsp;IPv6&nbsp;Information&nbsp;in
     IP&nbsp;Flow&nbsp;Information&nbsp;Export&nbsp;(IPFIX)</title>
 
     <author fullname="Thomas Graf" initials="T" surname="Graf">
@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="10" month="September" year="2022"/>
+    <date day="15" month="September" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -147,7 +147,7 @@
 
           <t hangText="srhSegmentIPv6ListSection"><vspace blankLines="0"/>
           Exposes the SRH Segment List as defined in Section 2 of <xref
-          target="RFC8754"/> as series of n octets.</t>
+          target="RFC8754"/> as series of n octets in IPFIX.</t>
 
           <t hangText="srhSegmentIPv6sLeft"><vspace blankLines="0"/> 8-bit
           unsigned integer defining the number of segments remaining to reach
@@ -155,7 +155,7 @@
 
           <t hangText="srhSectionIPv6"><vspace blankLines="0"/> Exposes the
           SRH and its TLVs as specified in Section 2 of <xref
-          target="RFC8754"/> as series of n octets.</t>
+          target="RFC8754"/> as series of n octets in IPFIX.</t>
 
           <t hangText="srhActiveSegmentIPv6Type"><vspace blankLines="0"/> Name
           of the routing protocol or PCEP extension from where the active SRv6
@@ -304,6 +304,13 @@
 
        ]]></artwork>
             </figure></dd>
+        </dl>
+
+        <dl>
+          <dt>Note to IANA:</dt>
+
+          <dd>Add a note to the registry so that new values are echoed in the
+          new "IPFIX SRv6 EndPoint Behavior</dd>
         </dl>
 
         <dl>
@@ -761,6 +768,13 @@
         </dl>
 
         <dl>
+          <dt>Note to IANA:</dt>
+
+          <dd>Add a note to the registry so that new values are echoed in the
+          new "IPFIX SRv6 EndPoint Behavior</dd>
+        </dl>
+
+        <dl>
           <dt>Abstract Data Type:</dt>
 
           <dd>unsigned16</dd>
@@ -847,14 +861,14 @@
       <?rfc include='reference.RFC.6313'?>
 
       <?rfc include='reference.RFC.8126'?>
+
+      <?rfc include='reference.RFC.8754'?>
     </references>
 
     <references title="Informative References">
       <?rfc include='reference.RFC.7270'?>
 
       <?rfc include='reference.RFC.8402'?>
-
-      <?rfc include='reference.RFC.8754'?>
 
       <?rfc include='reference.RFC.8986'?>
 
@@ -907,9 +921,9 @@
 
       <section anchor="Template-Record-and-Data-Set-with-BasicList"
                title="Template Record and Data Set with Segment Basic List">
-        <t>With this encoding, the examples in Table 5 are represented with
-        the following IEs: &ldquo;=&gt;&rdquo; is used to indicate which IE is
-        mapped to a given information.</t>
+        <t>With encoding in Figure 1, the examples in Table 5 are represented
+        with the following IEs: &ldquo;=&gt;&rdquo; is used to indicate which
+        IE is mapped to a given information.</t>
 
         <t><list style="symbols">
             <t>SR Flags =&gt; srhFlagsIPv6 (TBD1)</t>
@@ -1042,9 +1056,9 @@
 
       <section anchor="Template-Record-and-Data-Set-with-Segment-List-Section"
                title="Template Record and Data Set with Segment List Section">
-        <t>With this encoding, the examples in Table 5 are represented with
-        the following IEs: &ldquo;=&gt;&rdquo; is used to indicate which IE is
-        mapped to a given information.</t>
+        <t>With encoding in Figure 3, the examples in Table 5 are represented
+        with the following IEs: &ldquo;=&gt;&rdquo; is used to indicate which
+        IE is mapped to a given information.</t>
 
         <t><list style="symbols">
             <t>SR Flags =&gt; srhFlagsIPv6 (TBD1)</t>
@@ -1165,9 +1179,9 @@
 
       <section anchor="Template-Record-and-Data-Set-with-SRH-Section"
                title="Template Record and Data Set with SRH Section">
-        <t>With this encoding, the examples in Table 5 are represented with
-        the following IEs: &ldquo;=&gt;&rdquo; is used to indicate which IE is
-        mapped to a given information.</t>
+        <t>With encoding in Figure 5, the examples in Table 5 are represented
+        with the following IEs: &ldquo;=&gt;&rdquo; is used to indicate which
+        IE is mapped to a given information.</t>
 
         <t><list style="symbols">
             <t>SR Flags + SR Tag + Segment List =&gt; srhSectionIPv6
