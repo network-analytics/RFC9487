@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="15" month="September" year="2022"/>
+    <date day="18" month="September" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -309,8 +309,9 @@
         <dl>
           <dt>Note to IANA:</dt>
 
-          <dd>Add a note to the registry so that new values are echoed in the
-          new "IPFIX SRv6 EndPoint Behavior</dd>
+          <dd>Add a note to the "IPFIX SRV6 Endpoint Behavior" registry so
+          that new values are echoed in the new "IPFIX SRv6 EndPoint
+          Behavior</dd>
         </dl>
 
         <dl>
@@ -770,8 +771,9 @@
         <dl>
           <dt>Note to IANA:</dt>
 
-          <dd>Add a note to the registry so that new values are echoed in the
-          new "IPFIX SRv6 EndPoint Behavior</dd>
+          <dd>Add a note to the "IPFIX SRV6 Endpoint Behavior" registry so
+          that new values are echoed in the new "IPFIX SRv6 EndPoint
+          Behavior</dd>
         </dl>
 
         <dl>
