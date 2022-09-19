@@ -842,12 +842,12 @@
 
       <section anchor="OpsMultipleSRH"
                title="Multiple Segment Routing Headers">
-        <t><xref target="RFC8200"/> describes the support of multiple extenion
-        headers in one IPv6 packet. Allowing the use of multiple SRH per SRv6
-        packet. The export of the same IE multiple times in one data-record
-        and data-template is supported and described in Section 8 of <xref
-        target="RFC7011"/> that the order within the packet SHOULD be
-        preserved in the IPFIX export. If the network node is not capable to
+        <t><xref target="RFC8200"/> describes the support of multiple
+        extension headers in one IPv6 packet. Allowing the use of multiple SRH
+        per SRv6 packet. The export of the same IE multiple times in one
+        data-record and data-template is supported and the order within the
+        packet SHOULD be preserved in the IPFIX export according to Section 8
+        of <xref target="RFC7011"/>. If the network node is not capable to
         export IPFIX for more than one SRH, it MUST export IPFIX for the
         active SRH.</t>
       </section>
