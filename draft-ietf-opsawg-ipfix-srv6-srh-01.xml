@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="18" month="September" year="2022"/>
+    <date day="19" month="September" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -839,6 +839,18 @@
         section 3.1 <xref target="RFC8986"/>, determines the common most
         significant bits.</t>
       </section>
+
+      <section anchor="OpsMultipleSRH"
+               title="Multiple Segment Routing Headers">
+        <t><xref target="RFC8200"/> describes the support of multiple extenion
+        headers in one IPv6 packet. Allowing the use of multiple SRH per SRv6
+        packet. The export of the same IE multiple times in one data-record
+        and data-template is supported and described in Section 8 of <xref
+        target="RFC7011"/> that the order within the packet SHOULD be
+        preserved in the IPFIX export. If the network node is not capable to
+        export IPFIX for more than one SRH, it MUST export IPFIX for the
+        active SRH.</t>
+      </section>
     </section>
 
     <section anchor="Security" title="Security Considerations">
@@ -858,6 +870,8 @@
     <references title="Normative References">
       <?rfc include='reference.RFC.2119'?>
 
+      <?rfc include='reference.RFC.7011'?>
+
       <?rfc include='reference.RFC.7012'?>
 
       <?rfc include='reference.RFC.6313'?>
@@ -869,6 +883,8 @@
 
     <references title="Informative References">
       <?rfc include='reference.RFC.7270'?>
+
+      <?rfc include='reference.RFC.8200'?>
 
       <?rfc include='reference.RFC.8402'?>
 
