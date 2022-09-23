@@ -73,9 +73,9 @@
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
-      information elements to identify a set of Segment Routing over IPv6 (the
-      SRv6) related information such as data contained in Segment Routing
-      Header (SRH) dimensions, the SRv6 control plane, and the SRv6 behavior
+      Information Elements to identify a set of Segment Routing over IPv6
+      (SRv6) related information such as data contained in a Segment Routing
+      Header (SRH), the SRv6 control plane, and the SRv6 behavior
       that traffic is being forwarded with.</t>
     </abstract>
 
@@ -102,15 +102,14 @@
       Communication Protocol (PCEP) Extension</xref> are defined to propagate
       Segment Identifiers (SIDs).</t>
 
-      <t>SRv6 segment endpoint behaviors have been defined in <xref
-      target="RFC8986"/> and describe how packets should be processed.</t>
+      <t>SRv6 segment endpoint behaviors are defined in <xref
+      target="RFC8986"/> and describe how packets should be processed by intermediate nodes.</t>
 
       <t>This document specifies eleven new IPFIX Information Elements (IEs)
-      and three new subregistries within the "IPFIX Information Elements"
+      and a new subregistry within the "IPFIX Information Elements"
       registry <xref target="RFC7012"/>, for SRv6 purposes.</t>
 
-      <t>With those new IEs, this specification supports the export of the
-      SRv6 active segment and its control plane protocol, the SRv6 segment
+      <t>These IEs are used to export SRv6 active segment and its control plane protocol, the SRv6 segment
       list, the next SRv6 node and its type, and then numbers of SRv6 segments
       left.</t>
 
