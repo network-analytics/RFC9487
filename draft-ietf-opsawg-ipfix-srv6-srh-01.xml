@@ -14,7 +14,7 @@
      ipr="trust200902">
   <front>
     <title
-    abbrev="IPFIX Segment Routing over IPv6 Information">Export&nbsp;of&nbsp;Segment&nbsp;Routing&nbsp;over&nbsp;IPv6&nbsp;Information&nbsp;in
+    abbrev="IPFIX Segment Routing over IPv6">Export&nbsp;of&nbsp;Segment&nbsp;Routing&nbsp;over&nbsp;IPv6&nbsp;Information&nbsp;in
     IP&nbsp;Flow&nbsp;Information&nbsp;Export&nbsp;(IPFIX)</title>
 
     <author fullname="Thomas Graf" initials="T" surname="Graf">
@@ -69,22 +69,15 @@
       </address>
     </author>
 
-    <date day="19" month="September" year="2022"/>
+    <date day="23" month="September" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
-      information elements to identify a set of Segment Routing over IPv6 (the
-      SRv6) related information such as data contained in Segment Routing
-      Header (SRH) dimensions, the SRv6 control plane, and the SRv6 behavior
-      that traffic is being forwarded with.</t>
+      Information Elements to identify a set of Segment Routing over IPv6
+      (SRv6) related information such as data contained in a Segment Routing
+      Header (SRH), the SRv6 control plane, and the SRv6 behavior that traffic
+      is being forwarded with.</t>
     </abstract>
-
-    <note title="Requirements Language">
-      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-      document are to be interpreted as described in <xref
-      target="RFC2119">RFC 2119</xref>.</t>
-    </note>
   </front>
 
   <middle>
@@ -102,22 +95,30 @@
       Communication Protocol (PCEP) Extension</xref> are defined to propagate
       Segment Identifiers (SIDs).</t>
 
-      <t>SRv6 segment endpoint behaviors have been defined in <xref
-      target="RFC8986"/> and describe how packets should be processed.</t>
+      <t>SRv6 segment endpoint behaviors are defined in <xref
+      target="RFC8986"/> and describe how packets should be processed by
+      intermediate nodes.</t>
 
       <t>This document specifies eleven new IPFIX Information Elements (IEs)
       and three new subregistries within the "IPFIX Information Elements"
       registry <xref target="RFC7012"/>, for SRv6 purposes.</t>
 
-      <t>With those new IEs, this specification supports the export of the
-      SRv6 active segment and its control plane protocol, the SRv6 segment
-      list, the next SRv6 node and its type, and then numbers of SRv6 segments
-      left.</t>
+      <t>These IEs are used to export SRv6 active segment and its control
+      plane protocol, the SRv6 segment list, the next SRv6 node and its type,
+      and then numbers of SRv6 segments left.</t>
 
       <t>Some examples are provided in Appendix A.</t>
+    </section>
 
-      <t>This document makes use of terms defined in <xref
-      target="RFC8402"/>.</t>
+    <section anchor="notation" title="Terminology">
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+      "OPTIONAL" in this document are to be interpreted as described in BCP 14
+      <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when,
+      they appear in all capitals, as shown here.</t>
+
+      <t>This document makes use of the terms defined in <xref
+      target="RFC7011"/> and <xref target="RFC8402"/>.</t>
     </section>
 
     <section anchor="IE" title="IPFIX Information Elements">
@@ -349,9 +350,9 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This Information Element identifies the 16-bit tag field defined
-          in the SRH that marks a packet as part of a class or group of
-          packets sharing the same set of properties.</dd>
+          <dd>This IE identifies the 16-bit tag field defined in the SRH that
+          marks a packet as part of a class or group of packets sharing the
+          same set of properties.</dd>
         </dl>
 
         <dl>
@@ -587,9 +588,8 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This Information Element exposes the SRH and its TLV's as
-          defined in section 2 of <xref target="RFC8754"/> as series of n
-          octets.</dd>
+          <dd>This IE exposes the SRH and its TLVs as defined in Section 2 of
+          <xref target="RFC8754"/> as series of n octets.</dd>
         </dl>
 
         <dl>
@@ -628,15 +628,15 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This Information Element identifies the name of the routing
-          protocol or PCEP extension from where the active SRv6 segment has
-          been learned from. Values for this Information Element are listed in
-          the "IPFIX IPv6 SRH Segment type" subregistry, see <xref
-          target="IANA-IPFIX"/>. Initial values in the registry are defined by
-          the table below. New assignments of values will be administered by
-          IANA and are subject to Expert Review <xref target="RFC8126"/>.
-          Experts need to check definitions of new values for completeness,
-          accuracy, and redundancy. <figure>
+          <dd>This IE identifies the name of the routing protocol or PCEP
+          extension from where the active SRv6 segment has been learned from.
+          Values for this Information Element are listed in the "IPFIX IPv6
+          SRH Segment type" subregistry, see <xref target="IANA-IPFIX"/>.
+          Initial values in the registry are defined by the table below. New
+          assignments of values will be administered by IANA and are subject
+          to Expert Review <xref target="RFC8126"/>. Experts need to check
+          definitions of new values for completeness, accuracy, and
+          redundancy. <figure>
               <artwork><![CDATA[
 
 +-------+--------------------+--------------------------------------+
@@ -877,6 +877,8 @@
       <?rfc include='reference.RFC.6313'?>
 
       <?rfc include='reference.RFC.8126'?>
+
+      <?rfc include='reference.RFC.8174'?>
 
       <?rfc include='reference.RFC.8754'?>
     </references>
@@ -1189,7 +1191,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-       Figure 4: Data Set Encoding Format for Segment List Section
+     Figure 4: Data Set Encoding Format for Segment List Section
 
             ]]></artwork>
         </figure>
