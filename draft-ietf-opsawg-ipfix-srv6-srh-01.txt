@@ -1167,7 +1167,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6      September 2022
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-          Figure 4: Data Set Encoding Format for Segment List Section
+        Figure 4: Data Set Encoding Format for Segment List Section
 
 
 
