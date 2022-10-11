@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-opsawg-ipfix-srv6-srh-01"
+<rfc category="std" docName="draft-ietf-opsawg-ipfix-srv6-srh-02"
      ipr="trust200902">
   <front>
     <title
@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="24" month="September" year="2022"/>
+    <date day="11" month="October" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -280,39 +280,9 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This Information Element identifies the 8-bit flags defined in
-          the SRH. Values for this Information Element are listed in the
-          "IPFIX IPv6 SRH Flags" registry, see <xref target="IANA-IPFIX"/>.
-          srhFlagsIPv6 values must not be directly added to this "IPFIX IPv6
-          SRH Flags" registry. They must instead be added to the "Segment
-          Routing Header Flags" registry. Both the "IPFIX IPv6 SRH Flags" and
-          the "Segment Routing Header Flags" registries must be kept in synch.
-          Initial values in the registry are defined by the table below.
-          <figure>
-              <artwork><![CDATA[
-
-+--------+-------------------+--------------------------------------+
-| Value  |    Description    |              Reference               |
-+--------+-------------------+--------------------------------------+
-| 0-1    | Unassigned        |                                      |
-+--------+-------------------+--------------------------------------+
-| 2      | O-flag            |  [RFC-ietf-6man-spring-srv6-oam-13]  |
-+--------+-------------------+--------------------------------------+
-| 3-7    | Unassigned        |                                      |
-+--------+-------------------+--------------------------------------+
-
-             Table 2: "IPFIX IPv6 SRH Flags" registry
-
-       ]]></artwork>
-            </figure></dd>
-        </dl>
-
-        <dl>
-          <dt>Note to IANA:</dt>
-
-          <dd>Add a note to the "IPFIX SRV6 Endpoint Behavior" registry so
-          that new values are echoed in the new "IPFIX SRv6 EndPoint
-          Behavior</dd>
+        <dd>This Information Element the 8-bit flags defined in the SRH.
+          Assigned flags and their meanings are provided in the "Segment
+          Routing Header Flags" IANA registry.</dd>
         </dl>
 
         <dl>
@@ -328,10 +298,19 @@
         </dl>
 
         <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>RFC8754. See the assignments in the "Segment
+          Routing Header Flags" IANA registry at https://www.iana.org/assignments/ipv6-
+parameters/ipv6-parameters.xhtml#segment-routing-header-flags</dd>
+        </dl>
+
+        <dl>
           <dt>Reference:</dt>
 
-          <dd>[RFC-to-be], RFC8754</dd>
+          <dd>[RFC-to-be]</dd>
         </dl>
+
       </section>
 
       <section anchor="IANAsrhTagIPv6" title="srhTagIPv6">
@@ -368,10 +347,17 @@
         </dl>
 
         <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>RFC8754</dd>
+        </dl>
+
+        <dl>
           <dt>Reference:</dt>
 
-          <dd>[RFC-to-be], RFC8754</dd>
+          <dd>[RFC-to-be]</dd>
         </dl>
+
       </section>
 
       <section anchor="IANAsrhSegmentIPv6" title="srhSegmentIPv6">
@@ -407,10 +393,17 @@
         </dl>
 
         <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>RFC8754</dd>
+        </dl>
+
+        <dl>
           <dt>Reference:</dt>
 
-          <dd>[RFC-to-be], RFC8754</dd>
+          <dd>[RFC-to-be]</dd>
         </dl>
+
       </section>
 
       <section anchor="IANAsrhActiveSegmentIPv6" title="srhActiveSegmentIPv6">
@@ -446,10 +439,17 @@
         </dl>
 
         <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>RFC8754</dd>
+        </dl>
+
+        <dl>
           <dt>Reference:</dt>
 
-          <dd>[RFC-to-be], RFC8754</dd>
+          <dd>[RFC-to-be]</dd>
         </dl>
+
       </section>
 
       <section anchor="IANAsrhSegmentIPv6BasicList"
@@ -492,10 +492,17 @@
         </dl>
 
         <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>RFC8754</dd>
+        </dl>
+
+        <dl>
           <dt>Reference:</dt>
 
-          <dd>[RFC-to-be], RFC8754</dd>
+          <dd>[RFC-to-be]</dd>
         </dl>
+
       </section>
 
       <section anchor="IANAsrhSegmentIPv6ListSection"
@@ -532,10 +539,17 @@
         </dl>
 
         <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>RFC8754</dd>
+        </dl>
+
+        <dl>
           <dt>Reference:</dt>
 
-          <dd>[RFC-to-be], RFC8754</dd>
+          <dd>[RFC-to-be]</dd>
         </dl>
+
       </section>
 
       <section anchor="IANAsrhSegmentIPv6sLeft" title="srhSegmentIPv6sLeft">
@@ -572,10 +586,17 @@
         </dl>
 
         <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>RFC8754</dd>
+        </dl>
+
+        <dl>
           <dt>Reference:</dt>
 
-          <dd>[RFC-to-be], RFC8754</dd>
+          <dd>[RFC-to-be]</dd>
         </dl>
+
       </section>
 
       <section anchor="IANAsrhSectionIPv6" title="srhSectionIPv6">
@@ -605,10 +626,17 @@
         </dl>
 
         <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>RFC8754</dd>
+        </dl>
+
+        <dl>
           <dt>Reference:</dt>
 
-          <dd>[RFC-to-be], RFC8754</dd>
+          <dd>[RFC-to-be]</dd>
         </dl>
+
       </section>
 
       <section anchor="IANAsrhActiveSegmentIPv6Type"
@@ -640,7 +668,7 @@
               <artwork><![CDATA[
 
 +-------+--------------------+--------------------------------------+
-| Value |     Description    |              Reference               |
+| Value |     Description    |       Additional Information         |
 +-------+--------------------+--------------------------------------+
 | TBD12 | Unknown            | [RFC-to-be]                          |
 |       |                    |                                      |
@@ -677,10 +705,17 @@
         </dl>
 
         <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>[RFC-to-be]</dd>
+        </dl>
+
+        <dl>
           <dt>Reference:</dt>
 
           <dd>[RFC-to-be]</dd>
         </dl>
+
       </section>
 
       <section anchor="IANAsrhSegmentLocatorLength"
@@ -718,10 +753,17 @@
         </dl>
 
         <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>RFC8986 Section 3.1</dd>
+        </dl>
+
+        <dl>
           <dt>Reference:</dt>
 
-          <dd>[RFC-to-be], RFC8986 Section 3.1</dd>
+          <dd>[RFC-to-be]</dd>
         </dl>
+
       </section>
 
       <section anchor="IANAsrhSegmentEndpointBehavior"
@@ -742,38 +784,9 @@
           <dt>Description:</dt>
 
           <dd>This Information Element identifies the 16-bit SRv6 Endpoint
-          behavior. Values for this Information Element are listed in the
-          "IPFIX SRV6 Endpoint Behavior" registry, see <xref
-          target="IANA-IPFIX"/>. srhSegmentEndpointBehavior values must not be
-          directly added to this "IPFIX SRV6 Endpoint Behavior" registry. They
-          must instead be added to the "Segment Routing SRv6 Endpoint
-          Behaviors" registry. Both the "IPFIX SRV6 Endpoint Behavior" and the
-          "Segment Routing SRv6 Endpoint Behaviors" registries must be kept in
-          synch.<figure>
-              <artwork><![CDATA[
-
-+--------+-------+-------------------------------+------------------+
-| Value  | Hex   | Endpoint Behavior | Reference | Change Controller|
-+--------+-------+-------------------------------+------------------+
-|        |       |                   |           |                  |
-+--------+-------+-------------------------------+------------------+
-|        |       |                   |           |                  |
-+--------+-------+-------------------------------+------------------+
-|        |       |                   |           |                  |
-+--------+-------+-------------------------------+------------------+
-
-         Table 4: "IPFIX SRV6 Endpoint Behavior" registry
-
-       ]]></artwork>
-            </figure></dd>
-        </dl>
-
-        <dl>
-          <dt>Note to IANA:</dt>
-
-          <dd>Add a note to the "IPFIX SRV6 Endpoint Behavior" registry so
-          that new values are echoed in the new "IPFIX SRv6 EndPoint
-          Behavior</dd>
+          behavior. Assigned values and their meanings are provided in the
+          "SRV6 Endpoint Behavior" IANA registry <xref
+          target="IANA-IPFIX"/>.</dd>
         </dl>
 
         <dl>
@@ -789,10 +802,17 @@
         </dl>
 
         <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>RFC8986 Section 4. See the assignments in the "SRV6 Endpoint Behavior" IANA registry at https://www.iana.org/assignments/segment-routing/segment-routing.xhtml#srv6-endpoint-behaviors</dd>
+        </dl>
+
+        <dl>
           <dt>Reference:</dt>
 
-          <dd>[RFC-to-be], RFC8986 Section 4</dd>
+          <dd>[RFC-to-be]</dd>
         </dl>
+
       </section>
     </section>
 
