@@ -1135,9 +1135,13 @@ parameters/ipv6-parameters.xhtml#segment-routing-header-flags</dd>
             ]]></artwork>
           </figure></t>
 
-        <t>In this example, the Template ID is 257, which will be used in the
-        Data Record. The field length for srhSegmentIPv6ListSection is 0xFFFF,
-        which means the length of this IE is variable.</t>
+        <t>In this example, the Template ID is 257, which will be used 
+          in the Data Record. The field length for srhSegmentIPv6ListSection 
+          in the Template Record is 0xFFFF, which means that the length of 
+          this IE is variable: its actual length is encoded in the Data Set. 
+          Note that, with an actual length inferior to 255 in the Data Record 
+          example, the length field is encoded in 8 bits 
+          (see https://www.rfc-editor.org/rfc/rfc7011.html#section-7)</t>
 
         <t>The data can be represented as follows:</t>
 
