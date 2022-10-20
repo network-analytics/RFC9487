@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="17" month="October" year="2022"/>
+    <date day="20" month="October" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -1017,7 +1017,7 @@
         </figure></t>
 
       <section anchor="Three-Observed-SRH-Headers-and-their-routing-protocol"
-               title="Three Observed SRH Headers and their routing protocol">
+               title="Three Observed SRH Headers and their Routing Protocol">
         <section anchor="Template-Record-and-Data-Set-with-BasicList"
                  title="Template Record and Data Set with Segment Basic List">
           <t>With encoding in Figure 1, the examples in Table 5 are
