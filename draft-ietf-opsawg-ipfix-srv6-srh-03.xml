@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="30" month="October" year="2022"/>
+    <date day="6" month="November" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -934,10 +934,67 @@
       target="RFC7012"/>.</t>
     </section>
 
+    <section anchor="Implementation" title="Implementation Status">
+      <section anchor="VPP" title="FD.io VPP">
+        <t>INSA Lyon implemented the following IEs as part of a prototype in
+        the FD.io VPP (Vector Packet Processing) platform:</t>
+
+        <t><list style="symbols">
+            <t>srhActiveSegmentIPv6</t>
+
+            <t>srhSegmentEndpointBehavior</t>
+
+            <t>srhSegmentIPv6sLeft</t>
+
+            <t>srhFlagsIPv6</t>
+
+            <t>srhTagIPv6</t>
+
+            <t>srhSegmentIPv6ListSection</t>
+
+            <t>srhSegmentIPv6BasicList</t>
+          </list></t>
+
+        <t>The open source code can be obtained here: <xref
+        target="INSA-Lyon-VPP"/> and was validated at the IETF 115
+        hackathon.</t>
+      </section>
+
+      <section anchor="Huawei" title="Huawei VRP">
+        <t>Huawei implemented the following IEs as part of a a production
+        implementation in the VRP platform:</t>
+
+        <t><list style="symbols">
+            <t>srhActiveSegmentIPv6</t>
+
+            <t>srhSegmentIPv6sLeft</t>
+
+            <t>srhFlagsIPv6</t>
+
+            <t>srhTagIPv6</t>
+
+            <t>srhSegmentIPv6ListSection</t>
+          </list></t>
+
+        <t>The implementation was validated at the IETF 115 hackathon.</t>
+      </section>
+
+      <section anchor="pmacct" title="Pmacct Data Collection">
+        <t>Paolo Lucente implemented the IE srhSegmentIPv6ListSection
+        decomposition as part of a a production implementation in the open
+        source Network Telemetry data collection project pmacct.</t>
+
+        <t>The source code can be obtained here: <xref
+        target="Paolo-Lucente-Pmacct"/> and was validated at the IETF 115
+        hackathon.</t>
+      </section>
+    </section>
+
     <section anchor="Acknowledgements" title="Acknowledgements">
-      <t>The authors would like to thank Yao Liu, Paolo Lucente, Eduard
-      Vasilenko, Alex Huang Feng, Bruno Decraene and Mohamed Boucadair for
-      their review and valuable comments.</t>
+      <t>The authors would like to thank Yao Liu, Eduard Vasilenko, Bruno
+      Decraene and Mohamed Boucadair for their review and valuable comments,
+      and Paolo Lucente and Alex Huang Feng for the implementation and
+      validation.</t>
     </section>
   </middle>
 
@@ -983,6 +1040,29 @@
                  target="https://www.iana.org/assignments/ipfix/ipfix.xhtml">
         <front>
           <title>IANA, "IP Flow Information Export (IPFIX) Entities"</title>
+
+          <author/>
+
+          <date/>
+        </front>
+      </reference>
+
+      <reference anchor="INSA-Lyon-VPP"
+                 target="https://github.com/insa-unyte/vpp">
+        <front>
+          <title>INSA Lyon, FD.io VPP implementation</title>
+
+          <author/>
+
+          <date/>
+        </front>
+      </reference>
+
+      <reference anchor="Paolo-Lucente-Pmacct"
+                 target="https://github.com/pmacct/pmacct">
+        <front>
+          <title>Paolo Lucente, Pmacct open source Network Telemetry Data
+          Collection</title>
 
           <author/>
 
