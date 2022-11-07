@@ -97,7 +97,7 @@
 
       <t>SRv6 segment endpoint behaviors are defined in <xref
       target="RFC8986"/> and describe how packets should be processed by
-      transit nodes.</t>
+      SRv6 Segment Endpoint Nodes.</t>
 
       <t>This document specifies eleven new IPFIX Information Elements (IEs)
       and three new subregistries within the "IPFIX Information Elements"
@@ -340,7 +340,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This Information Element the 8-bit flags defined in the SRH.
+          <dd>The 8-bit flags defined in the SRH.
           Assigned flags and their meanings are provided in the "Segment
           Routing Header Flags" IANA registry.</dd>
         </dl>
@@ -388,7 +388,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This IE identifies the 16-bit tag field defined in the SRH that
+          <dd>The 16-bit tag field defined in the SRH that
           marks a packet as part of a class or group of packets sharing the
           same set of properties.</dd>
         </dl>
@@ -434,7 +434,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This Information Element identifies the 128-bit IPv6 address
+          <dd>The 128-bit IPv6 address
           that represents an SRv6 segment.</dd>
         </dl>
 
@@ -479,7 +479,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This Information Element identifies the 128-bit IPv6 address
+          <dd>The 128-bit IPv6 address
           that represents the active SRv6 segment.</dd>
         </dl>
 
@@ -525,7 +525,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This Information Element identifies the Ordered basicList
+          <dd>The Ordered basicList
           [RFC6313] of zero or more 128-bit IPv6 addresses in the SRH that
           represents the SRv6 segment list. As described in section 2 of <xref
           target="RFC8754"/>, the Segment List is encoded starting from the
@@ -577,7 +577,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>Exposes the SRH Segment List as defined in section 2 of <xref
+          <dd>The SRH Segment List as defined in section 2 of <xref
           target="RFC8754"/> as series of n octets.</dd>
         </dl>
 
@@ -622,7 +622,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This Information Element identifies the 8-bit unsigned integer
+          <dd>The 8-bit unsigned integer
           defining the number of route segments remaining to reach the end of
           the segment list.</dd>
         </dl>
@@ -662,7 +662,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This IE exposes the SRH and its TLVs as defined in Section 2 of
+          <dd>The SRH and its TLVs as defined in Section 2 of
           <xref target="RFC8754"/> as series of n octets.</dd>
         </dl>
 
@@ -708,7 +708,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This IE identifies the name of the routing protocol or PCEP
+          <dd>The name of the routing protocol or PCEP
           extension from where the active SRv6 segment has been learned from.
           Values for this Information Element are listed in the "IPFIX IPv6
           SRH Segment type" subregistry, see <xref target="IANA-IPFIX"/>.
@@ -790,7 +790,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This Information Element identifies the number of significant
+          <dd>The number of significant
           bits and together with srhSegmentIPv6 enables the calculation of the
           SRv6 Locator.</dd>
         </dl>
@@ -837,7 +837,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>This Information Element identifies the 16-bit SRv6 Endpoint
+          <dd>The 16-bit SRv6 Endpoint
           behavior. Assigned values and their meanings are provided in the
           "SRV6 Endpoint Behavior" IANA registry <xref
           target="IANA-IPFIX"/>.</dd>
@@ -928,13 +928,10 @@
       </section>
     </section>
 
-    <section anchor="Security" title="Security Considerations">
-      <t>There exists no significant extra security considerations regarding
-      the allocation of these new IPFIX IEs compared to <xref
-      target="RFC7012"/>.</t>
-    </section>
-
     <section anchor="Implementation" title="Implementation Status">
+
+      <t>Note to the RFC-Editor: Please remove this section before publishing.</t>
+
       <section anchor="VPP" title="FD.io VPP">
         <t>INSA Lyon implemented the following IEs as part of a prototype in
         the FD.io VPP (Vector Packet Processing) platform:</t>
@@ -996,6 +993,13 @@
       and Paolo Lucente and Alex Huang Feng for the implementation and
       validation.</t>
     </section>
+
+    <section anchor="Security" title="Security Considerations">
+      <t>There exists no significant extra security considerations regarding
+      the allocation of these new IPFIX IEs compared to <xref
+      target="RFC7012"/>.</t>
+    </section>
+
   </middle>
 
   <back>
