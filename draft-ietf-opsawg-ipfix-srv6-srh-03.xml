@@ -712,6 +712,37 @@
           extension from where the active SRv6 segment has been learned from.
           Values for this Information Element are listed in the "IPFIX IPv6
           SRH Segment type" subregistry, see <xref target="IANA-IPFIX"/>.
+          </dd>
+        </dl>
+
+        <dl>
+          <dt>Abstract Data Type:</dt>
+
+          <dd>unsigned8</dd>
+        </dl>
+
+        <dl>
+          <dt>Data Type Semantics:</dt>
+
+          <dd>identifier</dd>
+        </dl>
+
+        <dl>
+          <dt>Additional Information:</dt>
+
+          <dd>[RFC-to-be]</dd>
+        </dl>
+
+        <dl>
+          <dt>Reference:</dt>
+
+          <dd>[RFC-to-be]</dd>
+        </dl>
+
+        <section anchor="IPFIXIPv6SRHSegmentTypeSubregistry"
+               title="IPFIX IPv6 SRH Segment Type Subregistry">
+
+          <t>
           Initial values in the registry are defined by the table below. New
           assignments of values will be administered by IANA and are subject
           to Expert Review <xref target="RFC8126"/>. Experts need to check
@@ -745,32 +776,10 @@
         Table 3: "IPFIX IPv6 SRH Segment type" subregistry
 
        ]]></artwork>
-            </figure></dd>
-        </dl>
+            </figure>            
+          </t>
 
-        <dl>
-          <dt>Abstract Data Type:</dt>
-
-          <dd>unsigned8</dd>
-        </dl>
-
-        <dl>
-          <dt>Data Type Semantics:</dt>
-
-          <dd>identifier</dd>
-        </dl>
-
-        <dl>
-          <dt>Additional Information:</dt>
-
-          <dd>[RFC-to-be]</dd>
-        </dl>
-
-        <dl>
-          <dt>Reference:</dt>
-
-          <dd>[RFC-to-be]</dd>
-        </dl>
+        </section>            
       </section>
 
       <section anchor="IANAsrhSegmentLocatorLength"
