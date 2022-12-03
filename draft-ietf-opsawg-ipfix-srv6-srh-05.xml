@@ -69,14 +69,14 @@
       </address>
     </author>
 
-    <date day="18" month="November" year="2022"/>
+    <date day="3" month="December" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
       Information Elements to identify a set of Segment Routing over IPv6
       (SRv6) related information such as data contained in a Segment Routing
-      Header (SRH), the SRv6 control plane, and the SRv6 behavior that traffic
-      is being forwarded with.</t>
+      Header (SRH), the SRv6 control plane, and the SRv6 endpoint behavior
+      that traffic is being forwarded with.</t>
     </abstract>
   </front>
 
@@ -989,14 +989,14 @@
 
     <section anchor="Acknowledgements" title="Acknowledgements">
       <t>The authors would like to thank Yao Liu, Eduard Vasilenko, Bruno
-      Decraene, Mohamed Boucadair and Kamran Raza for their review and
+      Decraene, Mohamed Boucadair, Kamran Raza and Qin Wu for their review and
       valuable comments, and Paolo Lucente and Alex Huang Feng for the
       implementation and validation.</t>
     </section>
 
     <section anchor="Security" title="Security Considerations">
       <t>There exists no significant extra security considerations regarding
-      the allocation of these new IPFIX IEs compared to <xref
+      allocation of these new IPFIX IEs compared to <xref
       target="RFC7012"/>.</t>
     </section>
   </middle>
