@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="3" month="December" year="2022"/>
+    <date day="11" month="December" year="2022"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -212,8 +212,8 @@
 
           <t hangText="srhSegmentIPv6sLeft"><vspace blankLines="0"/> 8-bit
           unsigned integer defining the number of segments remaining to reach
-          the end of the segment list as defined in the SRH (Section 2 of
-          [RFC8754]).</t>
+          the end of the segment list as defined in Section 2 of
+          [RFC8754].</t>
 
           <t hangText="srhSectionIPv6"><vspace blankLines="0"/> Exposes the
           SRH and its TLVs as specified in Section 2 of <xref
@@ -622,8 +622,8 @@
           <dt>Description:</dt>
 
           <dd>The 8-bit unsigned integer defining the number of route segments
-          remaining to reach the end of the segment list as defined in the SRH
-          (Section 2 of [RFC8754]).</dd>
+          remaining to reach the end of the segment list as defined in Section
+          2 of [RFC8754].</dd>
         </dl>
 
         <dl>
