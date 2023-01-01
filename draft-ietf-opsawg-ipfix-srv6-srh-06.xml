@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
-<rfc category="std" docName="draft-ietf-opsawg-ipfix-srv6-srh-05"
+<rfc category="std" docName="draft-ietf-opsawg-ipfix-srv6-srh-06"
      ipr="trust200902">
   <front>
     <title
@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="17" month="December" year="2022"/>
+    <date day="1" month="January" year="2023"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -925,11 +925,11 @@
                title="Multiple Segment Routing Headers">
         <t>If multiple SRHs are observed (for reasons that are not detailed
         here), the export of the same IE multiple times in one data record and
-        related template is supported and the order within the packet SHOULD
-        be preserved in the IPFIX export according to Section 8 of <xref
-        target="RFC7011"/>. If the network node is not capable to export IPFIX
-        for more than one SRH, it MUST export IPFIX for the SRH of the active
-        segment.</t>
+        related template record is supported and the order within the packet
+        SHOULD be preserved in the IPFIX export according to Section 8 of
+        <xref target="RFC7011"/>. If the network node is not capable to export
+        IPFIX for more than one SRH, it MUST export IPFIX for the SRH of the
+        active segment.</t>
       </section>
     </section>
 

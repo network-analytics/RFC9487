@@ -5,15 +5,15 @@
 Network Working Group                                            T. Graf
 Internet-Draft                                                  Swisscom
 Intended status: Standards Track                               B. Claise
-Expires: 20 June 2023                                             Huawei
+Expires: 5 July 2023                                              Huawei
                                                              P. Francois
                                                                INSA-Lyon
-                                                        17 December 2022
+                                                          1 January 2023
 
 
            Export of Segment Routing over IPv6 Information in
                    IP Flow Information Export (IPFIX)
-                  draft-ietf-opsawg-ipfix-srv6-srh-05
+                  draft-ietf-opsawg-ipfix-srv6-srh-06
 
 Abstract
 
@@ -38,11 +38,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 June 2023.
+   This Internet-Draft will expire on 5 July 2023.
 
 Copyright Notice
 
-   Copyright (c) 2022 IETF Trust and the persons identified as the
+   Copyright (c) 2023 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Graf, et al.              Expires 20 June 2023                  [Page 1]
+Graf, et al.               Expires 5 July 2023                  [Page 1]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
    extracted from this document must include Revised BSD License text as
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Graf, et al.              Expires 20 June 2023                  [Page 2]
+Graf, et al.               Expires 5 July 2023                  [Page 2]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
 1.  Introduction
@@ -165,9 +165,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                  [Page 3]
+Graf, et al.               Expires 5 July 2023                  [Page 3]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
    *  Options Template
@@ -221,9 +221,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                  [Page 4]
+Graf, et al.               Expires 5 July 2023                  [Page 4]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
    srhTagIPv6
@@ -277,9 +277,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                  [Page 5]
+Graf, et al.               Expires 5 July 2023                  [Page 5]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
    Note that the srhSegmentIPv6, srhSegmentLocatorLength, and
@@ -333,9 +333,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                  [Page 6]
+Graf, et al.               Expires 5 July 2023                  [Page 6]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
         +-------+----------------------------+
@@ -389,9 +389,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                  [Page 7]
+Graf, et al.               Expires 5 July 2023                  [Page 7]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
 5.1.  srhFlagsIPv6
@@ -445,9 +445,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                  [Page 8]
+Graf, et al.               Expires 5 July 2023                  [Page 8]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
    Abstract Data Type:  ipv6address
@@ -501,9 +501,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                  [Page 9]
+Graf, et al.               Expires 5 July 2023                  [Page 9]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
 5.6.  srhSegmentIPv6ListSection
@@ -557,9 +557,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 10]
+Graf, et al.               Expires 5 July 2023                 [Page 10]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
    Reference:  [RFC-to-be]
@@ -613,9 +613,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 11]
+Graf, et al.               Expires 5 July 2023                 [Page 11]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
   +-------+--------------------+---------------------------------------+
@@ -669,9 +669,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 12]
+Graf, et al.               Expires 5 July 2023                 [Page 12]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
    Description:  The 16-bit SRv6 Endpoint behavior.  Assigned values and
@@ -725,9 +725,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 13]
+Graf, et al.               Expires 5 July 2023                 [Page 13]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
 6.2.  Compressed SRv6 Segment List Decomposition
@@ -744,9 +744,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
    If multiple SRHs are observed (for reasons that are not detailed
    here), the export of the same IE multiple times in one data record
-   and related template is supported and the order within the packet
-   SHOULD be preserved in the IPFIX export according to Section 8 of
-   [RFC7011].  If the network node is not capable to export IPFIX for
+   and related template record is supported and the order within the
+   packet SHOULD be preserved in the IPFIX export according to Section 8
+   of [RFC7011].  If the network node is not capable to export IPFIX for
    more than one SRH, it MUST export IPFIX for the SRH of the active
    segment.
 
@@ -781,9 +781,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 14]
+Graf, et al.               Expires 5 July 2023                 [Page 14]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
 7.2.  Huawei VRP
@@ -837,25 +837,26 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 15]
+Graf, et al.               Expires 5 July 2023                 [Page 15]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
-   [RFC6313]  Claise, B., Dhandapani, G., Aitken, P., and S. Yates,
-              "Export of Structured Data in IP Flow Information Export
-              (IPFIX)", RFC 6313, DOI 10.17487/RFC6313, July 2011,
+   [RFC6313]  Claise, B., Dhandapani, G., Aitken, P., Yates, S., and RFC
+              Publisher, "Export of Structured Data in IP Flow
+              Information Export (IPFIX)", RFC 6313,
+              DOI 10.17487/RFC6313, July 2011,
               <https://www.rfc-editor.org/info/rfc6313>.
 
-   [RFC7011]  Claise, B., Ed., Trammell, B., Ed., and P. Aitken,
-              "Specification of the IP Flow Information Export (IPFIX)
-              Protocol for the Exchange of Flow Information", STD 77,
-              RFC 7011, DOI 10.17487/RFC7011, September 2013,
-              <https://www.rfc-editor.org/info/rfc7011>.
+   [RFC7011]  Claise, B., Ed., Trammell, B., Ed., Aitken, P., and RFC
+              Publisher, "Specification of the IP Flow Information
+              Export (IPFIX) Protocol for the Exchange of Flow
+              Information", STD 77, RFC 7011, DOI 10.17487/RFC7011,
+              September 2013, <https://www.rfc-editor.org/info/rfc7011>.
 
-   [RFC7012]  Claise, B., Ed. and B. Trammell, Ed., "Information Model
-              for IP Flow Information Export (IPFIX)", RFC 7012,
-              DOI 10.17487/RFC7012, September 2013,
+   [RFC7012]  Claise, B., Ed., Trammell, B., Ed., and RFC Publisher,
+              "Information Model for IP Flow Information Export
+              (IPFIX)", RFC 7012, DOI 10.17487/RFC7012, September 2013,
               <https://www.rfc-editor.org/info/rfc7012>.
 
    [RFC8126]  Cotton, M., Leiba, B., and T. Narten, "Guidelines for
@@ -892,10 +893,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-
-Graf, et al.              Expires 20 June 2023                 [Page 16]
+Graf, et al.               Expires 5 July 2023                 [Page 16]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
    [I-D.ietf-pce-segment-routing-ipv6]
@@ -928,9 +928,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
               "Paolo Lucente, Pmacct open source Network Telemetry Data
               Collection", <https://github.com/pmacct/pmacct>.
 
-   [RFC7270]  Yourtchenko, A., Aitken, P., and B. Claise, "Cisco-
-              Specific Information Elements Reused in IP Flow
-              Information Export (IPFIX)", RFC 7270,
+   [RFC7270]  Yourtchenko, A., Aitken, P., Claise, B., and RFC
+              Publisher, "Cisco-Specific Information Elements Reused in
+              IP Flow Information Export (IPFIX)", RFC 7270,
               DOI 10.17487/RFC7270, June 2014,
               <https://www.rfc-editor.org/info/rfc7270>.
 
@@ -949,15 +949,15 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 17]
+Graf, et al.               Expires 5 July 2023                 [Page 17]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
    [RFC9252]  Dawra, G., Ed., Talaulikar, K., Ed., Raszuk, R., Decraene,
-              B., Zhuang, S., and J. Rabadan, "BGP Overlay Services
-              Based on Segment Routing over IPv6 (SRv6)", RFC 9252,
-              DOI 10.17487/RFC9252, July 2022,
+              B., Zhuang, S., Rabadan, J., and RFC Publisher, "BGP
+              Overlay Services Based on Segment Routing over IPv6
+              (SRv6)", RFC 9252, DOI 10.17487/RFC9252, July 2022,
               <https://www.rfc-editor.org/info/rfc9252>.
 
    [RFC9256]  Filsfils, C., Talaulikar, K., Ed., Voyer, D., Bogdanov,
@@ -1005,9 +1005,9 @@ A.1.1.  Template Record and Data Set with Segment Basic List
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 18]
+Graf, et al.               Expires 5 July 2023                 [Page 18]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
        0                   1                   2                   3
@@ -1061,9 +1061,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 19]
+Graf, et al.               Expires 5 July 2023                 [Page 19]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
       |             Segment List[1] = 2001:db8::2                     |
@@ -1117,9 +1117,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 20]
+Graf, et al.               Expires 5 July 2023                 [Page 20]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
       |             Segment List[0] = 2001:db8::6  ...                |
@@ -1173,9 +1173,9 @@ A.1.2.  Template Record and Data Set with Segment List Section
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 21]
+Graf, et al.               Expires 5 July 2023                 [Page 21]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
    In this example, the Template ID is 257, which will be used in the
@@ -1229,9 +1229,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 22]
+Graf, et al.               Expires 5 July 2023                 [Page 22]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
       |                              ...                              |
@@ -1285,9 +1285,9 @@ A.1.3.  Template Record and Data Set with SRH Section
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 23]
+Graf, et al.               Expires 5 July 2023                 [Page 23]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
        0                   1                   2                   3
@@ -1341,9 +1341,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 24]
+Graf, et al.               Expires 5 July 2023                 [Page 24]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
       |                              ...                              |
@@ -1397,9 +1397,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 25]
+Graf, et al.               Expires 5 July 2023                 [Page 25]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
       |                              ...                              |
@@ -1453,9 +1453,9 @@ A.2.  Options Template Record and Data Set for SRv6 Segment End Point
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 26]
+Graf, et al.               Expires 5 July 2023                 [Page 26]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
          0                   1                   2                   3
@@ -1509,9 +1509,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 27]
+Graf, et al.               Expires 5 July 2023                 [Page 27]
 
-Internet-Draft       IPFIX Segment Routing over IPv6       December 2022
+Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
 
 
    (*) The Length MUST be calculated to include the optional Type Length
@@ -1565,4 +1565,4 @@ Authors' Addresses
 
 
 
-Graf, et al.              Expires 20 June 2023                 [Page 28]
+Graf, et al.               Expires 5 July 2023                 [Page 28]
