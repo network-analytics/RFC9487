@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="1" month="January" year="2023"/>
+    <date day="4" month="January" year="2023"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -100,8 +100,8 @@
       Segment Endpoint Nodes.</t>
 
       <t>This document specifies eleven new IPFIX Information Elements (IEs)
-      and three new subregistries within the "IPFIX Information Elements"
-      registry <xref target="RFC7012"/>, for SRv6 purposes.</t>
+      and one new subregistry within the "IPFIX Information Elements" registry
+      <xref target="RFC7012"/>, for SRv6 purposes.</t>
 
       <t>These IEs are used to export SRv6 active segment and its control
       plane protocol, the SRv6 segment list, the next SRv6 node and its type,
@@ -265,11 +265,10 @@
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
-      <t>This document requests IANA to create new IEs (see table 1) and three
-      new subregistries called "IPFIX IPv6 SRH Flags" (table 2), "IPFIX IPv6
-      SRH Segment Type" (table 3), and "IPFIX SRv6 Endpoint Behavior" (table
-      4) under the "IPFIX Information Elements" registry <xref
-      target="RFC7012"/> available at <xref target="IANA-IPFIX"/>.</t>
+      <t>This document requests IANA to create new IEs (see table 1) and one
+      new subregistry called "IPFIX IPv6 SRH Segment Type" (table 2) under the
+      "IPFIX Information Elements" registry <xref target="RFC7012"/> available
+      at <xref target="IANA-IPFIX"/>.</t>
 
       <t><figure>
           <artwork><![CDATA[
@@ -774,7 +773,7 @@
 |       | Routing Prefix-SID | <xref target="RFC9252"/>              |
 +-------+--------------------+---------------------------------------+
 
-        Table 3: "IPFIX IPv6 SRH Segment type" subregistry
+        Table 2: "IPFIX IPv6 SRH Segment type" subregistry
 
        ]]></artwork>
             </figure></t>
@@ -817,7 +816,7 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>RFC8986 Section 3.1</dd>
+          <dd>Section 3.1 of RFC8986</dd>
         </dl>
 
         <dl>
@@ -864,7 +863,7 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>RFC8986 Section 4. See the assignments in the "SRV6 Endpoint
+          <dd>Section 4 of RFC8986. See the assignments in the "SRV6 Endpoint
           Behavior" IANA registry at
           https://www.iana.org/assignments/segment-routing/segment-routing.xhtml#srv6-endpoint-behaviors</dd>
         </dl>
@@ -917,7 +916,7 @@
         The SID endpoint behaviors described in section 4 of <xref
         target="I-D.ietf-spring-srv6-srh-compression"/> determine wherever the
         segment list is compressed or not. The SID Locator as described in
-        section 3.1 <xref target="RFC8986"/>, determines the common most
+        Section 3.1 of <xref target="RFC8986"/>, determines the common most
         significant bits.</t>
       </section>
 
@@ -926,7 +925,7 @@
         <t>If multiple SRHs are observed (for reasons that are not detailed
         here), the export of the same IE multiple times in one data record and
         related template record is supported and the order within the packet
-        SHOULD be preserved in the IPFIX export according to Section 8 of
+        should be preserved in the IPFIX export according to Section 8 of
         <xref target="RFC7011"/>. If the network node is not capable to export
         IPFIX for more than one SRH, it MUST export IPFIX for the SRH of the
         active segment.</t>
@@ -1079,7 +1078,7 @@
 
     <section anchor="Encoding-Example" title="IPFIX Encoding Examples">
       <t>This appendix represents three different encodings for the newly
-      introduced IEs, for the example values in Table 5. The three different
+      introduced IEs, for the example values in Table 3. The three different
       encodings use the following IEs, respectively: srhSegmentIPv6BasicList,
       srhSegmentIPv6ListSection, and srhSectionIPv6.</t>
 
@@ -1098,7 +1097,7 @@
    | 3   | 0    | 789 | IS-IS          | 2001:db8::6              |
    +-----+------+-----+----------------+--------------------------+
 
-     Table 5: three observed SRH headers and their routing protocol
+     Table 3: three observed SRH headers and their routing protocol
        ]]></artwork>
         </figure></t>
 
@@ -1106,7 +1105,7 @@
                title="Three Observed SRH Headers and their Routing Protocol">
         <section anchor="Template-Record-and-Data-Set-with-BasicList"
                  title="Template Record and Data Set with Segment Basic List">
-          <t>With encoding in Figure 1, the examples in Table 5 are
+          <t>With encoding in Figure 1, the examples in Table 3 are
           represented with the following IEs: &ldquo;=&gt;&rdquo; is used to
           indicate which IE is mapped to a given information.</t>
 
@@ -1241,7 +1240,7 @@
 
         <section anchor="Template-Record-and-Data-Set-with-Segment-List-Section"
                  title="Template Record and Data Set with Segment List Section">
-          <t>With encoding in Figure 3, the examples in Table 5 are
+          <t>With encoding in Figure 3, the examples in Table 3 are
           represented with the following IEs: &ldquo;=&gt;&rdquo; is used to
           indicate which IE is mapped to a given information.</t>
 
@@ -1368,7 +1367,7 @@
 
         <section anchor="Template-Record-and-Data-Set-with-SRH-Section"
                  title="Template Record and Data Set with SRH Section">
-          <t>With encoding in Figure 5, the examples in Table 5 are
+          <t>With encoding in Figure 5, the examples in Table 3 are
           represented with the following IEs: &ldquo;=&gt;&rdquo; is used to
           indicate which IE is mapped to a given information.</t>
 
@@ -1495,7 +1494,7 @@
             ]]></artwork>
           </figure>
 
-          <t>(*) The Length MUST be calculated to include the optional Type
+          <t>(*) The Length must be calculated to include the optional Type
           Length Value objects.</t>
         </section>
       </section>
@@ -1503,7 +1502,7 @@
       <section anchor="Options-Template-Record-and-Data-Set-for-SRv6-Segment-Endpoint-Behavior"
                title="Options Template Record and Data Set for SRv6 Segment End Point behavior and Locator Length">
         <t>This appendix provides an SRv6 EndPoint Bevahior Options Template
-        example, for the values presented in Table 12. In the Options Template
+        example, for the values presented in Table 4. In the Options Template
         case, the srhActiveSegmentIPv6 Information Element is a Scope
         field</t>
 
@@ -1521,7 +1520,7 @@
    | 3     | 2001:db8::6 | End.DX6 [16]            | 48             |
    +-------+-------------+-------------------------+----------------+
 
-     Figure 7: three observed SRv6 Segment End Point Behaviors
+     Table 4: three observed SRv6 Segment End Point Behaviors
        ]]></artwork>
           </figure></t>
 
@@ -1544,7 +1543,7 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-       Figure 8: Template Record with SRH Section Encoding Format
+       Figure 7: Template Record with SRH Section Encoding Format
 
             ]]></artwork>
           </figure></t>
@@ -1576,12 +1575,12 @@
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
  
-           Figure 9: Data Set Encoding Format for SRH Section
+           Figure 8: Data Set Encoding Format for SRH Section
 
             ]]></artwork>
         </figure>
 
-        <t>(*) The Length MUST be calculated to include the optional Type
+        <t>(*) The Length must be calculated to include the optional Type
         Length Value objects.</t>
       </section>
     </section>
