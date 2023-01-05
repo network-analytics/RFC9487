@@ -746,7 +746,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6        January 2023
    If multiple SRHs are observed (for reasons that are not detailed
    here), the export of the same IE multiple times in one data record
    and related template record is supported and the order within the
-   packet should be preserved in the IPFIX export according to Section 8
+   packet SHOULD be preserved in the IPFIX export according to Section 8
    of [RFC7011].  If the network node is not capable to export IPFIX for
    more than one SRH, it MUST export IPFIX for the SRH of the active
    segment.
