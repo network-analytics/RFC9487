@@ -87,7 +87,7 @@
       (SR) over IPv6 data plane.</t>
 
       <t>Also, three routing protocol extensions, <xref
-      target="I-D.ietf-lsr-ospfv3-srv6-extensions">OSPFv3</xref>, <xref
+      target="RFC9352">OSPFv3</xref>, <xref
       target="I-D.ietf-lsr-isis-srv6-extensions">IS-IS</xref> and <xref
       target="RFC9252">BGP Prefix Segment Identifiers(Prefix-SIDs)</xref> and
       <xref target="I-D.ietf-pce-segment-routing-ipv6">Path Computation
@@ -575,7 +575,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>The SRH Segment List as defined in section 2 of <xref
+          <dd>The SRH Segment List as defined in section 2  and section 2.1 of <xref
           target="RFC8754"/> as series of octets.</dd>
         </dl>
 
@@ -763,8 +763,8 @@
 | TBD14 | Path Computation   | [RFC-to-be],<xref target="            |
 |       | Element            | I-D.ietf-pce-segment-routing-ipv6"/>  |
 +-------+--------------------+---------------------------------------+
-| TBD15 | OSPFv3             | [RFC-to-be],<xref target="            |
-|       | Segment Routing    | I-D.ietf-lsr-ospfv3-srv6-extensions"/>|
+| TBD15 | OSPFv3             | [RFC-to-be],<xref target="RFC9352">   |
+|       | Segment Routing    |                                       |
 +-------+--------------------+---------------------------------------+
 | TBD16 | IS-IS              | [RFC-to-be],<xref target="            |
 |       | Segment Routing    | I-D.ietf-lsr-isis-srv6-extensions"/>  |
@@ -797,8 +797,8 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>The number of significant bits and together with srhSegmentIPv6
-          enables the calculation of the SRv6 Locator.</dd>
+          <dd>The SRH segment IPv6 locator length specified as the number of 
+            significant bits. Together with srhSegmentIPv6 it enables the calculation of the SRv6 Locator</dd>
         </dl>
 
         <dl>
@@ -844,8 +844,8 @@
           <dt>Description:</dt>
 
           <dd>The 16-bit SRv6 Endpoint behavior. Assigned values and their
-          meanings are provided in the "SRV6 Endpoint Behavior" IANA registry
-          <xref target="IANA-IPFIX"/>.</dd>
+          meanings are provided in the "SRV6 Endpoint Behavior" registry.
+        </dd>
         </dl>
 
         <dl>
@@ -863,9 +863,9 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>Section 4 of RFC8986. See the assignments in the "SRV6 Endpoint
-          Behavior" IANA registry at
-          https://www.iana.org/assignments/segment-routing/segment-routing.xhtml#srv6-endpoint-behaviors</dd>
+          <dd>See the "SRV6 Endpoint Behavior" registry at
+          https://www.iana.org/assignments/segment-routing/segment-routing.xhtml#srv6-endpoint-behaviors. 
+          Section 4 of RFC8986.</dd>
         </dl>
 
         <dl>
@@ -1033,7 +1033,7 @@
 
       <?rfc include='reference.RFC.9256'?>
 
-      <?rfc include='reference.I-D.ietf-lsr-ospfv3-srv6-extensions'?>
+      <?rfc include='reference.RFC.9352'?>
 
       <?rfc include='reference.I-D.ietf-lsr-isis-srv6-extensions'?>
 
