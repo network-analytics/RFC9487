@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="22" month="March" year="2023"/>
+    <date day="25" month="March" year="2023"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -575,8 +575,8 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>The SRH Segment List as defined in section 2  and section 2.1 of <xref
-          target="RFC8754"/> as series of octets.</dd>
+          <dd>The SRH Segment List as defined in section 2 and section 2.1 of
+          <xref target="RFC8754"/> as series of octets.</dd>
         </dl>
 
         <dl>
@@ -797,8 +797,9 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>The SRH segment IPv6 locator length specified as the number of 
-            significant bits. Together with srhSegmentIPv6 it enables the calculation of the SRv6 Locator</dd>
+          <dd>The SRH segment IPv6 locator length specified as the number of
+          significant bits. Together with srhSegmentIPv6 it enables the
+          calculation of the SRv6 Locator</dd>
         </dl>
 
         <dl>
@@ -844,8 +845,7 @@
           <dt>Description:</dt>
 
           <dd>The 16-bit SRv6 Endpoint behavior. Assigned values and their
-          meanings are provided in the "SRV6 Endpoint Behavior" registry.
-        </dd>
+          meanings are provided in the "SRV6 Endpoint Behavior" registry.</dd>
         </dl>
 
         <dl>
@@ -864,7 +864,7 @@
           <dt>Additional Information:</dt>
 
           <dd>See the "SRV6 Endpoint Behavior" registry at
-          https://www.iana.org/assignments/segment-routing/segment-routing.xhtml#srv6-endpoint-behaviors. 
+          https://www.iana.org/assignments/segment-routing/segment-routing.xhtml#srv6-endpoint-behaviors.
           Section 4 of RFC8986.</dd>
         </dl>
 
