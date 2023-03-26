@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="25" month="March" year="2023"/>
+    <date day="26" month="March" year="2023"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -1053,7 +1053,7 @@
       </reference>
 
       <reference anchor="INSA-Lyon-VPP"
-                 target="https://github.com/insa-unyte/vpp">
+                 target="https://github.com/network-analytics/vpp-srh-onpath-telemetry">
         <front>
           <title>INSA Lyon, FD.io VPP implementation</title>
 
