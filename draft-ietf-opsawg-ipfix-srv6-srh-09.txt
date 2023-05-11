@@ -13,7 +13,7 @@ Expires: 12 November 2023                                         Huawei
 
            Export of Segment Routing over IPv6 Information in
                    IP Flow Information Export (IPFIX)
-                  draft-ietf-opsawg-ipfix-srv6-srh-08
+                  draft-ietf-opsawg-ipfix-srv6-srh-09
 
 Abstract
 
