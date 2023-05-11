@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="10" month="May" year="2023"/>
+    <date day="11" month="May" year="2023"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -88,16 +88,16 @@
 
       <t>Also, three routing protocol extensions, <xref
       target="I-D.ietf-lsr-ospfv3-srv6-extensions">OSPFv3</xref>, <xref
-      target="RFC9352">IS-IS</xref> and <xref target="RFC9252">BGP Prefix
+      target="RFC9352">IS-IS</xref> and <xref target="RFC8669">BGP Prefix
       Segment Identifiers(Prefix-SIDs)</xref> and <xref
       target="I-D.ietf-pce-segment-routing-ipv6">Path Computation Element
       Communication Protocol (PCEP) Extension</xref> and <xref
       target="RFC9256">Segment Routing Policy</xref> are defined to propagate
       Segment Identifiers (SIDs).</t>
 
-      <t>SRv6 segment endpoint behaviors describe how packets should be processed by SRv6
-      Segment Endpoint Nodes. Such behaviors are defined in <xref
-      target="RFC8986"/>.</t>
+      <t>SRv6 segment endpoint behaviors describe how packets should be
+      processed by SRv6 Segment Endpoint Nodes. Such behaviors are defined in
+      <xref target="RFC8986"/>.</t>
 
       <t>This document specifies eleven new IPFIX Information Elements (IEs)
       and one new subregistry within the "IPFIX Information Elements" registry
@@ -212,9 +212,10 @@
 
           <t hangText="srhSegmentsIPv6Left"><vspace blankLines="0"/> 8-bit
           unsigned integer defining the number of segments remaining to reach
-          the end of the segment list from the SRH (Section 2 of <xref
-          target="RFC8754"/>) and defined in Section 4.4 of <xref
-          target="RFC8200"/>.</t>
+          the end of the segment list from the SRH, as specified by the
+          "Segments Left" field in Section 4.4 of <xref target="RFC8200"/> and
+          mentioned part of the SRH in Section 2 of <xref
+          target="RFC8754"/>).</t>
 
           <t hangText="srhIPv6Section"><vspace blankLines="0"/> Exposes the
           SRH and its TLVs as specified in Section 2 of <xref
@@ -266,8 +267,8 @@
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
-      <t>This document requests IANA to create new IEs (Table 1) and one
-      new subregistry called "IPFIX IPv6 SRH Segment Type" (Table 2) under the
+      <t>This document requests IANA to create new IEs (Table 1) and one new
+      subregistry called "IPFIX IPv6 SRH Segment Type" (Table 2) under the
       "IPFIX Information Elements" registry <xref target="RFC7012"/> available
       at <xref target="IANA-IPFIX"/>.</t>
 
@@ -361,9 +362,10 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>See the assignments in the "Segment Routing Header
-          Flags" IANA registry at https://www.iana.org/assignments/ipv6-
-          parameters/ipv6-parameters.xhtml#segment-routing-header-flags. See also RFC8754 for the SRH specification.</dd>
+          <dd>See the assignments in the "Segment Routing Header Flags" IANA
+          registry at https://www.iana.org/assignments/ipv6-
+          parameters/ipv6-parameters.xhtml#segment-routing-header-flags. See
+          also RFC8754 for the SRH specification.</dd>
         </dl>
 
         <dl>
@@ -621,9 +623,11 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>The 8-bit unsigned integer defining the number of route segments
-          remaining to reach the end of the segment list as defined in Section
-          2 of [RFC8754].</dd>
+          <dd>8-bit unsigned integer defining the number of segments remaining
+          to reach the end of the segment list from the SRH, as specified by
+          the "Segments Left" field in Section 4.4 of <xref target="RFC8200"/>
+          and mentioned part of the SRH in Section 2 of <xref
+          target="RFC8754"/>).</dd>
         </dl>
 
         <dl>
@@ -771,7 +775,7 @@
 |       | Segment Routing    |                                       |
 +-------+--------------------+---------------------------------------+
 | TBD17 | BGP Segment        | [RFC-to-be],                          |
-|       | Routing Prefix-SID | <xref target="RFC9252"/>              |
+|       | Routing Prefix-SID | <xref target="RFC8669"/>              |
 +-------+--------------------+---------------------------------------+
 
         Table 2: "IPFIX IPv6 SRH Segment Type" Subregistry
@@ -914,9 +918,10 @@
         <t>The SRv6 segment list in the IPFIX IEs srhSegmentIPv6BasicList and
         srhSegmentIPv6ListSection could contain compressed-SID containers as
         described in <xref target="I-D.ietf-spring-srv6-srh-compression"/>.
-        The SID endpoint behaviors described in section 4 of <xref
-        target="I-D.ietf-spring-srv6-srh-compression"/> determine wherever the
-        segment list encoding is compressed or not. The SID Locator as
+        The SR Endpoint Flavors, described in section 4 of <xref
+        target="I-D.ietf-spring-srv6-srh-compression"/> defines new flavors
+        for SID endpoint behaviors, and determine wherever the segment list
+        encoding is compressed, along with the flavor. The SID Locator as
         described in Section 3.1 of <xref target="RFC8986"/>, determines the
         common most significant bits.</t>
       </section>
@@ -1035,9 +1040,9 @@
 
       <?rfc include='reference.RFC.8402'?>
 
-      <?rfc include='reference.RFC.8986'?>
+      <?rfc include='reference.RFC.8669'?>
 
-      <?rfc include='reference.RFC.9252'?>
+      <?rfc include='reference.RFC.8986'?>
 
       <?rfc include='reference.RFC.9256'?>
 
