@@ -529,7 +529,7 @@
 
           <dd>The Ordered basicList [RFC6313] of zero or more 128-bit IPv6
           addresses in the SRH that represents the SRv6 segment list. As
-          described in section 2 of <xref target="RFC8754"/>, the Segment List
+          described in Section 2 of <xref target="RFC8754"/>, the Segment List
           is encoded starting from the last segment of the SR Policy. That is,
           the first element of the Segment List (Segment List[0]) contains the
           last segment of the SR Policy, the second element contains the
@@ -578,7 +578,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>The SRH Segment List as defined in section 2 and section 2.1 of
+          <dd>The SRH Segment List as defined in Section 2 of
           <xref target="RFC8754"/> as series of octets.</dd>
         </dl>
 
@@ -918,7 +918,7 @@
         <t>The SRv6 segment list in the IPFIX IEs srhSegmentIPv6BasicList and
         srhSegmentIPv6ListSection could contain compressed-SID containers as
         described in <xref target="I-D.ietf-spring-srv6-srh-compression"/>.
-        The SR Endpoint Flavors, described in section 4 of <xref
+        The SR Endpoint Flavors, described in Section 4 of <xref
         target="I-D.ietf-spring-srv6-srh-compression"/> defines new flavors
         for SID endpoint behaviors, and determine wherever the segment list
         encoding is compressed, along with the flavor. The SID Locator as
@@ -1297,8 +1297,7 @@
           the Template Record is 0xFFFF, which means that the length of this
           IE is variable: its actual length is encoded in the Data Set. Note
           that, with an actual length inferior to 255 in the Data Record
-          example, the length field is encoded in 8 bits (see
-          https://www.rfc-editor.org/rfc/rfc7011.html#section-7).</t>
+          example, the length field is encoded in 8 bits (Section 7 of <xref target="RFC7011"/>).</t>
 
           <t>The data can be represented as follows:</t>
 
@@ -1416,8 +1415,7 @@
           Record is 0xFFFF, which means that the length of this IE is
           variable: its actual length is encoded in the Data Set. Note that,
           with an actual length inferior to 255 in the Data Record example,
-          the length field is encoded in 8 bits (see
-          https://www.rfc-editor.org/rfc/rfc7011.html#section-7).</t>
+          the length field is encoded in 8 bits (Section 7 of <xref target="RFC7011"/>).</t>
 
           <t>The data can be represented as follows:</t>
 
