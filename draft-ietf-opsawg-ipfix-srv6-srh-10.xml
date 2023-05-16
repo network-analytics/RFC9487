@@ -411,7 +411,7 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>RFC8754</dd>
+          <dd>Section 2 of <xref target="RFC8754"/></dd>
         </dl>
 
         <dl>
@@ -455,7 +455,8 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>RFC8754</dd>
+          <dd>Specified in Section 1 of <xref target="RFC8402"/> and mentioned
+          in "Segment List" in Section 2 of <xref target="RFC8754"/></dd>
         </dl>
 
         <dl>
@@ -500,7 +501,7 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>RFC8754</dd>
+          <dd>Section 2 of <xref target="RFC8754"/></dd>
         </dl>
 
         <dl>
@@ -551,7 +552,7 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>RFC8754</dd>
+          <dd>Section 2 of <xref target="RFC8754"/></dd>
         </dl>
 
         <dl>
@@ -597,7 +598,7 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>RFC8754</dd>
+          <dd>Section 2 of <xref target="RFC8754"/></dd>
         </dl>
 
         <dl>
@@ -626,7 +627,7 @@
           <dd>8-bit unsigned integer defining the number of segments remaining
           to reach the end of the Segment List in the SRH, as specified by the
           "Segments Left" field in Section 4.4 of <xref target="RFC8200"/> and
-          mentioned in Section 2 of <xref target="RFC8754"/>).</dd>
+          mentioned in Section 2 of <xref target="RFC8754"/>.</dd>
         </dl>
 
         <dl>
@@ -644,7 +645,9 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>RFC8754</dd>
+          <dd>Specified by the "Segments Left" field in Section 4.4 of <xref
+          target="RFC8200"/> and mentioned in Section 2 of <xref
+          target="RFC8754"/>)</dd>
         </dl>
 
         <dl>
@@ -683,7 +686,7 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>RFC8754</dd>
+          <dd>Section 2 of <xref target="RFC8754"/></dd>
         </dl>
 
         <dl>
@@ -821,7 +824,7 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>Section 3.1 of RFC8986</dd>
+          <dd>Section 3.1 of <xref target="RFC8986"/></dd>
         </dl>
 
         <dl>
@@ -871,7 +874,7 @@
 
           <dd>See the "SRV6 Endpoint Behavior" registry at
           https://www.iana.org/assignments/segment-routing/segment-routing.xhtml#srv6-endpoint-behaviors.
-          Section 4 of RFC8986.</dd>
+          Section 4 of <xref target="RFC8986"/>.</dd>
         </dl>
 
         <dl>
