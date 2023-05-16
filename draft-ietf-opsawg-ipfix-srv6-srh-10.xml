@@ -411,7 +411,8 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>See Section 2 of <xref target="RFC8754"/> for more details about the tag.</dd>
+          <dd>See Section 2 of <xref target="RFC8754"/> for more details about
+          the tag.</dd>
         </dl>
 
         <dl>
@@ -501,7 +502,8 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>See <xref target="RFC8402"/> for the definition of active segment.</dd>
+          <dd>See <xref target="RFC8402"/> for the definition of active
+          segment.</dd>
         </dl>
 
         <dl>
@@ -552,7 +554,8 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>See Section 2 of <xref target="RFC8754"/> for more details about the SRv6 Segment List.</dd>
+          <dd>See Section 2 of <xref target="RFC8754"/> for more details about
+          the SRv6 Segment List.</dd>
         </dl>
 
         <dl>
@@ -598,7 +601,8 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>See Section 2 of <xref target="RFC8754"/> for more details about the SRv6 Segment List.</dd>
+          <dd>See Section 2 of <xref target="RFC8754"/> for more details about
+          the SRv6 Segment List.</dd>
         </dl>
 
         <dl>
@@ -686,7 +690,8 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>See Section 2 of <xref target="RFC8754"/> for more details about the structure of an SRH.</dd>
+          <dd>See Section 2 of <xref target="RFC8754"/> for more details about
+          the structure of an SRH.</dd>
         </dl>
 
         <dl>
@@ -734,12 +739,13 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>See the assigned types in [IPFIX IPv6 SRH Segment Type Subregistry].</dd>
+          <dd>See the assigned types in [IPFIX IPv6 SRH Segment Type
+          Subregistry].</dd>
 
           <dt>Note to IANA:</dt>
 
-          <dd>Please replace [IPFIX IPv6 SRH Segment Type Subregistry] with the
-          URL of the IANA subregistry.</dd>
+          <dd>Please replace [IPFIX IPv6 SRH Segment Type Subregistry] with
+          the URL of the IANA subregistry.</dd>
         </dl>
 
         <dl>
@@ -752,9 +758,9 @@
                  title="IPFIX IPv6 SRH Segment Type Subregistry">
           <t>Initial values in the registry are defined by the table below.
           New assignments of values will be administered by IANA and are
-          subject to Expert Review <xref target="RFC8126"/>. Experts need to
-          check definitions of new values for completeness, accuracy, and
-          redundancy. <figure>
+          subject to Expert Review <xref target="RFC8126"/> by SRH Experts.
+          Experts need to check definitions of new values for completeness,
+          accuracy, and redundancy. <figure>
               <artwork><![CDATA[
 
 
@@ -824,7 +830,8 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>See Section 3.1 of <xref target="RFC8986"/> for more details about the SID format.</dd>
+          <dd>See Section 3.1 of <xref target="RFC8986"/> for more details
+          about the SID format.</dd>
         </dl>
 
         <dl>
@@ -872,9 +879,11 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>See the assigned behaviors at the "SRv6 Endpoint Behavior" registry available at
+          <dd>See the assigned behaviors at the "SRv6 Endpoint Behavior"
+          registry available at
           https://www.iana.org/assignments/segment-routing/segment-routing.xhtml#srv6-endpoint-behaviors.
-          See Section 4 of <xref target="RFC8986"/> for more details about the endpoint behaviors processing.</dd>
+          See Section 4 of <xref target="RFC8986"/> for more details about the
+          endpoint behaviors processing.</dd>
         </dl>
 
         <dl>

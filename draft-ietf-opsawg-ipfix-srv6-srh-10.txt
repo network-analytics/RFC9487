@@ -589,8 +589,8 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    Initial values in the registry are defined by the table below.  New
    assignments of values will be administered by IANA and are subject to
-   Expert Review [RFC8126].  Experts need to check definitions of new
-   values for completeness, accuracy, and redundancy.
+   Expert Review [RFC8126] by SRH Experts.  Experts need to check
+   definitions of new values for completeness, accuracy, and redundancy.
 
 
 
