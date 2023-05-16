@@ -941,9 +941,10 @@
 
     <section anchor="Acknowledgements" title="Acknowledgements">
       <t>The authors would like to thank Yao Liu, Eduard Vasilenko, Bruno
-      Decraene, Mohamed Boucadair, Kamran Raza, Qin Wu, Jim Guichard and Tero
-      Kivinen for their review and valuable comments, and Paolo Lucente and
-      Alex Huang Feng for the implementation and validation.</t>
+      Decraene, Mohamed Boucadair, Kamran Raza, Qin Wu, Jim Guichard, Tero
+      Kivinen and Paul Aitken for their review and valuable comments, and
+      Paolo Lucente and Alex Huang Feng for the implementation and
+      validation.</t>
     </section>
 
     <section anchor="Implementation" title="Implementation Status">
