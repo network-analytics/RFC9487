@@ -104,7 +104,7 @@
       <xref target="RFC7012"/>, for SRv6 purposes.</t>
 
       <t>These IEs are used to export the SRv6 active segment and its control
-      plane protocol, the SRv6 segment list, the next SRv6 node and its type,
+      plane protocol, the SRv6 Segment List, the next SRv6 node and its type,
       and the numbers of SRv6 segments left.</t>
 
       <t>Some examples are provided in Appendix A.</t>
@@ -199,7 +199,7 @@
 
           <t hangText="srhSegmentIPv6BasicList"><vspace blankLines="0"/>
           Ordered basicList <xref target="RFC6313"/> of zero or more 128-bit
-          IPv6 addresses in the SRH that represents the SRv6 segment list. As
+          IPv6 addresses in the SRH that represents the SRv6 Segment List. As
           specified in Section 2 of <xref target="RFC8754"/>, the Segment List
           is encoded starting from the last segment of the SR Policy. That is,
           the first element of the Segment List (Segment List[0]) contains the
@@ -208,18 +208,18 @@
 
           <t hangText="srhSegmentIPv6ListSection"><vspace blankLines="0"/>
           Exposes the SRH Segment List as defined in Section 2 of <xref
-          target="RFC8754"/> as series of octets in IPFIX.</t>
+          target="RFC8754"/> as a series of octets in IPFIX.</t>
 
           <t hangText="srhSegmentsIPv6Left"><vspace blankLines="0"/> 8-bit
           unsigned integer defining the number of segments remaining to reach
-          the end of the segment list from the SRH, as specified by the
+          the end of the Segment List from the SRH, as specified by the
           "Segments Left" field in Section 4.4 of <xref target="RFC8200"/> and
           mentioned part of the SRH in Section 2 of <xref
           target="RFC8754"/>).</t>
 
           <t hangText="srhIPv6Section"><vspace blankLines="0"/> Exposes the
           SRH and its TLVs as specified in Section 2 of <xref
-          target="RFC8754"/> as series of octets in IPFIX.</t>
+          target="RFC8754"/> as a series of octets in IPFIX.</t>
 
           <t hangText="srhIPv6ActiveSegmentType"><vspace blankLines="0"/> Name
           of the routing protocol or PCEP extension from where the active SRv6
@@ -258,7 +258,7 @@
           <t>What is the current active segment and its associated control
           plane protocol?</t>
 
-          <t>What is the SRv6 segment list?</t>
+          <t>What is the SRv6 Segment List?</t>
 
           <t>What is the next SRv6 node and its type?</t>
 
@@ -271,6 +271,15 @@
       subregistry called "IPFIX IPv6 SRH Segment Type" (Table 2) under the
       "IPFIX Information Elements" registry <xref target="RFC7012"/> available
       at <xref target="IANA-IPFIX"/>.</t>
+
+      <t>Note to the RFC-Editor:</t>
+
+      <t><list style="symbols">
+          <t>Please replace TBD1 - TBD17 with the values allocated by IANA</t>
+
+          <t>Please replace the [RFC-to-be] with the RFC number assigned to
+          this document</t>
+        </list></t>
 
       <t><figure>
           <artwork><![CDATA[
@@ -317,15 +326,6 @@
        ]]></artwork>
         </figure></t>
 
-      <t>Note to the RFC-Editor:</t>
-
-      <t><list style="symbols">
-          <t>Please replace TBD1 - TBD17 with the values allocated by IANA</t>
-
-          <t>Please replace the [RFC-to-be] with the RFC number assigned to
-          this document</t>
-        </list></t>
-
       <section anchor="IANAsrhFlagsIPv6" title="srhFlagsIPv6">
         <dl>
           <dt>Name:</dt>
@@ -363,9 +363,9 @@
           <dt>Additional Information:</dt>
 
           <dd>See the assignments in the "Segment Routing Header Flags" IANA
-          registry at https://www.iana.org/assignments/ipv6-
-          parameters/ipv6-parameters.xhtml#segment-routing-header-flags. See
-          also RFC8754 for the SRH specification.</dd>
+          registry at
+          https://www.iana.org/assignments/ipv6-parameters/ipv6-parameters.xhtml#segment-routing-header-flags.
+          See also RFC8754 for the SRH specification.</dd>
         </dl>
 
         <dl>
@@ -528,7 +528,7 @@
           <dt>Description:</dt>
 
           <dd>The Ordered basicList [RFC6313] of zero or more 128-bit IPv6
-          addresses in the SRH that represents the SRv6 segment list. As
+          addresses in the SRH that represents the SRv6 Segment List. As
           described in Section 2 of <xref target="RFC8754"/>, the Segment List
           is encoded starting from the last segment of the SR Policy. That is,
           the first element of the Segment List (Segment List[0]) contains the
@@ -579,7 +579,7 @@
           <dt>Description:</dt>
 
           <dd>The SRH Segment List as defined in Section 2 of <xref
-          target="RFC8754"/> as series of octets.</dd>
+          target="RFC8754"/> as a series of octets.</dd>
         </dl>
 
         <dl>
@@ -624,10 +624,9 @@
           <dt>Description:</dt>
 
           <dd>8-bit unsigned integer defining the number of segments remaining
-          to reach the end of the segment list from the SRH, as specified by
-          the "Segments Left" field in Section 4.4 of <xref target="RFC8200"/>
-          and mentioned part of the SRH in Section 2 of <xref
-          target="RFC8754"/>).</dd>
+          to reach the end of the Segment List in the SRH, as specified by the
+          "Segments Left" field in Section 4.4 of <xref target="RFC8200"/> and
+          mentioned in Section 2 of <xref target="RFC8754"/>).</dd>
         </dl>
 
         <dl>
@@ -666,7 +665,7 @@
           <dt>Description:</dt>
 
           <dd>The SRH and its TLVs as defined in Section 2 of <xref
-          target="RFC8754"/> as series of octets.</dd>
+          target="RFC8754"/> as a series of octets.</dd>
         </dl>
 
         <dl>
@@ -804,7 +803,7 @@
 
           <dd>The SRH segment IPv6 locator length specified as the number of
           significant bits. Together with srhSegmentIPv6 it enables the
-          calculation of the SRv6 Locator</dd>
+          calculation of the SRv6 Locator.</dd>
         </dl>
 
         <dl>
@@ -892,7 +891,7 @@
             <t>srhSegmentIPv6ListSection</t>
           </list></t>
 
-        <t>The srhSegmentIPv6BasicList encodes the SRv6 segment list with a
+        <t>The srhSegmentIPv6BasicList encodes the SRv6 Segment List with a
         basicList, specified in the IPFIX Structured Data <xref
         target="RFC6313"/>. This encoding offers the advantage to the data
         collection that the different IPv6 addresses are already structured as
@@ -915,12 +914,12 @@
 
       <section anchor="OpsSidListDecompose"
                title="Compressed SRv6 Segment List Decomposition">
-        <t>The SRv6 segment list in the IPFIX IEs srhSegmentIPv6BasicList and
+        <t>The SRv6 Segment List in the IPFIX IEs srhSegmentIPv6BasicList and
         srhSegmentIPv6ListSection could contain compressed-SID containers as
         described in <xref target="I-D.ietf-spring-srv6-srh-compression"/>.
         The SR Endpoint Flavors, described in Section 4 of <xref
         target="I-D.ietf-spring-srv6-srh-compression"/> defines new flavors
-        for SID endpoint behaviors, and determine wherever the segment list
+        for SID endpoint behaviors, and determine wherever the Segment List
         encoding is compressed, along with the flavor. The SID Locator as
         described in Section 3.1 of <xref target="RFC8986"/>, determines the
         common most significant bits.</t>
