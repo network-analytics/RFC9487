@@ -85,25 +85,25 @@ Table of Contents
      6.1.  SRv6 Segment List . . . . . . . . . . . . . . . . . . . .  12
      6.2.  Compressed SRv6 Segment List Decomposition  . . . . . . .  13
      6.3.  Multiple Segment Routing Headers  . . . . . . . . . . . .  13
-   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .  13
-     7.1.  FD.io VPP . . . . . . . . . . . . . . . . . . . . . . . .  14
-     7.2.  Huawei VRP  . . . . . . . . . . . . . . . . . . . . . . .  14
-     7.3.  Pmacct Data Collection  . . . . . . . . . . . . . . . . .  14
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  15
+   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  14
+   8.  Implementation Status . . . . . . . . . . . . . . . . . . . .  14
+     8.1.  FD.io VPP . . . . . . . . . . . . . . . . . . . . . . . .  14
+     8.2.  Huawei VRP  . . . . . . . . . . . . . . . . . . . . . . .  14
+     8.3.  Pmacct Data Collection  . . . . . . . . . . . . . . . . .  15
    9.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  15
      10.2.  Informative References . . . . . . . . . . . . . . . . .  16
-   Appendix A.  IPFIX Encoding Examples  . . . . . . . . . . . . . .  17
+   Appendix A.  IPFIX Encoding Examples  . . . . . . . . . . . . . .  18
      A.1.  Three Observed SRH Headers and their Routing Protocol . .  18
        A.1.1.  Template Record and Data Set with Segment Basic
                List  . . . . . . . . . . . . . . . . . . . . . . . .  18
        A.1.2.  Template Record and Data Set with Segment List
-               Section . . . . . . . . . . . . . . . . . . . . . . .  20
+               Section . . . . . . . . . . . . . . . . . . . . . . .  21
        A.1.3.  Template Record and Data Set with SRH Section . . . .  23
      A.2.  Options Template Record and Data Set for SRv6 Segment End
-           Point behavior and Locator Length . . . . . . . . . . . .  25
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  27
+           Point behavior and Locator Length . . . . . . . . . . . .  26
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  28
 
 
 
@@ -232,7 +232,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
       packets sharing the same set of properties.
 
    srhSegmentIPv6
-      128-bit IPv6 address that represents an SRv6 segment.
+      128-bit IPv6 address that represents a SRv6 segment.
 
    srhActiveSegmentIPv6
       128-bit IPv6 address that represents the active SRv6 segment.
@@ -384,7 +384,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    ElementID:  TBD1
 
-   Description:  The 8-bit flags defined in the SRH.  Assigned flags and
+   Description:  The 8-bit flags defined in the SRH (Section 2 of
 
 
 
@@ -394,8 +394,8 @@ Graf, et al.            Expires 17 November 2023                [Page 7]
 Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
 
-      their meanings are provided in the "Segment Routing Header Flags"
-      IANA registry.
+      [RFC8754]).  Assigned flags and their meanings are provided in the
+      "Segment Routing Header Flags" IANA registry.
 
    Abstract Data Type:  unsigned8
 
@@ -414,9 +414,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    ElementID:  TBD2
 
-   Description:  The 16-bit tag field defined in the SRH that marks a
-      packet as part of a class or group of packets sharing the same set
-      of properties.
+   Description:  The 16-bit tag field defined in the SRH (Section 2 of
+      [RFC8754]).  A tag is used to mark a packet as part of a class or
+      group of packets sharing the same set of properties.
 
    Abstract Data Type:  unsigned16
 
@@ -432,7 +432,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    ElementID:  TBD3
 
-   Description:  The 128-bit IPv6 address that represents an SRv6
+   Description:  The 128-bit IPv6 address that represents a SRv6
       segment.
 
    Abstract Data Type:  ipv6address
@@ -496,7 +496,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
    ElementID:  TBD6
 
    Description:  The SRH Segment List as defined in Section 2 of
-      [RFC8754] as a series of octets.
+      [RFC8754] as a series of octets in IPFIX.
 
 
 
@@ -538,7 +538,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
    Name:  srhIPv6Section
 
    Description:  The SRH and its TLVs as defined in Section 2 of
-      [RFC8754] as a series of octets.
+      [RFC8754] as a series of octets in IPFIX.
 
    Abstract Data Type:  octetArray
 
@@ -642,8 +642,9 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    ElementID:  TBD11
 
-   Description:  The 16-bit SRv6 Endpoint behavior.  Assigned values and
-      their meanings are provided in the "SRV6 Endpoint Behavior"
+   Description:  The 16-bit unsigned integer that represents a SRv6
+      Endpoint behavior as per Section 4 of [RFC8986].  Assigned values
+      and their meanings are provided in the "SRV6 Endpoint Behavior"
       registry.
 
    Abstract Data Type:  unsigned16
@@ -665,7 +666,6 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    *  srhSegmentIPv6BasicList
 
-   *  srhSegmentIPv6ListSection
 
 
 
@@ -673,6 +673,8 @@ Graf, et al.            Expires 17 November 2023               [Page 12]
 
 Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
+
+   *  srhSegmentIPv6ListSection
 
    The srhSegmentIPv6BasicList encodes the SRv6 Segment List with a
    basicList, specified in the IPFIX Structured Data [RFC6313].  This
@@ -716,9 +718,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
    more than one SRH, it MUST export IPFIX for the SRH of the active
    segment.
 
-7.  Implementation Status
 
-   Note to the RFC-Editor: Please remove this section before publishing.
 
 
 
@@ -730,7 +730,18 @@ Graf, et al.            Expires 17 November 2023               [Page 13]
 Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
 
-7.1.  FD.io VPP
+7.  Acknowledgements
+
+   The authors would like to thank Yao Liu, Eduard Vasilenko, Bruno
+   Decraene, Mohamed Boucadair, Kamran Raza, Qin Wu, Jim Guichard and
+   Tero Kivinen for their review and valuable comments, and Paolo
+   Lucente and Alex Huang Feng for the implementation and validation.
+
+8.  Implementation Status
+
+   Note to the RFC-Editor: Please remove this section before publishing.
+
+8.1.  FD.io VPP
 
    INSA Lyon implemented the following IEs as part of a prototype in the
    FD.io VPP (Vector Packet Processing) platform:
@@ -752,7 +763,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
    The open source code can be obtained here: [INSA-Lyon-VPP] and was
    validated at the IETF 115 hackathon.
 
-7.2.  Huawei VRP
+8.2.  Huawei VRP
 
    Huawei implemented the following IEs as part of a a production
    implementation in the VRP platform:
@@ -767,17 +778,6 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    *  srhSegmentIPv6ListSection
 
-   The implementation was validated at the IETF 115 hackathon.
-
-7.3.  Pmacct Data Collection
-
-   Paolo Lucente implemented the IE
-   srhSegmentIPv6ListSection decomposition as part of a a production
-   implementation in the open source Network Telemetry data collection
-   project pmacct.
-
-   The source code can be obtained here: [Paolo-Lucente-Pmacct] and was
-   validated at the IETF 115 hackathon.
 
 
 
@@ -786,12 +786,17 @@ Graf, et al.            Expires 17 November 2023               [Page 14]
 Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
 
-8.  Acknowledgements
+   The implementation was validated at the IETF 115 hackathon.
 
-   The authors would like to thank Yao Liu, Eduard Vasilenko, Bruno
-   Decraene, Mohamed Boucadair, Kamran Raza, Qin Wu, Jim Guichard and
-   Tero Kivinen for their review and valuable comments, and Paolo
-   Lucente and Alex Huang Feng for the implementation and validation.
+8.3.  Pmacct Data Collection
+
+   Paolo Lucente implemented the IE
+   srhSegmentIPv6ListSection decomposition as part of a a production
+   implementation in the open source Network Telemetry data collection
+   project pmacct.
+
+   The source code can be obtained here: [Paolo-Lucente-Pmacct] and was
+   validated at the IETF 115 hackathon.
 
 9.  Security Considerations
 
@@ -828,11 +833,6 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
               DOI 10.17487/RFC7012, September 2013,
               <https://www.rfc-editor.org/info/rfc7012>.
 
-   [RFC8126]  Cotton, M., Leiba, B., and T. Narten, "Guidelines for
-              Writing an IANA Considerations Section in RFCs", BCP 26,
-              RFC 8126, DOI 10.17487/RFC8126, June 2017,
-              <https://www.rfc-editor.org/info/rfc8126>.
-
 
 
 
@@ -841,6 +841,11 @@ Graf, et al.            Expires 17 November 2023               [Page 15]
 
 Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
+
+   [RFC8126]  Cotton, M., Leiba, B., and T. Narten, "Guidelines for
+              Writing an IANA Considerations Section in RFCs", BCP 26,
+              RFC 8126, DOI 10.17487/RFC8126, June 2017,
+              <https://www.rfc-editor.org/info/rfc8126>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -886,17 +891,17 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
               "IANA, "IP Flow Information Export (IPFIX) Entities"",
               <https://www.iana.org/assignments/ipfix/ipfix.xhtml>.
 
-   [INSA-Lyon-VPP]
-              "INSA Lyon, FD.io VPP implementation",
-              <https://github.com/network-analytics/vpp-srh-onpath-
-              telemetry>.
-
 
 
 Graf, et al.            Expires 17 November 2023               [Page 16]
 
 Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
+
+   [INSA-Lyon-VPP]
+              "INSA Lyon, FD.io VPP implementation",
+              <https://github.com/network-analytics/vpp-srh-onpath-
+              telemetry>.
 
    [Paolo-Lucente-Pmacct]
               "Paolo Lucente, Pmacct open source Network Telemetry Data
@@ -935,13 +940,8 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
               over the IPv6 Data Plane", RFC 9352, DOI 10.17487/RFC9352,
               February 2023, <https://www.rfc-editor.org/info/rfc9352>.
 
-Appendix A.  IPFIX Encoding Examples
 
-   This appendix represents three different encodings for the newly
-   introduced IEs, for the example values in Table 3.  The three
-   different encodings use the following IEs, respectively:
-   srhSegmentIPv6BasicList, srhSegmentIPv6ListSection, and
-   srhIPv6Section.
+
 
 
 
@@ -953,6 +953,14 @@ Graf, et al.            Expires 17 November 2023               [Page 17]
 
 Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
+
+Appendix A.  IPFIX Encoding Examples
+
+   This appendix represents three different encodings for the newly
+   introduced IEs, for the example values in Table 3.  The three
+   different encodings use the following IEs, respectively:
+   srhSegmentIPv6BasicList, srhSegmentIPv6ListSection, and
+   srhIPv6Section.
 
    +-----+------+-----+----------------+--------------------------|
    | SRH | SRH  | SRH | Active Segment |       Segment List       |
@@ -984,6 +992,24 @@ A.1.1.  Template Record and Data Set with Segment Basic List
 
    *  Segment List => srhSegmentIPv6BasicList (TBD5)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+Graf, et al.            Expires 17 November 2023               [Page 18]
+
+Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
+
+
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1001,13 +1027,6 @@ A.1.1.  Template Record and Data Set with Segment Basic List
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
            Figure 1: Template Record with Basic List Encoding Format
-
-
-
-
-Graf, et al.            Expires 17 November 2023               [Page 18]
-
-Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
 
    In this example, the Template ID is 256, which will be used in the
@@ -1039,6 +1058,14 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+
+Graf, et al.            Expires 17 November 2023               [Page 19]
+
+Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
+
+
       |             Segment List[1] = 2001:db8::2                     |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
@@ -1058,14 +1085,6 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
       | srhFlagsIPv6  |        srhTagIPv6 = 456       | srhActiveSegme|
       | = 0           |                               | ntIPv...=TBD16|
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-
-
-Graf, et al.            Expires 17 November 2023               [Page 19]
-
-Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
-
-
       |      255      |        List Length = 37       |semantic=      |
       |               |                               |ordered        |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1095,6 +1114,14 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |     srhSegmentIPv6 = TBD3     |        Field Length = 16      |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+
+Graf, et al.            Expires 17 November 2023               [Page 20]
+
+Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
+
+
       |             Segment List[0] = 2001:db8::6  ...                |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
@@ -1114,13 +1141,6 @@ A.1.2.  Template Record and Data Set with Segment List Section
    to a given information.
 
    *  SR Flags => srhFlagsIPv6 (TBD1)
-
-
-
-Graf, et al.            Expires 17 November 2023               [Page 20]
-
-Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
-
 
    *  SR Tag => srhTagIPv6 (TBD2)
 
@@ -1148,6 +1168,16 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
      Figure 3: Template Record with Segment List Section Encoding Format
 
 
+
+
+
+
+
+Graf, et al.            Expires 17 November 2023               [Page 21]
+
+Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
+
+
    In this example, the Template ID is 257, which will be used in the
    Data Record.  The field length for srhSegmentIPv6ListSection in the
    Template Record is 0xFFFF, which means that the length of this IE is
@@ -1170,14 +1200,6 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
-
-
-
-Graf, et al.            Expires 17 November 2023               [Page 21]
-
-Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
-
-
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1204,6 +1226,14 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
       | ntIPv...=TBD15|               |                               |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
+
+
+
+Graf, et al.            Expires 17 November 2023               [Page 22]
+
+Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
+
+
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1226,14 +1256,6 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-
-
-Graf, et al.            Expires 17 November 2023               [Page 22]
-
-Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
-
-
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
@@ -1252,6 +1274,21 @@ A.1.3.  Template Record and Data Set with SRH Section
    *  SR Flags + SR Tag + Segment List => srhIPv6Section (TBD8)
 
    *  Active Segment Type => srhIPv6ActiveSegmentType (TBD9)
+
+
+
+
+
+
+
+
+
+
+
+Graf, et al.            Expires 17 November 2023               [Page 23]
+
+Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
+
 
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -1277,19 +1314,6 @@ A.1.3.  Template Record and Data Set with SRH Section
 
    The data can be represented as follows:
 
-
-
-
-
-
-
-
-
-Graf, et al.            Expires 17 November 2023               [Page 23]
-
-Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
-
-
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1314,6 +1338,14 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
+
+
+
+Graf, et al.            Expires 17 November 2023               [Page 24]
+
+Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
+
+
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1338,14 +1370,6 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
-
-
-
-Graf, et al.            Expires 17 November 2023               [Page 24]
-
-Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
-
-
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1370,6 +1394,14 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
+
+
+
+Graf, et al.            Expires 17 November 2023               [Page 25]
+
+Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
+
+
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       |                              ...                              |
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1390,18 +1422,6 @@ A.2.  Options Template Record and Data Set for SRv6 Segment End Point
    Template case, the srhActiveSegmentIPv6 Information Element is a
    Scope field
 
-
-
-
-
-
-
-
-Graf, et al.            Expires 17 November 2023               [Page 25]
-
-Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
-
-
       +-------+-------------+-------------------------+----------------+
       | Entry | SRH End     | SRH End                 | SRH Segment    |
       | Nr    | Point IPv6  | Point Behavior          | Locator Length |
@@ -1414,6 +1434,29 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
       +-------+-------------+-------------------------+----------------+
 
         Table 4: Three Observed SRv6 Segment End Point Behaviors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Graf, et al.            Expires 17 November 2023               [Page 26]
+
+Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
+
 
          0                   1                   2                   3
          0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -1440,24 +1483,6 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    The data set is represented as follows:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Graf, et al.            Expires 17 November 2023               [Page 26]
-
-Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
-
-
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -1478,6 +1503,15 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
 
               Figure 8: Data Set Encoding Format for SRH Section
+
+
+
+
+
+
+Graf, et al.            Expires 17 November 2023               [Page 27]
+
+Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
 
    (*) The Length must be calculated to include the optional Type Length
@@ -1509,4 +1543,26 @@ Authors' Addresses
 
 
 
-Graf, et al.            Expires 17 November 2023               [Page 27]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Graf, et al.            Expires 17 November 2023               [Page 28]

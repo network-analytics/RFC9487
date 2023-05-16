@@ -192,7 +192,7 @@
           the same set of properties.</t>
 
           <t hangText="srhSegmentIPv6"><vspace blankLines="0"/> 128-bit IPv6
-          address that represents an SRv6 segment.</t>
+          address that represents a SRv6 segment.</t>
 
           <t hangText="srhActiveSegmentIPv6"><vspace blankLines="0"/> 128-bit
           IPv6 address that represents the active SRv6 segment.</t>
@@ -342,9 +342,9 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>The 8-bit flags defined in the SRH. Assigned flags and their
-          meanings are provided in the "Segment Routing Header Flags" IANA
-          registry.</dd>
+          <dd>The 8-bit flags defined in the SRH (Section 2 of <xref
+          target="RFC8754"/>). Assigned flags and their meanings are provided
+          in the "Segment Routing Header Flags" IANA registry.</dd>
         </dl>
 
         <dl>
@@ -391,9 +391,9 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>The 16-bit tag field defined in the SRH that marks a packet as
-          part of a class or group of packets sharing the same set of
-          properties.</dd>
+          <dd>The 16-bit tag field defined in the SRH (Section 2 of <xref
+          target="RFC8754"/>). A tag is used to mark a packet as part of a
+          class or group of packets sharing the same set of properties.</dd>
         </dl>
 
         <dl>
@@ -437,7 +437,7 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>The 128-bit IPv6 address that represents an SRv6 segment.</dd>
+          <dd>The 128-bit IPv6 address that represents a SRv6 segment.</dd>
         </dl>
 
         <dl>
@@ -579,7 +579,7 @@
           <dt>Description:</dt>
 
           <dd>The SRH Segment List as defined in Section 2 of <xref
-          target="RFC8754"/> as a series of octets.</dd>
+          target="RFC8754"/> as a series of octets in IPFIX.</dd>
         </dl>
 
         <dl>
@@ -665,7 +665,7 @@
           <dt>Description:</dt>
 
           <dd>The SRH and its TLVs as defined in Section 2 of <xref
-          target="RFC8754"/> as a series of octets.</dd>
+          target="RFC8754"/> as a series of octets in IPFIX.</dd>
         </dl>
 
         <dl>
@@ -848,8 +848,10 @@
         <dl>
           <dt>Description:</dt>
 
-          <dd>The 16-bit SRv6 Endpoint behavior. Assigned values and their
-          meanings are provided in the "SRV6 Endpoint Behavior" registry.</dd>
+          <dd>The 16-bit unsigned integer that represents a SRv6 Endpoint
+          behavior as per Section 4 of <xref target="RFC8986"/>. Assigned
+          values and their meanings are provided in the "SRV6 Endpoint
+          Behavior" registry.</dd>
         </dl>
 
         <dl>
@@ -937,6 +939,13 @@
       </section>
     </section>
 
+    <section anchor="Acknowledgements" title="Acknowledgements">
+      <t>The authors would like to thank Yao Liu, Eduard Vasilenko, Bruno
+      Decraene, Mohamed Boucadair, Kamran Raza, Qin Wu, Jim Guichard and Tero
+      Kivinen for their review and valuable comments, and Paolo Lucente and
+      Alex Huang Feng for the implementation and validation.</t>
+    </section>
+
     <section anchor="Implementation" title="Implementation Status">
       <t>Note to the RFC-Editor: Please remove this section before
       publishing.</t>
@@ -994,13 +1003,6 @@
         target="Paolo-Lucente-Pmacct"/> and was validated at the IETF 115
         hackathon.</t>
       </section>
-    </section>
-
-    <section anchor="Acknowledgements" title="Acknowledgements">
-      <t>The authors would like to thank Yao Liu, Eduard Vasilenko, Bruno
-      Decraene, Mohamed Boucadair, Kamran Raza, Qin Wu, Jim Guichard and Tero
-      Kivinen for their review and valuable comments, and Paolo Lucente and
-      Alex Huang Feng for the implementation and validation.</t>
     </section>
 
     <section anchor="Security" title="Security Considerations">
