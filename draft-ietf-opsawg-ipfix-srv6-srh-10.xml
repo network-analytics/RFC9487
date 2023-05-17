@@ -69,7 +69,7 @@
       </address>
     </author>
 
-    <date day="16" month="May" year="2023"/>
+    <date day="17" month="May" year="2023"/>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
@@ -206,9 +206,9 @@
           last segment of the SR Policy, the second element contains the
           penultimate segment of the SR Policy, and so on.</t>
 
-          <t hangText="srhSegmentIPv6ListSection"><vspace blankLines="0"/>
-          Exposes the SRH Segment List as defined in Section 2 of <xref
-          target="RFC8754"/> as a series of octets in IPFIX.</t>
+          <t hangText="srhSegmentIPv6ListSection"><vspace blankLines="0"/> The
+          SRH Segment List as defined in Section 2 of <xref target="RFC8754"/>
+          as a series of octets in IPFIX.</t>
 
           <t hangText="srhSegmentsIPv6Left"><vspace blankLines="0"/> 8-bit
           unsigned integer defining the number of segments remaining to reach
@@ -222,12 +222,13 @@
           target="RFC8754"/> as a series of octets in IPFIX.</t>
 
           <t hangText="srhIPv6ActiveSegmentType"><vspace blankLines="0"/> Name
-          of the routing protocol or PCEP extension from where the active SRv6
+          of the routing protocol or PCEP extension where the active SRv6
           segment has been learned from.</t>
 
           <t hangText="srhSegmentIPv6LocatorLength"><vspace blankLines="0"/>
-          The number of significant bits. Together with srhSegmentIPv6 it
-          enables the calculation of the SRv6 Locator.</t>
+          The SRH segment IPv6 locator length specified as the number of
+          significant bits. Together with srhSegmentIPv6 it enables the
+          calculation of the SRv6 Locator.</t>
 
           <t hangText="srhSegmentIPv6EndpointBehavior"><vspace
           blankLines="0"/> 16-bit unsigned integer that represents a SRv6
@@ -502,8 +503,8 @@
         <dl>
           <dt>Additional Information:</dt>
 
-          <dd>See <xref target="RFC8402"/> for the definition of active
-          segment.</dd>
+          <dd>See Section 2 of <xref target="RFC8402"/> for the definition of
+          active segment.</dd>
         </dl>
 
         <dl>
@@ -532,7 +533,7 @@
 
           <dd>The Ordered basicList [RFC6313] of zero or more 128-bit IPv6
           addresses in the SRH that represents the SRv6 Segment List. As
-          described in Section 2 of <xref target="RFC8754"/>, the Segment List
+          specified in Section 2 of <xref target="RFC8754"/>, the Segment List
           is encoded starting from the last segment of the SR Policy. That is,
           the first element of the Segment List (Segment List[0]) contains the
           last segment of the SR Policy, the second element contains the
@@ -629,9 +630,7 @@
           <dt>Description:</dt>
 
           <dd>8-bit unsigned integer defining the number of segments remaining
-          to reach the end of the Segment List in the SRH, as specified by the
-          "Segments Left" field in Section 4.4 of <xref target="RFC8200"/> and
-          mentioned in Section 2 of <xref target="RFC8754"/>.</dd>
+          to reach the end of the Segment List in the SRH.</dd>
         </dl>
 
         <dl>
