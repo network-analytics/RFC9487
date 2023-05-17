@@ -245,7 +245,7 @@
       <t>The IPFIX IEs srhSegmentIPv6BasicList (TBD5) or
       srhSegmentIPv6ListSection (TBD6), srhActiveSegmentIPv6 (TBD4),
       srhSegmentsIPv6Left (TBD7), srhIPv6ActiveSegmentType(TBD9),
-      forwardingStatus(89) <xref target="RFC7270"/> <xref
+      forwardingStatus (89) <xref target="RFC7270"/> <xref
       target="IANA-IPFIX"/>, and some existing counters information <xref
       target="IANA-IPFIX"/> allow to provide answers to the following
       questions (amongst others):</t>
@@ -268,10 +268,6 @@
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
-      <t>This document requests IANA to create new IEs (Table 1) and one new
-      subregistry called "IPFIX IPv6 SRH Segment Type" (Table 2) under the
-      "IPFIX Information Elements" registry <xref target="RFC7012"/> available
-      at <xref target="IANA-IPFIX"/>.</t>
 
       <t>Note to the RFC-Editor:</t>
 
@@ -282,6 +278,13 @@
           this document</t>
         </list></t>
 
+    <section anchor="sec-new-ies" title="New SRH Information Elements">
+         
+               <t>This document requests IANA to add new IEs (<xref target="sec-new-ies"/>) to the
+      "IPFIX Information Elements" registry <xref target="RFC7012"/> available
+      at <xref target="IANA-IPFIX"/>.</t>
+         
+               <t>Table 1 lists the new SRH IEs:</t> 
       <t><figure>
           <artwork><![CDATA[
 
@@ -326,7 +329,7 @@
   Table 1: New SRv6 IEs in the "IPFIX Information Elements" Registry
        ]]></artwork>
         </figure></t>
-
+         
       <section anchor="IANAsrhFlagsIPv6" title="srhFlagsIPv6">
         <dl>
           <dt>Name:</dt>
@@ -752,14 +755,28 @@
 
           <dd>[RFC-to-be]</dd>
         </dl>
-
+</section>
+         
         <section anchor="IPFIXIPv6SRHSegmentTypeSubregistry"
                  title="IPFIX IPv6 SRH Segment Type Subregistry">
-          <t>Initial values in the registry are defined by the table below.
-          New assignments of values will be administered by IANA and are
-          subject to Expert Review <xref target="RFC8126"/> by SRH Experts.
-          Experts need to check definitions of new values for completeness,
-          accuracy, and redundancy. <figure>
+             
+       <t>This document requests IANA to create a new
+      subregistry called "IPFIX IPv6 SRH Segment Type" (<xref target="IPFIXIPv6SRHSegmentTypeSubregistry"/>) under the
+      "IPFIX Information Elements" registry <xref target="RFC7012"/> available
+      at <xref target="IANA-IPFIX"/>.</t>
+             
+          <t>The allocation policy of this new subregistry is Expert Review
+   (Section 4.5 of <xref target="RFC8126"/>).</t>
+           <t>The guidelines that are being followed by the designated experts for the IPFIX registry should be followed for this subregistry. In particular, criteria that should be applied by the designated experts include
+   determining whether the proposed registration duplicates existing
+   entries and whether the registration description is clear and fits
+   the purpose of this registry. Within the review period, the
+   designated experts will either approve or deny the registration
+   request, communicating this decision to the IANA. Denials should include an explanation and, if applicable, suggestions
+   as to how to make the request successful.</t>  
+
+          <t>Initial values in the registry are defined in Table 2.</t>
+   <t><figure>
               <artwork><![CDATA[
 
 
