@@ -69,18 +69,19 @@ Table of Contents
    3.  New SRv6 IPFIX Information Elements . . . . . . . . . . . . .   4
    4.  Sample Use Cases  . . . . . . . . . . . . . . . . . . . . . .   6
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-     5.1.  srhFlagsIPv6  . . . . . . . . . . . . . . . . . . . . . .   7
-     5.2.  srhTagIPv6  . . . . . . . . . . . . . . . . . . . . . . .   8
-     5.3.  srhSegmentIPv6  . . . . . . . . . . . . . . . . . . . . .   8
-     5.4.  srhActiveSegmentIPv6  . . . . . . . . . . . . . . . . . .   9
-     5.5.  srhSegmentIPv6BasicList . . . . . . . . . . . . . . . . .   9
-     5.6.  srhSegmentIPv6ListSection . . . . . . . . . . . . . . . .   9
-     5.7.  srhSegmentsIPv6Left . . . . . . . . . . . . . . . . . . .  10
-     5.8.  srhIPv6Section  . . . . . . . . . . . . . . . . . . . . .  10
-     5.9.  srhIPv6ActiveSegmentType  . . . . . . . . . . . . . . . .  11
-       5.9.1.  IPFIX IPv6 SRH Segment Type Subregistry . . . . . . .  11
-     5.10. srhSegmentIPv6LocatorLength . . . . . . . . . . . . . . .  12
-     5.11. srhSegmentIPv6EndpointBehavior  . . . . . . . . . . . . .  12
+     5.1.  New SRH Information Elements  . . . . . . . . . . . . . .   6
+       5.1.1.  srhFlagsIPv6  . . . . . . . . . . . . . . . . . . . .   7
+       5.1.2.  srhTagIPv6  . . . . . . . . . . . . . . . . . . . . .   8
+       5.1.3.  srhSegmentIPv6  . . . . . . . . . . . . . . . . . . .   8
+       5.1.4.  srhActiveSegmentIPv6  . . . . . . . . . . . . . . . .   9
+       5.1.5.  srhSegmentIPv6BasicList . . . . . . . . . . . . . . .   9
+       5.1.6.  srhSegmentIPv6ListSection . . . . . . . . . . . . . .   9
+       5.1.7.  srhSegmentsIPv6Left . . . . . . . . . . . . . . . . .  10
+       5.1.8.  srhIPv6Section  . . . . . . . . . . . . . . . . . . .  10
+       5.1.9.  srhIPv6ActiveSegmentType  . . . . . . . . . . . . . .  11
+       5.1.10. IPFIX IPv6 SRH Segment Type Subregistry . . . . . . .  11
+     5.2.  srhSegmentIPv6LocatorLength . . . . . . . . . . . . . . .  12
+     5.3.  srhSegmentIPv6EndpointBehavior  . . . . . . . . . . . . .  12
    6.  Operational Considerations  . . . . . . . . . . . . . . . . .  13
      6.1.  SRv6 Segment List . . . . . . . . . . . . . . . . . . . .  13
      6.2.  Compressed SRv6 Segment List Decomposition  . . . . . . .  14
@@ -104,7 +105,6 @@ Table of Contents
      A.2.  Options Template Record and Data Set for SRv6 Segment End
            Point behavior and Locator Length . . . . . . . . . . . .  26
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  28
-
 
 
 
@@ -292,7 +292,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
    The IPFIX IEs srhSegmentIPv6BasicList (TBD5) or
    srhSegmentIPv6ListSection (TBD6), srhActiveSegmentIPv6 (TBD4),
    srhSegmentsIPv6Left (TBD7), srhIPv6ActiveSegmentType(TBD9),
-   forwardingStatus(89) [RFC7270] [IANA-IPFIX], and some existing
+   forwardingStatus (89) [RFC7270] [IANA-IPFIX], and some existing
    counters information [IANA-IPFIX] allow to provide answers to the
    following questions (amongst others):
 
@@ -312,11 +312,6 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
 5.  IANA Considerations
 
-   This document requests IANA to create new IEs (Table 1) and one new
-   subregistry called "IPFIX IPv6 SRH Segment Type" (Table 2) under the
-   "IPFIX Information Elements" registry [RFC7012] available at
-   [IANA-IPFIX].
-
    Note to the RFC-Editor:
 
    *  Please replace TBD1 - TBD17 with the values allocated by IANA
@@ -324,8 +319,13 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
    *  Please replace the [RFC-to-be] with the RFC number assigned to
       this document
 
+5.1.  New SRH Information Elements
 
+   This document requests IANA to add new IEs (Section 5.1) to the
+   "IPFIX Information Elements" registry [RFC7012] available at
+   [IANA-IPFIX].
 
+   Table 1 lists the new SRH IEs:
 
 
 
@@ -378,7 +378,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
      Table 1: New SRv6 IEs in the "IPFIX Information Elements" Registry
 
-5.1.  srhFlagsIPv6
+5.1.1.  srhFlagsIPv6
 
    Name:  srhFlagsIPv6
 
@@ -408,7 +408,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    Reference:  [RFC-to-be]
 
-5.2.  srhTagIPv6
+5.1.2.  srhTagIPv6
 
    Name:  srhTagIPv6
 
@@ -427,7 +427,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    Reference:  [RFC-to-be]
 
-5.3.  srhSegmentIPv6
+5.1.3.  srhSegmentIPv6
 
    Name:  srhSegmentIPv6
 
@@ -452,7 +452,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    Reference:  [RFC-to-be]
 
-5.4.  srhActiveSegmentIPv6
+5.1.4.  srhActiveSegmentIPv6
 
    Name:  srhActiveSegmentIPv6
 
@@ -470,7 +470,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    Reference:  [RFC-to-be]
 
-5.5.  srhSegmentIPv6BasicList
+5.1.5.  srhSegmentIPv6BasicList
 
    Name:  srhSegmentIPv6BasicList
 
@@ -493,7 +493,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    Reference:  [RFC-to-be]
 
-5.6.  srhSegmentIPv6ListSection
+5.1.6.  srhSegmentIPv6ListSection
 
    Name:  srhSegmentIPv6ListSection
 
@@ -518,7 +518,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    Reference:  [RFC-to-be]
 
-5.7.  srhSegmentsIPv6Left
+5.1.7.  srhSegmentsIPv6Left
 
    Name:  srhSegmentsIPv6Left
 
@@ -536,7 +536,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    Reference:  [RFC-to-be]
 
-5.8.  srhIPv6Section
+5.1.8.  srhIPv6Section
 
    Name:  srhIPv6Section
 
@@ -562,7 +562,7 @@ Graf, et al.            Expires 18 November 2023               [Page 10]
 Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
 
-5.9.  srhIPv6ActiveSegmentType
+5.1.9.  srhIPv6ActiveSegmentType
 
    Name:  srhIPv6ActiveSegmentType
 
@@ -585,27 +585,27 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    Reference:  [RFC-to-be]
 
-5.9.1.  IPFIX IPv6 SRH Segment Type Subregistry
+5.1.10.  IPFIX IPv6 SRH Segment Type Subregistry
 
-   Initial values in the registry are defined by the table below.  New
-   assignments of values will be administered by IANA and are subject to
-   Expert Review [RFC8126] by SRH Experts.  Experts need to check
-   definitions of new values for completeness, accuracy, and redundancy.
+   This document requests IANA to create a new subregistry called "IPFIX
+   IPv6 SRH Segment Type" (Section 5.1.10) under the "IPFIX Information
+   Elements" registry [RFC7012] available at [IANA-IPFIX].
 
+   The allocation policy of this new subregistry is Expert Review
+   (Section 4.5 of [RFC8126]).
 
+   The guidelines that are being followed by the designated experts for
+   the IPFIX registry should be followed for this subregistry.  In
+   particular, criteria that should be applied by the designated experts
+   include determining whether the proposed registration duplicates
+   existing entries and whether the registration description is clear
+   and fits the purpose of this registry.  Within the review period, the
+   designated experts will either approve or deny the registration
+   request, communicating this decision to the IANA.  Denials should
+   include an explanation and, if applicable, suggestions as to how to
+   make the request successful.
 
-
-
-
-
-
-
-
-
-
-
-
-
+   Initial values in the registry are defined in Table 2.
 
 
 
@@ -643,7 +643,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
           Table 2: "IPFIX IPv6 SRH Segment Type" Subregistry
 
 
-5.10.  srhSegmentIPv6LocatorLength
+5.2.  srhSegmentIPv6LocatorLength
 
    Name:  srhSegmentIPv6LocatorLength
 
@@ -662,7 +662,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    Reference:  [RFC-to-be]
 
-5.11.  srhSegmentIPv6EndpointBehavior
+5.3.  srhSegmentIPv6EndpointBehavior
 
    Name:  srhSegmentIPv6EndpointBehavior
 
