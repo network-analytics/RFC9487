@@ -871,9 +871,9 @@
         <t>The allocation policy of this new subregistry is Expert Review
         (Section 4.5 of <xref target="RFC8126"/>).</t>
 
-        <t>The designed experts for this registry should be familiar with SRH.
-        The guidelines that are being followed by the designated experts for
-        the IPFIX registry should be followed for this subregistry. In
+        <t>The designated experts for this registry should be familiar with
+        SRH. The guidelines that are being followed by the designated experts
+        for the IPFIX registry should be followed for this subregistry. In
         particular, criteria that should be applied by the designated experts
         include determining whether the proposed registration duplicates
         existing entries and whether the registration description is clear and
@@ -961,7 +961,9 @@
         for SID endpoint behaviors, and determine wherever the Segment List
         encoding is compressed, along with the flavor. The SID Locator as
         described in Section 3.1 of <xref target="RFC8986"/>, determines the
-        common most significant bits.</t>
+        common most significant bits. By using described information from
+        srhSegmentIPv6EndpointBehavior and srhSegmentIPv6LocatorLength the
+        compressed-SID containers can be decoded at the data collection.</t>
       </section>
 
       <section anchor="OpsMultipleSRH"
@@ -979,9 +981,9 @@
     <section anchor="Acknowledgements" title="Acknowledgements">
       <t>The authors would like to thank Yao Liu, Eduard Vasilenko, Bruno
       Decraene, Mohamed Boucadair, Kamran Raza, Qin Wu, Jim Guichard, Tero
-      Kivinen, Paul Aitken, Roman Danyliw, John Scudder and Eric Vyncke for
-      their review and valuable comments, and Paolo Lucente and Alex Huang
-      Feng for the implementation and validation.</t>
+      Kivinen, Paul Aitken, Roman Danyliw, John Scudder, Eric Vyncke and Erik
+      Kline for their review and valuable comments, and Paolo Lucente and Alex
+      Huang Feng for the implementation and validation.</t>
     </section>
 
     <section anchor="Implementation" title="Implementation Status">

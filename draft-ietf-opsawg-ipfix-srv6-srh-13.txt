@@ -88,10 +88,10 @@ Table of Contents
      6.3.  Multiple Segment Routing Headers  . . . . . . . . . . . .  14
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  14
    8.  Implementation Status . . . . . . . . . . . . . . . . . . . .  14
-     8.1.  FD.io VPP . . . . . . . . . . . . . . . . . . . . . . . .  14
+     8.1.  FD.io VPP . . . . . . . . . . . . . . . . . . . . . . . .  15
      8.2.  Huawei VRP  . . . . . . . . . . . . . . . . . . . . . . .  15
      8.3.  Pmacct Data Collection  . . . . . . . . . . . . . . . . .  15
-   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  16
      10.2.  Informative References . . . . . . . . . . . . . . . . .  17
@@ -644,7 +644,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
    The allocation policy of this new subregistry is Expert Review
    (Section 4.5 of [RFC8126]).
 
-   The designed experts for this registry should be familiar with SRH.
+   The designated experts for this registry should be familiar with SRH.
    The guidelines that are being followed by the designated experts for
    the IPFIX registry should be followed for this subregistry.  In
    particular, criteria that should be applied by the designated experts
@@ -748,7 +748,10 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
    defines new flavors for SID endpoint behaviors, and determine
    wherever the Segment List encoding is compressed, along with the
    flavor.  The SID Locator as described in Section 3.1 of [RFC8986],
-   determines the common most significant bits.
+   determines the common most significant bits.  By using described
+   information from srhSegmentIPv6EndpointBehavior and
+   srhSegmentIPv6LocatorLength the compressed-SID containers can be
+   decoded at the data collection.
 
 6.3.  Multiple Segment Routing Headers
 
@@ -764,20 +767,17 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
    The authors would like to thank Yao Liu, Eduard Vasilenko, Bruno
    Decraene, Mohamed Boucadair, Kamran Raza, Qin Wu, Jim Guichard, Tero
-   Kivinen, Paul Aitken, Roman Danyliw, John Scudder and Eric Vyncke for
-   their review and valuable comments, and Paolo Lucente and Alex Huang
-   Feng for the implementation and validation.
+   Kivinen, Paul Aitken, Roman Danyliw, John Scudder, Eric Vyncke and
+   Erik Kline for their review and valuable comments, and Paolo Lucente
+   and Alex Huang Feng for the implementation and validation.
 
 8.  Implementation Status
 
    Note to the RFC-Editor: Please remove this section before publishing.
 
-8.1.  FD.io VPP
 
-   INSA Lyon implemented the following IEs as part of a prototype in the
-   FD.io VPP (Vector Packet Processing) platform:
 
-   *  srhActiveSegmentIPv6
+
 
 
 
@@ -785,6 +785,13 @@ Graf, et al.            Expires 25 November 2023               [Page 14]
 
 Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
+
+8.1.  FD.io VPP
+
+   INSA Lyon implemented the following IEs as part of a prototype in the
+   FD.io VPP (Vector Packet Processing) platform:
+
+   *  srhActiveSegmentIPv6
 
    *  srhSegmentIPv6EndpointBehavior
 
@@ -828,19 +835,17 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
    The source code can be obtained here: [Paolo-Lucente-Pmacct] and was
    validated at the IETF 115 hackathon.
 
-9.  Security Considerations
-
-   There exists no extra security considerations regarding allocation of
-   these new IPFIX IEs compared to [RFC7012].
-
-
-
 
 
 Graf, et al.            Expires 25 November 2023               [Page 15]
 
 Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
+
+9.  Security Considerations
+
+   There exists no extra security considerations regarding allocation of
+   these new IPFIX IEs compared to [RFC7012].
 
    The IEs described in this document export provider plane data metrics
    on how packets are being forwarded within a SRv6 network.
@@ -883,11 +888,6 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-   [RFC8200]  Deering, S. and R. Hinden, "Internet Protocol, Version 6
-              (IPv6) Specification", STD 86, RFC 8200,
-              DOI 10.17487/RFC8200, July 2017,
-              <https://www.rfc-editor.org/info/rfc8200>.
-
 
 
 
@@ -897,6 +897,11 @@ Graf, et al.            Expires 25 November 2023               [Page 16]
 
 Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
+
+   [RFC8200]  Deering, S. and R. Hinden, "Internet Protocol, Version 6
+              (IPv6) Specification", STD 86, RFC 8200,
+              DOI 10.17487/RFC8200, July 2017,
+              <https://www.rfc-editor.org/info/rfc8200>.
 
    [RFC8754]  Filsfils, C., Ed., Dukes, D., Ed., Previdi, S., Leddy, J.,
               Matsushima, S., and D. Voyer, "IPv6 Segment Routing Header
@@ -941,11 +946,6 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
    [Paolo-Lucente-Pmacct]
               "Paolo Lucente, Pmacct open source Network Telemetry Data
               Collection", <https://github.com/pmacct/pmacct>.
-
-
-
-
-
 
 
 
