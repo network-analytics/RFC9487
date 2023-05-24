@@ -1,0 +1,1641 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<?rfc toc="yes"?>
+<?rfc tocompact="yes"?>
+<?rfc tocdepth="3"?>
+<?rfc tocindent="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+<rfc category="std" docName="draft-ietf-opsawg-ipfix-srv6-srh-12"
+     ipr="trust200902">
+  <front>
+    <title
+    abbrev="IPFIX Segment Routing over IPv6">Export&nbsp;of&nbsp;Segment&nbsp;Routing&nbsp;over&nbsp;IPv6&nbsp;Information&nbsp;in
+    IP&nbsp;Flow&nbsp;Information&nbsp;Export&nbsp;(IPFIX)</title>
+
+    <author fullname="Thomas Graf" initials="T" surname="Graf">
+      <organization>Swisscom</organization>
+
+      <address>
+        <postal>
+          <street>Binzring 17</street>
+
+          <city>Zurich</city>
+
+          <code>8045</code>
+
+          <country>Switzerland</country>
+        </postal>
+
+        <email>thomas.graf@swisscom.com</email>
+      </address>
+    </author>
+
+    <author fullname="Benoit Claise" initials="B" surname="Claise">
+      <organization>Huawei</organization>
+
+      <address>
+        <email>benoit.claise@huawei.com</email>
+      </address>
+    </author>
+
+    <author fullname="Pierre Francois" initials="P." surname="Francois">
+      <organization>INSA-Lyon</organization>
+
+      <address>
+        <postal>
+          <street/>
+
+          <city>Lyon</city>
+
+          <region/>
+
+          <code/>
+
+          <country>France</country>
+        </postal>
+
+        <phone/>
+
+        <facsimile/>
+
+        <email>pierre.francois@insa-lyon.fr</email>
+
+        <uri/>
+      </address>
+    </author>
+
+    <date day="23" month="May" year="2023"/>
+
+    <abstract>
+      <t>This document introduces new IP Flow Information Export (IPFIX)
+      Information Elements to identify a set of Segment Routing over IPv6
+      (SRv6) related information such as data contained in a Segment Routing
+      Header (SRH), the SRv6 control plane, and the SRv6 endpoint behavior
+      that traffic is being forwarded with.</t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section anchor="Introduction" title="Introduction">
+      <t>A dedicated Routing Extension Header, called Segment Routing Header
+      (SRH), is defined in <xref target="RFC8754"/> for use of Segment Routing
+      (SR) over IPv6 data plane.</t>
+
+      <t>Also, three routing protocol extensions, <xref
+      target="I-D.ietf-lsr-ospfv3-srv6-extensions">OSPFv3</xref>, <xref
+      target="RFC9352">IS-IS</xref> and <xref target="RFC8669">BGP Prefix
+      Segment Identifiers(Prefix-SIDs)</xref> and <xref
+      target="I-D.ietf-pce-segment-routing-ipv6">Path Computation Element
+      Communication Protocol (PCEP) Extension</xref> and <xref
+      target="RFC9256">Segment Routing Policy</xref> are defined to propagate
+      Segment Identifiers (SIDs).</t>
+
+      <t>SRv6 segment endpoint behaviors describe how packets should be
+      processed by SRv6 Segment Endpoint Nodes. Such behaviors are defined in
+      <xref target="RFC8986"/>.</t>
+
+      <t>This document specifies eleven new IPFIX Information Elements (IEs)
+      and one new subregistry within the "IPFIX Information Elements" registry
+      <xref target="RFC7012"/>, for SRv6 purposes.</t>
+
+      <t>These IEs are used to export the SRv6 active segment and its control
+      plane protocol, the SRv6 Segment List, the next SRv6 node and its type,
+      and the numbers of SRv6 segments left.</t>
+
+      <t>Some examples are provided in Appendix A.</t>
+    </section>
+
+    <section anchor="notation" title="Terminology">
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+      "OPTIONAL" in this document are to be interpreted as described in BCP 14
+      <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when,
+      they appear in all capitals, as shown here.</t>
+
+      <t>This document makes use of the terms defined in <xref
+      target="RFC7011"/>, <xref target="RFC8402"/> and <xref
+      target="RFC8754"/>.</t>
+
+      <t>The following terms are used as defined in <xref
+      target="RFC7011"/>:</t>
+
+      <t><list style="symbols">
+          <t>IPFIX</t>
+
+          <t>IPFIX Information Elements</t>
+
+          <t>Template</t>
+
+          <t>Template Record</t>
+
+          <t>Options Template</t>
+
+          <t>Options Template Record</t>
+
+          <t>Data Record</t>
+
+          <t>Data Set</t>
+        </list></t>
+
+      <t>The following terms are used as defined in <xref
+      target="RFC8402"/>:</t>
+
+      <t><list style="symbols">
+          <t>Segment Routing (SR)</t>
+
+          <t>Segment</t>
+
+          <t>Segment List</t>
+
+          <t>Active Segment</t>
+
+          <t>Segment Identifier (SID)</t>
+
+          <t>SRv6</t>
+
+          <t>SRv6 SID</t>
+        </list></t>
+
+      <t>The following terms are used as defined in <xref
+      target="RFC8754"/>:</t>
+
+      <t><list style="symbols">
+          <t>Segment Routing Header (SRH)</t>
+
+          <t>SR Source Node</t>
+
+          <t>Transit Node</t>
+
+          <t>SR Segment Endpoint Node</t>
+
+          <t>Reduced SRH</t>
+
+          <t>Segments Left</t>
+
+          <t>Last Entry</t>
+        </list></t>
+    </section>
+
+    <section anchor="IE" title="New IPFIX IPv6 SRH Information Elements">
+      <t>This section specifies the new IPv6 SRH IPFIX IEs.<list
+          style="hanging">
+          <t hangText="srhFlagsIPv6"><vspace blankLines="0"/> 8-bit flags
+          defined in the SRH (Section 2 of <xref target="RFC8754"/>).</t>
+
+          <t hangText="srhTagIPv6"><vspace blankLines="0"/> 16-bit tag field
+          defined in the SRH (Section 2 of <xref target="RFC8754"/>). A tag is
+          used to mark a packet as part of a class or group of packets sharing
+          the same set of properties.</t>
+
+          <t hangText="srhSegmentIPv6"><vspace blankLines="0"/> 128-bit IPv6
+          address that represents a SRv6 segment.</t>
+
+          <t hangText="srhActiveSegmentIPv6"><vspace blankLines="0"/> 128-bit
+          IPv6 address that represents the active SRv6 segment.</t>
+
+          <t hangText="srhSegmentIPv6BasicList"><vspace blankLines="0"/>
+          Ordered basicList <xref target="RFC6313"/> of zero or more 128-bit
+          IPv6 addresses in the SRH that represents the SRv6 Segment List. As
+          specified in Section 2 of <xref target="RFC8754"/>, the Segment List
+          is encoded starting from the last segment of the SR Policy. That is,
+          the first element of the Segment List (Segment List[0]) contains the
+          last segment of the SR Policy, the second element contains the
+          penultimate segment of the SR Policy, and so on.</t>
+
+          <t hangText="srhSegmentIPv6ListSection"><vspace blankLines="0"/> The
+          SRH Segment List as defined in Section 2 of <xref target="RFC8754"/>
+          as a series of octets in IPFIX.</t>
+
+          <t hangText="srhSegmentsIPv6Left"><vspace blankLines="0"/> 8-bit
+          unsigned integer defining the number of segments remaining to reach
+          the end of the Segment List from the SRH, as specified by the
+          "Segments Left" field in Section 4.4 of <xref target="RFC8200"/> and
+          mentioned part of the SRH in Section 2 of <xref
+          target="RFC8754"/>).</t>
+
+          <t hangText="srhIPv6Section"><vspace blankLines="0"/> Exposes the
+          SRH and its TLVs as specified in Section 2 of <xref
+          target="RFC8754"/> as a series of octets in IPFIX.</t>
+
+          <t hangText="srhIPv6ActiveSegmentType"><vspace blankLines="0"/> Name
+          of the routing protocol or PCEP extension where the active SRv6
+          segment has been learned from.</t>
+
+          <t hangText="srhSegmentIPv6LocatorLength"><vspace blankLines="0"/>
+          The SRH segment IPv6 locator length specified as the number of
+          significant bits. Together with srhSegmentIPv6 it enables the
+          calculation of the SRv6 Locator.</t>
+
+          <t hangText="srhSegmentIPv6EndpointBehavior"><vspace
+          blankLines="0"/> 16-bit unsigned integer that represents a SRv6
+          Endpoint behavior as per Section 4 of <xref target="RFC8986"/>.</t>
+        </list></t>
+
+      <t>Note that the srhSegmentIPv6, srhSegmentIPv6LocatorLength, and
+      srhSegmentIPv6EndpointBehavior IPFIX IEs are generic fields, to be used
+      in the context of IPFIX Options Templates or IPFIX Structured Data <xref
+      target="RFC6313"/>.</t>
+    </section>
+
+    <section anchor="Sample-Use-Cases" title="Sample Use Cases">
+      <t>The IPFIX IEs srhSegmentIPv6BasicList (TBD5) or
+      srhSegmentIPv6ListSection (TBD6), srhActiveSegmentIPv6 (TBD4),
+      srhSegmentsIPv6Left (TBD7), srhIPv6ActiveSegmentType(TBD9),
+      forwardingStatus (89) <xref target="RFC7270"/> <xref
+      target="IANA-IPFIX"/>, and some existing counters information <xref
+      target="IANA-IPFIX"/> allow to provide answers to the following
+      questions (amongst others):</t>
+
+      <t><list style="symbols">
+          <t>How many packets steered with a SR policy are forwarded or
+          dropped using SRv6 in a network?</t>
+
+          <t>If dropped, for which reasons?</t>
+
+          <t>What is the current active segment and its associated control
+          plane protocol?</t>
+
+          <t>What is the SRv6 Segment List?</t>
+
+          <t>What is the next SRv6 node and its type?</t>
+
+          <t>How many SRv6 segments are left?</t>
+        </list></t>
+    </section>
+
+    <section anchor="IANA" title="IANA Considerations">
+      <t>Note to the RFC-Editor:</t>
+
+      <t><list style="symbols">
+          <t>Please replace TBD1 - TBD17 with the values allocated by IANA</t>
+
+          <t>Please replace the [RFC-to-be] with the RFC number assigned to
+          this document</t>
+        </list></t>
+
+      <section anchor="sec-new-ies"
+               title="New IPFIX IPv6 SRH Information Elements">
+        <t>This document requests IANA to add new IEs (<xref
+        target="sec-new-ies"/>) to the "IPFIX Information Elements" registry
+        <xref target="RFC7012"/> available at <xref target="IANA-IPFIX"/>.</t>
+
+        <t>Table 1 lists the new SRH IEs:</t>
+
+        <t><figure>
+            <artwork><![CDATA[
+
+     +-------+--------------------------------+
+     |Element|              Name              |
+     |   ID  |                                |
+     +-------+--------------------------------+
+     | TBD1  | srhFlagsIPv6                   |
+     |       |                                |
+     +-------+--------------------------------+
+     | TBD2  | srhTagIPv6                     |
+     |       |                                |
+     +-------+--------------------------------+
+     | TBD3  | srhSegmentIPv6                 |
+     |       |                                |
+     +-------+--------------------------------+
+     | TBD4  | srhActiveSegmentIPv6           |
+     |       |                                |
+     +-------+--------------------------------+
+     | TBD5  | srhSegmentIPv6BasicList        |
+     |       |                                |
+     +-------+--------------------------------+
+     | TBD6  | srhSegmentIPv6ListSection      |
+     |       |                                |
+     +-------+--------------------------------+
+     | TBD7  | srhSegmentsIPv6Left            |
+     |       |                                |
+     +-------+--------------------------------+
+     | TBD8  | srhIPv6Section                 |
+     |       |                                |
+     +-------+--------------------------------+
+     | TBD9  | srhIPv6ActiveSegmentType       |
+     |       |                                |
+     +-------+--------------------------------+
+     | TBD10 | srhSegmentIPv6LocatorLength    |
+     |       |                                |
+     +-------+--------------------------------+
+     | TBD11 | srhSegmentIPv6EndpointBehavior |
+     |       |                                |
+     +-------+--------------------------------+
+
+  Table 1: New IPv6 SRH IEs in the "IPFIX Information Elements" Registry
+       ]]></artwork>
+          </figure></t>
+
+        <section anchor="IANAsrhFlagsIPv6" title="srhFlagsIPv6">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>srhFlagsIPv6</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD1</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The 8-bit flags defined in the SRH (Section 2 of <xref
+            target="RFC8754"/>). Assigned flags and their meanings are
+            provided in the "Segment Routing Header Flags" IANA registry.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>unsigned8</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>flags</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>See the assignments in the "Segment Routing Header Flags" IANA
+            registry at
+            https://www.iana.org/assignments/ipv6-parameters/ipv6-parameters.xhtml#segment-routing-header-flags.
+            See also RFC8754 for the SRH specification.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+
+        <section anchor="IANAsrhTagIPv6" title="srhTagIPv6">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>srhTagIPv6</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD2</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The 16-bit tag field defined in the SRH (Section 2 of <xref
+            target="RFC8754"/>). A tag is used to mark a packet as part of a
+            class or group of packets sharing the same set of properties.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>unsigned16</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>identifier</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>See Section 2 of <xref target="RFC8754"/> for more details
+            about the tag.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+
+        <section anchor="IANAsrhSegmentIPv6" title="srhSegmentIPv6">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>srhSegmentIPv6</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD3</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The 128-bit IPv6 address that represents a SRv6 segment.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>ipv6address</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>default</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>Specified in Section 1 of <xref target="RFC8402"/> and
+            mentioned in "Segment List" in Section 2 of <xref
+            target="RFC8754"/>.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+
+        <section anchor="IANAsrhActiveSegmentIPv6"
+                 title="srhActiveSegmentIPv6">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>srhActiveSegmentIPv6</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD4</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The 128-bit IPv6 address that represents the active SRv6
+            segment.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>ipv6address</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>default</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>See Section 2 of <xref target="RFC8402"/> for the definition
+            of active segment.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+
+        <section anchor="IANAsrhSegmentIPv6BasicList"
+                 title="srhSegmentIPv6BasicList">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>srhSegmentIPv6BasicList</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD5</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The Ordered basicList [RFC6313] of zero or more 128-bit IPv6
+            addresses in the SRH that represents the SRv6 Segment List. As
+            specified in Section 2 of <xref target="RFC8754"/>, the Segment
+            List is encoded starting from the last segment of the SR Policy.
+            That is, the first element of the Segment List (Segment List[0])
+            contains the last segment of the SR Policy, the second element
+            contains the penultimate segment of the SR Policy, and so on.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>basicList</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>list</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>See Section 2 of <xref target="RFC8754"/> for more details
+            about the SRv6 Segment List.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+
+        <section anchor="IANAsrhSegmentIPv6ListSection"
+                 title="srhSegmentIPv6ListSection">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>srhSegmentIPv6ListSection</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD6</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The SRH Segment List as defined in Section 2 of <xref
+            target="RFC8754"/> as a series of octets in IPFIX.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>octetArray</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>default</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>See Section 2 of <xref target="RFC8754"/> for more details
+            about the SRv6 Segment List.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+
+        <section anchor="IANAsrhSegmentsIPv6Left" title="srhSegmentsIPv6Left">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>srhSegmentsIPv6Left</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD7</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>8-bit unsigned integer defining the number of segments
+            remaining to reach the end of the Segment List in the SRH.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>unsigned8</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>quantity</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>Specified by the "Segments Left" field in Section 4.4 of <xref
+            target="RFC8200"/> and mentioned in Section 2 of <xref
+            target="RFC8754"/>).</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+
+        <section anchor="IANAsrhIPv6Section" title="srhIPv6Section">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>srhIPv6Section</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The SRH and its TLVs as defined in Section 2 of <xref
+            target="RFC8754"/> as a series of octets in IPFIX.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>octetArray</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>default</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>See Section 2 of <xref target="RFC8754"/> for more details
+            about the structure of an SRH.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+
+        <section anchor="IANAsrhIPv6ActiveSegmentType"
+                 title="srhIPv6ActiveSegmentType">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>srhIPv6ActiveSegmentType</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD9</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The name of the routing protocol or PCEP extension from where
+            the active SRv6 segment has been learned from. Values for this
+            Information Element are listed in the "IPFIX IPv6 SRH Segment
+            type" subregistry, see <xref target="IANA-IPFIX"/>.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>unsigned8</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>identifier</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>See the assigned types in [IPFIX IPv6 SRH Segment Type
+            Subregistry].</dd>
+
+            <dt>Note to IANA:</dt>
+
+            <dd>Please replace [IPFIX IPv6 SRH Segment Type Subregistry] with
+            the URL of the IANA subregistry.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+
+        <section anchor="IANAsrhSegmentIPv6LocatorLength"
+                 title="srhSegmentIPv6LocatorLength">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>srhSegmentIPv6LocatorLength</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD10</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The SRH segment IPv6 locator length specified as the number of
+            significant bits. Together with srhSegmentIPv6 it enables the
+            calculation of the SRv6 Locator.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>unsigned8</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>default</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>See Section 3.1 of <xref target="RFC8986"/> for more details
+            about the SID format.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+
+        <section anchor="IANAsrhSegmentIPv6EndpointBehavior"
+                 title="srhSegmentIPv6EndpointBehavior">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>srhSegmentIPv6EndpointBehavior</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD11</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The 16-bit unsigned integer that represents a SRv6 Endpoint
+            behavior as per Section 4 of <xref target="RFC8986"/>. Assigned
+            values and their meanings are provided in the "SRV6 Endpoint
+            Behavior" registry.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>unsigned16</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>identifier</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>See the assigned behaviors at the "SRv6 Endpoint Behavior"
+            registry available at
+            https://www.iana.org/assignments/segment-routing/segment-routing.xhtml#srv6-endpoint-behaviors.
+            See Section 4 of <xref target="RFC8986"/> for more details about
+            the endpoint behaviors processing.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+      </section>
+
+      <section anchor="IPFIXIPv6SRHSegmentTypeSubregistry"
+               title="New IPFIX IPv6 SRH Segment Type Subregistry">
+        <t>This document requests IANA to create a new subregistry called
+        "IPFIX IPv6 SRH Segment Type" (<xref
+        target="IPFIXIPv6SRHSegmentTypeSubregistry"/>) under the "IPFIX
+        Information Elements" registry <xref target="RFC7012"/> available at
+        <xref target="IANA-IPFIX"/>.</t>
+
+        <t>The allocation policy of this new subregistry is Expert Review
+        (Section 4.5 of <xref target="RFC8126"/>).</t>
+
+        <t>The designed experts for this registry should be familiar with SRH.
+        The guidelines that are being followed by the designated experts for
+        the IPFIX registry should be followed for this subregistry. In
+        particular, criteria that should be applied by the designated experts
+        include determining whether the proposed registration duplicates
+        existing entries and whether the registration description is clear and
+        fits the purpose of this registry. Within the review period, the
+        designated experts will either approve or deny the registration
+        request, communicating this decision to IANA. Denials should include
+        an explanation and, if applicable, suggestions as to how to make the
+        request successful.</t>
+
+        <t>Initial values in the registry are defined in Table 2.</t>
+
+        <t><figure>
+            <artwork><![CDATA[
+
+
++-------+--------------------+---------------------------------------+
+| Value |     Description    |        Additional Information         |
++-------+--------------------+---------------------------------------+
+| TBD12 | Unknown            | [RFC-to-be]                           |
+|       |                    |                                       |
++-------+--------------------+---------------------------------------+
+| TBD13 | Segment Routing    | [RFC-to-be],                          |
+|       | Policy             | <xref target="RFC9256"/>              |
++-------+--------------------+---------------------------------------+
+| TBD14 | Path Computation   | [RFC-to-be],<xref target="            |
+|       | Element            | I-D.ietf-pce-segment-routing-ipv6"/>  |
++-------+--------------------+---------------------------------------+
+| TBD15 | OSPFv3             | [RFC-to-be],<xref target="            |
+|       | Segment Routing    | I-D.ietf-lsr-ospfv3-srv6-extensions"/>|
++-------+--------------------+---------------------------------------+
+| TBD16 | IS-IS              | [RFC-to-be],<xref target="RFC9352"/>  |
+|       | Segment Routing    |                                       |
++-------+--------------------+---------------------------------------+
+| TBD17 | BGP Segment        | [RFC-to-be],                          |
+|       | Routing Prefix-SID | <xref target="RFC8669"/>              |
++-------+--------------------+---------------------------------------+
+
+        Table 2: "IPFIX IPv6 SRH Segment Type" Subregistry
+
+       ]]></artwork>
+          </figure></t>
+      </section>
+    </section>
+
+    <section anchor="Operational" title="Operational Considerations">
+      <section anchor="OpsSidList" title="SRv6 Segment List">
+        <t>The zero or more 128-bit IPv6 addresses in the SRH [RFC8754] can be
+        exported in two different ways, with two different IPFIX IEs:</t>
+
+        <t><list style="symbols">
+            <t>srhSegmentIPv6BasicList</t>
+
+            <t>srhSegmentIPv6ListSection</t>
+          </list></t>
+
+        <t>The srhSegmentIPv6BasicList encodes the SRv6 Segment List with a
+        basicList, specified in the IPFIX Structured Data <xref
+        target="RFC6313"/>. This encoding offers the advantage to the data
+        collection that the different IPv6 addresses are already structured as
+        a list, without the need of post processing. However, this method
+        requires some extra processing on the exporter, to realize the
+        BasicList data mapping.</t>
+
+        <t>The srhSegmentIPv6ListSection, on the other hand, encodes the list
+        of IPv6 addresses as an octetArray. This doesn't impose any data flow
+        manipulation on the exporter, facilitating the immediate export.
+        However, the data collection MUST be able to decode the IPv6 addresses
+        according to the SR specifications. Compared to the
+        srhSegmentIPv6BasicList, the srhSegmentIPv6ListSection flow records
+        length is slightly reduced.</t>
+
+        <t>It is not expected that an exporter would support both
+        srhSegmentIPv6BasicList and srhSegmentIPv6ListSection at the same
+        time.</t>
+      </section>
+
+      <section anchor="OpsSidListDecompose"
+               title="Compressed SRv6 Segment List Decomposition">
+        <t>The SRv6 Segment List in the IPFIX IEs srhSegmentIPv6BasicList and
+        srhSegmentIPv6ListSection could contain compressed-SID containers as
+        described in <xref target="I-D.ietf-spring-srv6-srh-compression"/>.
+        The SR Endpoint Flavors, described in Section 4 of <xref
+        target="I-D.ietf-spring-srv6-srh-compression"/> defines new flavors
+        for SID endpoint behaviors, and determine wherever the Segment List
+        encoding is compressed, along with the flavor. The SID Locator as
+        described in Section 3.1 of <xref target="RFC8986"/>, determines the
+        common most significant bits.</t>
+      </section>
+
+      <section anchor="OpsMultipleSRH"
+               title="Multiple Segment Routing Headers">
+        <t>If multiple SRHs are observed (for reasons that are not detailed
+        here), the export of the same IE multiple times in one data record and
+        related template record is supported and the order within the packet
+        SHOULD be preserved in the IPFIX export according to Section 8 of
+        <xref target="RFC7011"/>. If the network node is not capable to export
+        IPFIX for more than one SRH, it MUST export IPFIX for the SRH of the
+        active segment.</t>
+      </section>
+    </section>
+
+    <section anchor="Acknowledgements" title="Acknowledgements">
+      <t>The authors would like to thank Yao Liu, Eduard Vasilenko, Bruno
+      Decraene, Mohamed Boucadair, Kamran Raza, Qin Wu, Jim Guichard, Tero
+      Kivinen, Paul Aitken and Roman Danyliw for their review and valuable
+      comments, and Paolo Lucente and Alex Huang Feng for the implementation
+      and validation.</t>
+    </section>
+
+    <section anchor="Implementation" title="Implementation Status">
+      <t>Note to the RFC-Editor: Please remove this section before
+      publishing.</t>
+
+      <section anchor="VPP" title="FD.io VPP">
+        <t>INSA Lyon implemented the following IEs as part of a prototype in
+        the FD.io VPP (Vector Packet Processing) platform:</t>
+
+        <t><list style="symbols">
+            <t>srhActiveSegmentIPv6</t>
+
+            <t>srhSegmentIPv6EndpointBehavior</t>
+
+            <t>srhSegmentsIPv6Left</t>
+
+            <t>srhFlagsIPv6</t>
+
+            <t>srhTagIPv6</t>
+
+            <t>srhSegmentIPv6ListSection</t>
+
+            <t>srhSegmentIPv6BasicList</t>
+          </list></t>
+
+        <t>The open source code can be obtained here: <xref
+        target="INSA-Lyon-VPP"/> and was validated at the IETF 115
+        hackathon.</t>
+      </section>
+
+      <section anchor="Huawei" title="Huawei VRP">
+        <t>Huawei implemented the following IEs as part of a a production
+        implementation in the VRP platform:</t>
+
+        <t><list style="symbols">
+            <t>srhActiveSegmentIPv6</t>
+
+            <t>srhSegmentsIPv6Left</t>
+
+            <t>srhFlagsIPv6</t>
+
+            <t>srhTagIPv6</t>
+
+            <t>srhSegmentIPv6ListSection</t>
+          </list></t>
+
+        <t>The implementation was validated at the IETF 115 hackathon.</t>
+      </section>
+
+      <section anchor="pmacct" title="Pmacct Data Collection">
+        <t>Paolo Lucente implemented the IE srhSegmentIPv6ListSection
+        decomposition as part of a a production implementation in the open
+        source Network Telemetry data collection project pmacct.</t>
+
+        <t>The source code can be obtained here: <xref
+        target="Paolo-Lucente-Pmacct"/> and was validated at the IETF 115
+        hackathon.</t>
+      </section>
+    </section>
+
+    <section anchor="Security" title="Security Considerations">
+      <t>There exists no extra security considerations regarding allocation of
+      these new IPFIX IEs compared to <xref target="RFC7012"/>.</t>
+
+      <t>The IEs described in this document export provider plane data metrics
+      on how packets are being forwarded within a SRv6 network. Applications
+      and operators using the IEs described in this document must evaluate the
+      sensitivity of this information in their implementation context, and
+      apply the data-at-rest storage guidance in Section 11.8 of <xref
+      target="RFC7011"/> as appropriate.</t>
+    </section>
+  </middle>
+
+  <back>
+    <references title="Normative References">
+      <?rfc include='reference.RFC.2119'?>
+
+      <?rfc include='reference.RFC.6313'?>
+
+      <?rfc include='reference.RFC.7011'?>
+
+      <?rfc include='reference.RFC.7012'?>
+
+      <?rfc include='reference.RFC.8126'?>
+
+      <?rfc include='reference.RFC.8174'?>
+
+      <?rfc include='reference.RFC.8200'?>
+
+      <?rfc include='reference.RFC.8754'?>
+    </references>
+
+    <references title="Informative References">
+      <?rfc include='reference.RFC.7270'?>
+
+      <?rfc include='reference.RFC.8402'?>
+
+      <?rfc include='reference.RFC.8669'?>
+
+      <?rfc include='reference.RFC.8986'?>
+
+      <?rfc include='reference.RFC.9256'?>
+
+      <?rfc include='reference.RFC.9352'?>
+
+      <?rfc include='reference.I-D.ietf-lsr-ospfv3-srv6-extensions'?>
+
+      <?rfc include='reference.I-D.ietf-pce-segment-routing-ipv6'?>
+
+      <?rfc include='reference.I-D.ietf-spring-srv6-srh-compression'?>
+
+      <reference anchor="IANA-IPFIX"
+                 target="https://www.iana.org/assignments/ipfix/ipfix.xhtml">
+        <front>
+          <title>IANA, "IP Flow Information Export (IPFIX) Entities"</title>
+
+          <author/>
+
+          <date/>
+        </front>
+      </reference>
+
+      <reference anchor="INSA-Lyon-VPP"
+                 target="https://github.com/network-analytics/vpp-srh-onpath-telemetry">
+        <front>
+          <title>INSA Lyon, FD.io VPP implementation</title>
+
+          <author/>
+
+          <date/>
+        </front>
+      </reference>
+
+      <reference anchor="Paolo-Lucente-Pmacct"
+                 target="https://github.com/pmacct/pmacct">
+        <front>
+          <title>Paolo Lucente, Pmacct open source Network Telemetry Data
+          Collection</title>
+
+          <author/>
+
+          <date/>
+        </front>
+      </reference>
+    </references>
+
+    <section anchor="Encoding-Example" title="IPFIX Encoding Examples">
+      <t>This appendix represents three different encodings for the newly
+      introduced IEs, for the example values in Table 3. The three different
+      encodings use the following IEs, respectively: srhSegmentIPv6BasicList,
+      srhSegmentIPv6ListSection, and srhIPv6Section.</t>
+
+      <t><figure>
+          <artwork><![CDATA[
+
+   +-----+------+-----+----------------+--------------------------|
+   | SRH | SRH  | SRH | Active Segment |       Segment List       |
+   | Nr  | Flags| Tag | Type           |                          |
+   +-----+------+-----+----------------+--------------------------+
+   | 1   | 0    | 123 | IS-IS          | 2001:db8::1, 2001:db8::2,|
+   |     |      |     |                | 2001:db8::3              |
+   +-----+------+-----+----------------+--------------------------+
+   | 2   | 0    | 456 | IS-IS          | 2001:db8::4, 2001:db8::5 |
+   +-----+------+-----+----------------+--------------------------+
+   | 3   | 0    | 789 | IS-IS          | 2001:db8::6              |
+   +-----+------+-----+----------------+--------------------------+
+
+     Table 3: Three Observed SRH headers and Their Associated Routing Protocol
+       ]]></artwork>
+        </figure></t>
+
+      <section anchor="Three-Observed-SRH-Headers-and-their-routing-protocol"
+               title="Three Observed SRH Headers and their Routing Protocol">
+        <section anchor="Template-Record-and-Data-Set-with-BasicList"
+                 title="Template Record and Data Set with Segment Basic List">
+          <t>With encoding in Figure 1, the examples in Table 3 are
+          represented with the following IEs: &ldquo;=&gt;&rdquo; is used to
+          indicate which IE is mapped to a given information.</t>
+
+          <t><list style="symbols">
+              <t>SR Flags =&gt; srhFlagsIPv6 (TBD1)</t>
+
+              <t>SR Tag =&gt; srhTagIPv6 (TBD2)</t>
+
+              <t>Active Segment Type =&gt; srhIPv6ActiveSegmentType (TBD9)</t>
+
+              <t>Segment List =&gt; srhSegmentIPv6BasicList (TBD5)</t>
+            </list></t>
+
+          <t><figure>
+              <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          SET ID = 2           |       Length = 24             |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      Template ID = 256        |      Field Count = 4          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|     srhFlagsIPv6 = TBD1     |      Field Length = 1         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|      srhTagIPv6 = TBD2      |      Field Length = 2         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|srhActiveSegmentIPv... = TBD9|      Field Length = 1         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|srhSegmentIPv6BasicList= TBD5|      Field Length = 0xFFFF    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+        Figure 1: Template Record with Basic List Encoding Format
+
+            ]]></artwork>
+            </figure></t>
+
+          <t>In this example, the Template ID is 256, which will be used in
+          the Data Record. The field length for srhSegmentIPv6BasicList is
+          0xFFFF, which means the length of this IE is variable, and the
+          actual length of this IE is indicated by the List Length field in
+          the basicList format as per <xref target="RFC6313"/>.</t>
+
+          <t>The data set is represented as follows:</t>
+
+          <figure>
+            <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |         SET ID = 256          |           Length = 136        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhActiveSegme|
+   | = 0           |                               | ntIPv...=TBD16|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      255      |        List Length = 53       |semantic=      |
+   |               |                               |ordered        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |     srhSegmentIPv6 = TBD3     |        Field Length = 16      |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |             Segment List[0] = 2001:db8::1                     |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |             Segment List[1] = 2001:db8::2                     |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |             Segment List[2] = 2001:db8::3                     |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | srhFlagsIPv6  |        srhTagIPv6 = 456       | srhActiveSegme|
+   | = 0           |                               | ntIPv...=TBD16|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      255      |        List Length = 37       |semantic=      |
+   |               |                               |ordered        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |     srhSegmentIPv6 = TBD3     |        Field Length = 16      |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |             Segment List[0] = 2001:db8::4                     |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |             Segment List[1] = 2001:db8::5  (16 bytes)         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | srhFlagsIPv6  |        srhTagIPv6 = 789       | srhActiveSegme|
+   | = 0           |                               | ntIPv...=TBD16|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      255      |        List Length = 21       |semantic=      |
+   |               |                               |ordered        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |     srhSegmentIPv6 = TBD3     |        Field Length = 16      |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |             Segment List[0] = 2001:db8::6  ...                |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+           Figure 2: Data Set Encoding Format for Basic List
+
+            ]]></artwork>
+          </figure>
+        </section>
+
+        <section anchor="Template-Record-and-Data-Set-with-Segment-List-Section"
+                 title="Template Record and Data Set with Segment List Section">
+          <t>With encoding in Figure 3, the examples in Table 3 are
+          represented with the following IEs: &ldquo;=&gt;&rdquo; is used to
+          indicate which IE is mapped to a given information.</t>
+
+          <t><list style="symbols">
+              <t>SR Flags =&gt; srhFlagsIPv6 (TBD1)</t>
+
+              <t>SR Tag =&gt; srhTagIPv6 (TBD2)</t>
+
+              <t>Active Segment Type =&gt; srhIPv6ActiveSegmentType (TBD9)</t>
+
+              <t>Segment List =&gt; srhSegmentIPv6ListSection (TBD6)</t>
+            </list></t>
+
+          <t><figure>
+              <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          SET ID = 2           |       Length = 24             |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      Template ID = 257        |      Field Count = 4          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|     srhFlagsIPv6 = TBD1     |      Field Length = 1         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|      srhTagIPv6 = TBD2      |      Field Length = 2         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|srhActiveSegmentIPv... = TBD9|      Field Length = 1         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|     srhSegmentIPv6List      |      Field Length = 0xFFFF    |
+   | |     Section=TBD6            |                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+   Figure 3: Template Record with Segment List Section Encoding Format
+
+            ]]></artwork>
+            </figure></t>
+
+          <t>In this example, the Template ID is 257, which will be used in
+          the Data Record. The field length for srhSegmentIPv6ListSection in
+          the Template Record is 0xFFFF, which means that the length of this
+          IE is variable: its actual length is encoded in the Data Set. Note
+          that, with an actual length inferior to 255 in the Data Record
+          example, the length field is encoded in 8 bits (Section 7 of <xref
+          target="RFC7011"/>).</t>
+
+          <t>The data can be represented as follows:</t>
+
+          <figure>
+            <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |         SET ID = 257          |           Length = 116        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | srhFlagsIPv6  |        srhTagIPv6 = 123       | srhActiveSegme|
+   | = 0           |                               | ntIPv...=TBD16|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Length = 48   |   2001:db8::1                                 |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      ...      |   2001:db8::2                                 |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      ...      |   2001:db8::3                                 |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      ...      | srhFlagsIPv6  |        srhTagIPv6 = 456       |
+   |               | = 0           |                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | srhActiveSegme| Length = 32   |   2001:db8::4                 |
+   | ntIPv...=TBD15|               |                               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      ...                      |   2001:db8::5                 |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      ...                      |srhFlagsIPv6=0 | srhTagIPv6... |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | = 789         |         srhActiveSegment      | Length = 16   |
+   |               |         IPv6Type=TBD16        |               |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        2001:db8::6 ...                        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+     Figure 4: Data Set Encoding Format for Segment List Section
+
+            ]]></artwork>
+          </figure>
+        </section>
+
+        <section anchor="Template-Record-and-Data-Set-with-SRH-Section"
+                 title="Template Record and Data Set with SRH Section">
+          <t>With encoding in Figure 5, the examples in Table 3 are
+          represented with the following IEs: &ldquo;=&gt;&rdquo; is used to
+          indicate which IE is mapped to a given information.</t>
+
+          <t><list style="symbols">
+              <t>SR Flags + SR Tag + Segment List =&gt; srhIPv6Section
+              (TBD8)</t>
+
+              <t>Active Segment Type =&gt; srhIPv6ActiveSegmentType (TBD9)</t>
+            </list></t>
+
+          <t><figure>
+              <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          SET ID = 2           |       Length = 16             |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      Template ID = 258        |      Field Count = 2          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0| srhActiveSegmentIP... = TBD9|      Field Length = 1         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |0|    srhIPv6Section = TBD8    |      Field Length = 0xFFFF    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+      Figure 5: Template Record with SRH Section Encoding Format
+
+            ]]></artwork>
+            </figure></t>
+
+          <t>In this example, the Template ID is 258, which will be used in
+          the Data Record. The field length for srhIPv6Section in the Template
+          Record is 0xFFFF, which means that the length of this IE is
+          variable: its actual length is encoded in the Data Set. Note that,
+          with an actual length inferior to 255 in the Data Record example,
+          the length field is encoded in 8 bits (Section 7 of <xref
+          target="RFC7011"/>).</t>
+
+          <t>The data can be represented as follows:</t>
+
+          <figure>
+            <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |         SET ID = 258          |           Length = (*)        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |        srhIPv6ActiveSegmentType = TBD16       |  Length = (*) |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Last Entry   |     Flags     |              Tag              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[0] 2001:db8::1                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[1] 2001:db8::2                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[2] 2001:db8::3                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   ~          Optional Type Length Value objects (variable)        ~
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |        srhIPv6ActiveSegmentType = TBD16       |    0xFFFF     |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Last Entry   |     Flags     |              Tag              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[0] 2001:db8::4                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[1] 2001:db8::5                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   ~          Optional Type Length Value objects (variable)        ~
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |        srhIPv6ActiveSegmentType = TBD16       |    0xFFFF     |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Next Header   |  Hdr Ext Len  | Routing Type  | Segments Left |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  Last Entry   |     Flags     |              Tag              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                 Segment List[0] 2001:db8::6                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                              ...                              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   ~          Optional Type Length Value objects (variable)        ~
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+          Figure 6: Data Set Encoding Format for SRH Section
+
+            ]]></artwork>
+          </figure>
+
+          <t>(*) The Length must be calculated to include the optional Type
+          Length Value objects.</t>
+        </section>
+      </section>
+
+      <section anchor="Options-Template-Record-and-Data-Set-for-SRv6-Segment-Endpoint-Behavior"
+               title="Options Template Record and Data Set for SRv6 Segment End Point behavior and Locator Length">
+        <t>This appendix provides an SRv6 EndPoint Bevahior Options Template
+        example, for the values presented in Table 4. In the Options Template
+        case, the srhActiveSegmentIPv6 Information Element is a Scope
+        field</t>
+
+        <t><figure>
+            <artwork><![CDATA[
+
+   +-------+-------------+-------------------------+----------------+
+   | Entry | SRH End     | SRH End                 | SRH Segment    |
+   | Nr    | Point IPv6  | Point Behavior          | Locator Length |
+   +-------+-------------+-------------------------+----------------+
+   | 1     | 2001:db8::1 | End [1]                 | 48             |
+   +-------+-------------+-------------------------+----------------+
+   | 2     | 2001:db8::4 | End with NEXT-CSID [43] | 48             |
+   +-------+-------------+-------------------------+----------------+
+   | 3     | 2001:db8::6 | End.DX6 [16]            | 48             |
+   +-------+-------------+-------------------------+----------------+
+
+     Table 4: Three Observed SRv6 Segment End Point Behaviors
+       ]]></artwork>
+          </figure></t>
+
+        <t><figure>
+            <artwork><![CDATA[
+      0                   1                   2                   3
+      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |         Set ID = 3            |          Length = 24          |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |       Template ID 259         |        Field Count = 3        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |     Scope Field Count = 1     |0| srhActiveSegmentIPv6 = TBD4 |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |   Scope 1 Field Length = 4    |0|srhSegmentEndpointBeh..=TBD11|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |       Field Length = 1        |0|srhSegmentIPv6Lo.Length=TBD10|
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |       Field Length = 4        |           Padding             |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+       Figure 7: Template Record with SRH Section Encoding Format
+
+            ]]></artwork>
+          </figure></t>
+
+        <t>In this example, the Template ID is 259, which will be used in the
+        Data Record.</t>
+
+        <t>The data set is represented as follows:</t>
+
+        <figure>
+          <artwork><![CDATA[
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |         SET ID = 259          |           Length = 28         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                         2001:db8::1                           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |             End [1]           |               48              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        2001:db8::4                            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |    End with NEXT-CSID [43]    |               48              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                         2001:db8::6                           |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |             End.DX6 [16]      |               48              |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+ 
+           Figure 8: Data Set Encoding Format for SRH Section
+
+            ]]></artwork>
+        </figure>
+
+        <t>(*) The Length must be calculated to include the optional Type
+        Length Value objects.</t>
+      </section>
+    </section>
+  </back>
+</rfc>
