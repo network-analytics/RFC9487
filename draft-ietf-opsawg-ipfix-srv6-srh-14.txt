@@ -814,7 +814,7 @@ Internet-Draft       IPFIX Segment Routing over IPv6            May 2023
 
 8.3.  Pmacct Data Collection
 
-   Paolo Lucente implemented the decomposition ot the IE
+   Paolo Lucente implemented the decomposition of the IE
    srhSegmentIPv6ListSection as part of a a production implementation in
    the open source Network Telemetry data collection project pmacct.
 

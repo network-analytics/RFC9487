@@ -1025,7 +1025,7 @@
       </section>
 
       <section anchor="pmacct" title="Pmacct Data Collection">
-        <t>Paolo Lucente implemented the decomposition ot the IE
+        <t>Paolo Lucente implemented the decomposition of the IE
         srhSegmentIPv6ListSection as part of a a production implementation in
         the open source Network Telemetry data collection project pmacct.</t>
 
